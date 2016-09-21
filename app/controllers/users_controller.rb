@@ -9,13 +9,21 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(params[:user])
-		if @user.save
+		@user = User.new(user_params)
+		if @user.save			
+			flash[:notice] = "You signed up successfully"
 			redirect_to root_url
 		else
 			render "new"
 		end
 	end
 
+	def show
+		@user = User.find(params[:id])
+	end
+
+	def user_params
+		params.require(:user).permit(:name, :surname, :phone, :email, :is_admin, :is_active, :password) #password_digest
+	end
 
 end
