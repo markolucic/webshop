@@ -15,5 +15,18 @@
 @import "bootstrap";
 
 footer ul {
-	decoration: none;
+	display: block;
+	float: right;
+
+	li
+	{
+		list-style-type: none;
+		float: left;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+.left {
+	float: left;
 }

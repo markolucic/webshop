@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   
   get 'home/index'
   get  '/signup' => 'users#new'
-  #get '/signin' => ''
+  
 end
