@@ -6,7 +6,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.boolean :is_admin
-      t.boolean :is_active
+      t.boolean :email_confirmed
+      t.string :confirm_token
       t.string :password_digest
 
 
