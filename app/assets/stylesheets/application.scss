@@ -14,12 +14,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
 #nav{
 	width: 100%;
 	height: 50px;
 	background: black;
 }
-
+footer{
+	padding-top: 100px;
+}
 footer ul {
 	display: block;
 	float: right;
@@ -36,9 +46,24 @@ footer ul {
 .left {
 	float: left;
 }
-.form {
-	padding: 40px;
-	border: 1px solid gray;
-    border-radius: 5px;
-    width: 23%;
+
+
+.login-form{
+  background-color: #f6f6f6;
+  padding:35px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ddd;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.btn-dark-grey{
+  background-color: #404040;
+  color: #ffffff;
+}
+
+.right-align{
+  float: right;
+  margin-left: 5px;
 }

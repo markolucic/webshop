@@ -20,13 +20,11 @@ ActiveRecord::Schema.define(version: 20160921122815) do
     t.string   "name"
     t.string   "surname"
     t.string   "email"
-    t.string   "phone"
-    t.boolean  "is_admin"
-    t.boolean  "email_confirmed"
-    t.string   "confirm_token"
+    t.boolean  "is_admin",        default: false
+    t.boolean  "is_active"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end
