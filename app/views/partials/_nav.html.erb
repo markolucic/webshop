@@ -1,7 +1,27 @@
-<!-- bootstrap brand... -->
+<!-- bootstrap brand... -
 <nav>
-	<%= link_to 'Muska obuca', "#" %>
-	<%= link_to 'Zenska obuca', "#" %>
-	<%= link_to 'Djecija obuca', "#" %>
-	<%= link_to 'Sportska obuca', "#" %>
+	
+</nav>-->
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="col-md-8 center-block" style="float: none;">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>">abhShoes<span class="glyphicons glyphicon-shoes-steps"></span></a>
+    </div>
+    <ul class="nav navbar-nav navbar-left">
+	    <li><%= link_to 'Muška obuća', "#" %></li>
+		<li><%= link_to 'Ženska obuća', "#" %></li>
+		<li><%= link_to 'Dječija obuća', "#" %></li>
+		<li><%= link_to 'Sportska obuća', "#" %></li>
+	</ul>
+	  <ul class="nav navbar-nav navbar-right">
+	    <li><%= link_to 'Login', "#" %></li>
+	    <li><%= '|' %></li>
+	    <li><%= link_to 'Register', "#" %></li>
+	    <li><a href="#"><span class="glyphicons glyphicon-star"></span></a></li>
+	  </ul>
+	</div>
+  </div><!-- /.container-fluid -->
 </nav>

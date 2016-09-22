@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Webshop</title>
+  <title>abhShoes</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<%= render 'partials/nav' %>
 
-<div class="container">
-	<p class="notice"> <%= notice %> </p>
-	<p class="alert"><%= alert %></p>
-	<%= yield %>
-	<%= render 'partials/footer' %>
-</div>
-
+	<div class="container">
+		<p class="notice"> <%= notice %> </p>
+		<p class="alert"><%= alert %></p>
+		<%= yield %>
+		<%= render 'partials/footer' %>
+	</div>
 </body>
 </html>
