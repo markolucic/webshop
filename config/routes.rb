@@ -1,20 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  resources :users do
-  	member do
-  		get :confirm_email
-  	end
-  end
+  get  '/signup' => 'users#new'
+  get  '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  resources :users 
 
   root 'home#index'
   
   get 'home/index'
-  get  '/signup' => 'users#new'
 
 end
