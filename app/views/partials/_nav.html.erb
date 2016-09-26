@@ -6,10 +6,10 @@
       <a class="navbar-brand" href="<%= root_path %>">abhShoes<span class="glyphicons glyphicon-shoe-steps"></span></a>
     </div>
     <ul class="nav navbar-nav navbar-left">
-	    <li><%= link_to 'Muška obuća', "#" %></li>
-		<li><%= link_to 'Ženska obuća', "#" %></li>
-		<li><%= link_to 'Dječija obuća', "#" %></li>
-		<li><%= link_to 'Sportska obuća', "#" %></li>
+	    <li ><%= link_to 'Muška obuća', "#" %></li> <!--class="<%= 'active' if current_page?(root_path) %>" -->
+		<li ><%= link_to 'Ženska obuća', "#" %></li>
+		<li ><%= link_to 'Dječija obuća', "#" %></li>
+		<li ><%= link_to 'Sportska obuća', "#" %></li>
 	</ul>
 	  <ul class="nav navbar-nav navbar-right">
 	  	<% if current_user %>
@@ -19,7 +19,7 @@
 	    <% end %>
 	    <li><a href="#">|</a></li>
 	    <li><%= link_to 'Register', signup_path %></li>
-	    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+	    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items">1</span></a></li>
 	  </ul>
 	</div>
   </div><!-- /.container-fluid -->
