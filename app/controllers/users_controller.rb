@@ -14,7 +14,6 @@ class UsersController < ApplicationController
         	flash[:success] = "You have successfully registered!"
 			redirect_to root_url
 		else
-			flash[:error] = "Ooooppss, something went wrong!"
 			render "new"
 		end
 	end
@@ -28,7 +27,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params.require(:user).permit(:name, :surname, :email, :is_admin, :is_active, :password) #password_digest
+		params.require(:user).permit(:name, :surname, :email, :is_admin, :is_active, :password, :password_confirmation) 
 	end
 
 end

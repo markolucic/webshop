@@ -1,42 +1,34 @@
-
 <%= form_for @user do |f| %>
   <div class="col-md-4 center-block form" style="float:none">
-  <div class="login-form">
-    
-      <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %> 
-      <div class="form-group">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :surname %><br />
-        <%= f.text_field :surname , class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :email %><br />
-        <%= f.text_field :email, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, class: "form-control" %>
-      </div>
+  <div class="login-form">    
+    <% if @user.errors.any? %>        
+      <% for message in @user.errors.full_messages %>
+           <% flash.now[:danger] = message %>
+      <% end %>
+    <% end %> 
+    <div class="form-group">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :surname %><br />
+      <%= f.text_field :surname , class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
   </div>
 </div>
-      <div class="col-md-4 center-block" style="float:none; padding-top: 20px;">
-        <%= f.submit 'CREATE ACCOUNT', :class=>'btn right-align btn-dark-grey'%>
-      </div>
-    
+  <div class="col-md-4 center-block" style="float:none; padding-top: 20px;">
+    <%= f.submit 'CREATE ACCOUNT', :class=>'btn right-align btn-dark-grey'%>
+  </div>
 <% end %>
