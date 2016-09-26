@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	
+	# before_filter :authorize "moramo biti ulogovani da bismo vidjeli taj sadrzaj"
 	def index
 		@users = User.all
 	end
