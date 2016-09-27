@@ -43,6 +43,10 @@ $main-orange: #e8ce60;
   background: black;
 }
 
+.navbar-brand{
+  font-weight: bold;
+}
+
 .active{
       border-bottom-style: solid;
       border-bottom-color: $main-orange;
