@@ -29,6 +29,10 @@
   </div>
 </div>
   <div class="col-md-4 center-block" style="float:none; padding-top: 20px;">
-    <%= f.submit 'CREATE ACCOUNT', :class=>'btn right-align btn-dark-grey'%>
+    <% if params[:action] == 'edit' %>
+      <%= f.submit 'EDIT ACCOUNT', :class=>'btn right-align btn-dark-grey'%>
+    <% else %>
+      <%= f.submit 'CREATE ACCOUNT', :class=>'btn right-align btn-dark-grey'%>
+    <% end %>
   </div>
 <% end %>
