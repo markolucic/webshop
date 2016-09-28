@@ -12,14 +12,14 @@
 		<li ><%= link_to 'Sportska obuća', "#" %></li>
 	</ul>
 	  <ul class="nav navbar-nav navbar-right">
-	  	<% if current_user %>
-	  		<li><%= link_to 'Logout', logout_path %></li>
+	  	<% if logged_in? %>
+	  		<li><%= link_to 'Logout', logout_path, method: :delete %></li>
 	  	<% else %>
 	    	<li><%= link_to 'Login', login_path %></li>
 	    <% end %>
 	    <li><a href="#">|</a></li>
 	    <% if current_user %>
-	    	<li><%= link_to 'Profile', edit_user_path(session[:user_id]) %></li>
+	    	<li><%= link_to 'Profile', current_user %></li>
 	    <% else %>
 	    	<li><%= link_to 'Register', signup_path %></li>
 	    <% end %>

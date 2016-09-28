@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save			
+			#log_in user #ukoliko zelimo da ulogujemo usera odmah pri registraciji
         	flash[:success] = "You have successfully registered!"
 			redirect_to login_path
 		else

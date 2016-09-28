@@ -1,15 +1,23 @@
-<%= form_tag '/login' do %>
-  <div class="col-md-4 center-block form" style="float:none;">
+<%= form_for(:session, url: login_path) do |f| %>
+  <div class="col-md-4 center-block form" style="float:none">
   <div class="login-form">    
     <div class="form-group">
-      <strong>Email</strong> <%= text_field_tag :email, "", class: 'form-control'  %>
+      <%= f.label :email %><br />
+      <%= f.text_field :email, class: "form-control" %>
     </div>
     <div class="form-group">
-      <strong>Password</strong> <%= password_field_tag :password, "", class: "form-control" %>
+      <%= f.label :password %><br />
+      <%= f.password_field :password, class: "form-control" %>
     </div>
   </div>
 </div>
   <div class="col-md-4 center-block" style="float:none; padding-top: 20px;">
-    <%= submit_tag 'LOG IN', :class=>'btn right-align btn-dark-grey'%>
+    <div class="form-group" style="float:left">
+      <%= f.label :remember_me, class: "check_box" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me</span>
+      <% end %>
+    </div>
+    <%= f.submit 'LOG IN', :class=>'btn right-align btn-dark-grey'%>
   </div>
 <% end %>
