@@ -19,11 +19,15 @@
 	    <% end %>
 	    <li><a href="#">|</a></li>
 	    <% if current_user %>
-	    	<li><%= link_to 'Profile', current_user %></li>
+	    	<li><%= link_to 'Profile', edit_user_path(current_user) %></li>
 	    <% else %>
 	    	<li><%= link_to 'Register', signup_path %></li>
 	    <% end %>
-	    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items">0</span></a></li>
+	    <% if logged_in? && current_user.is_admin? %>
+	    	<li> <%= link_to '', '#', class: 'glyphicon glyphicon-cog' %></li>
+	    <% else %>
+	    	<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items">0</span></a></li>
+	    <% end %>
 	  </ul>
 	</div>
   </div><!-- /.container-fluid -->

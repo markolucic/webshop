@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:success] = user.name << ", you are now logged in!"
-      redirect_to root_url
+      redirect_back_or root_url
     else
     # If user's login doesn't work, send them back to the login form.
       flash.now[:danger] = "Username or password does not match!"
