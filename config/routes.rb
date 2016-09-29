@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'account_activations/edit'
+
+  root 'home#index'
+  get 'home/index'
   get  '/signup' => 'users#new'
   get  '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   resources :users 
-
-  root 'home#index'
-  
-  get 'home/index'
+  resources :account_activations, only: [:edit]
 
 end
