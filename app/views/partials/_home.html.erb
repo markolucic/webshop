@@ -18,7 +18,7 @@
 		  	<% else %>
 		    	<li><%= link_to 'Login', login_path %></li>
 		    <% end %>
-		    <li><a href="#">|</a></li>
+		    <li class="divider-vertical"></li>
 		    <% if current_user %>
 		    	<li><%= link_to 'Profile', edit_user_path(current_user) %></li>
 		    <% else %>

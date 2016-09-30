@@ -48,12 +48,23 @@ body {
   a:hover{
     color: $main-orange;
   }
+  .navbar-fixed-top{
+    background-color: none;
+  }
 }
 
 .navbar-brand{
     color:white;
     font-weight: bold;
-  }
+}
+
+.divider-vertical {
+    height: 20px;                   
+    border-left: 1px solid white;     
+    float: left;                     
+    opacity: 1;                    
+    margin: 15px 15px 0px 15px;                  
+}
 
 .carousel{
   margin-bottom: 30px;
@@ -62,6 +73,7 @@ body {
 .carousel-inner{
   img {
     width: 100%;
+    filter:opacity(90%);
   }
   height: 450px;
 }
