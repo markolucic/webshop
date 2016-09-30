@@ -29,6 +29,10 @@
 
 $main-orange: #e8ce60;
 
+body { 
+  /*padding-top: 70px; ako je fixed-top u _nav.html.erb*/
+}
+
 .clearfix:after {
    content: " "; /* Older browser do not support empty content */
    visibility: hidden;
@@ -37,22 +41,56 @@ $main-orange: #e8ce60;
    clear: both;
 }
 
+.nav{
+  a{
+    color:white;
+  }
+  a:hover{
+    color: $main-orange;
+  }
+}
+
+.navbar-brand{
+    color:white;
+    font-weight: bold;
+  }
+
+.carousel{
+  margin-bottom: 30px;
+}
+
+.carousel-inner{
+  img {
+    width: 100%;
+  }
+  height: 450px;
+}
+
+.item {
+  width: 100%;
+}
+
 #nav{
   width: 100%;
   height: 50px;
   background: black;
-}
-
-.navbar-brand{
-  font-weight: bold;
-}
-
-.active{
-      border-bottom-style: solid;
-      border-bottom-color: $main-orange;
-      border-bottom-width: 4px;
-      padding-bottom: 0px;
-      margin-bottom: -1px;
+  ul{
+    li{
+      .active{
+        border-bottom-style: solid;
+        border-bottom-color: $main-orange;
+        border-bottom-width: 4px;
+        padding-bottom: 0px;
+        margin-bottom: -1px;
+      }
+    }
+  }
+  a{
+    color:white;
+  }
+  .navbar-brand{
+    font-weight: bold;
+  }
 }
 
 a {
