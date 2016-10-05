@@ -2,10 +2,9 @@
 	<hr />
 	<p class="left">Copyright&copy;abhShoes. All rights reserved.</p>
 	<ul class="footer">
-		<li><%= link_to 'Ženska obuća' %></li>
-		<li><%= link_to 'Muška obuća' %></li>
-		<li><%= link_to 'Dječija obuća' %></li>
-		<li><%= link_to 'Sportska obuća' %></li>
+		<% Category.all.each do |c| %> <!-- SMISLITI BOLJI NACIN -->
+    		<li><%= link_to c.name, c %></li>
+    	<% end %>
 		<li><%= link_to 'Dodaci' %></li>
 	</ul>
 </footer>

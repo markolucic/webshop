@@ -16,3 +16,8 @@ User.create(name: 'Marko', surname: 'Lucic', email: 'marko_lucic_1994@yahoo.com'
 	User.create!(name: name, surname: surname, email: email, password: password, 
 				 password_confirmation: password, activated: true, activated_at: Time.zone.now)
 end
+
+Category.create(name: "Muška obuća")
+Category.create(name: "Ženska obuća")
+Category.create(name: "Dječija obuća")
+Category.create(name: "Sportska obuća")
