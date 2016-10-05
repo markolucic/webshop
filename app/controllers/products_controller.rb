@@ -9,6 +9,13 @@ class ProductsController < ApplicationController
 	end
 
 	def create
+		@product = Product.new(product_params)
+		if @product.save
+			flash[:success] = "You have successfully created product."
+			redirect_to @product
+		else
+			render 'new'
+		end
 	end
 
 	def show
@@ -22,5 +29,11 @@ class ProductsController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	private
+
+	def product_params
+		params(:product).permit(:name, :description, :price, :quantity)
 	end
 end

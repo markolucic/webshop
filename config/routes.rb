@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :products
   resources :categories
+  resources :colors
+  resources :brands
+  resources :sizes
 
 end

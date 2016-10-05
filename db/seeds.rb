@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+=begin
 User.create(name: 'Marko', surname: 'Lucic', email: 'marko_lucic_1994@yahoo.com', 
 			is_admin: true, password: 'markolucic', activated: true, activated_at: Time.zone.now)
 
@@ -16,8 +17,14 @@ User.create(name: 'Marko', surname: 'Lucic', email: 'marko_lucic_1994@yahoo.com'
 	User.create!(name: name, surname: surname, email: email, password: password, 
 				 password_confirmation: password, activated: true, activated_at: Time.zone.now)
 end
+=end
 
 Category.create(name: "Muška obuća")
 Category.create(name: "Ženska obuća")
 Category.create(name: "Dječija obuća")
 Category.create(name: "Sportska obuća")
+
+Product.create(name: "Starke", description: "Opis", price: 100, quantity: 10, image: "http://www.24sata.rs/resources/images/0000/017/030/starke%20slika2_1000x0.jpg")
+Product.create(name: "Starke2", description: "Opis", price: 110, quantity: 10, image: "http://www.24sata.rs/resources/images/0000/017/030/starke%20slika2_1000x0.jpg")
+Product.create(name: "Starke3", description: "Opis", price: 120, quantity: 10, image: "http://www.24sata.rs/resources/images/0000/017/030/starke%20slika2_1000x0.jpg")
+Product.create(name: "Starke4", description: "Opis", price: 130, quantity: 10, image: "http://www.24sata.rs/resources/images/0000/017/030/starke%20slika2_1000x0.jpg")

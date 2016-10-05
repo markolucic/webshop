@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20161005153848) do
     t.text     "description"
     t.decimal  "price"
     t.integer  "quantity"
+    t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -69,7 +70,7 @@ ActiveRecord::Schema.define(version: 20161005153848) do
   add_index "products_sizes", ["size_id", "product_id"], name: "index_products_sizes_on_size_id_and_product_id", using: :btree
 
   create_table "sizes", force: :cascade do |t|
-    t.string   "size"
+    t.integer  "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
