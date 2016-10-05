@@ -19,6 +19,7 @@ User.create(name: 'Marko', surname: 'Lucic', email: 'marko_lucic_1994@yahoo.com'
 end
 
 
+=end
 Category.create(name: "Muška obuća")
 Category.create(name: "Ženska obuća")
 Category.create(name: "Dječija obuća")
@@ -44,4 +45,3 @@ Brand.create(name: "Toms")
 (38..46).each do |n|
 	Size.create(size: n)
 end
-=end

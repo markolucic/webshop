@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'account_activations/edit'
 
-  root 'home#index'
+  root 'products#index'
   get 'home/index'
   get  '/signup' => 'users#new'
   get  '/login' => 'sessions#new'
