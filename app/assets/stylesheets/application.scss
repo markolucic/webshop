@@ -41,13 +41,17 @@ body {
    clear: both;
 }
 
-.nav{
+.myNav{
   a{
-    color:white;
+    color:white !important;
   }
   a:hover{
-    color: $main-orange;
+    color: $main-orange !important;
+    background-color: none !important;
   }
+}
+
+.nav{
   .navbar-fixed-top{
     background-color: none;
   }
@@ -59,11 +63,11 @@ body {
 }
 
 .divider-vertical {
-    height: 20px;                   
+    height: 15px;                   
     border-left: 1px solid white;     
     float: left;                     
     opacity: 1;                    
-    margin: 15px 15px 0px 15px;                  
+    margin: 18px 0px 0px 0px;                  
 }
 
 .carousel{
