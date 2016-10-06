@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 	      flash[:success] = "You have edited your account successfully!"
 	      redirect_to root_url
 	    else
-	    	flash[:danger] = "Pleaser enter all fields!"
+	    	flash[:danger] = "Pleaser enter all fields!" #flash.now
 	    	redirect_to  edit_user_path(@user)
 	    end
 	end

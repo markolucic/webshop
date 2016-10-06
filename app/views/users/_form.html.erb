@@ -1,11 +1,14 @@
 <%= form_for @user do |f| %>
   <div class="col-md-4 center-block form" style="float:none">
-  <div class="login-form">    
-    <% if @user.errors.any? %>        
+    <% if @user.errors.any? %>
+      <% flash.now[:danger] = "You have #{@user.errors.count} errors!" %>        
       <% for message in @user.errors.full_messages %>
-           <% flash.now[:danger] = message %>
+        <li><%= message %></li>
       <% end %>
+      <br>
     <% end %> 
+  <div class="login-form">    
+    
     <div class="form-group">
       <%= f.label :name %><br />
       <%= f.text_field :name, class: "form-control" %>

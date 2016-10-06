@@ -2,12 +2,16 @@
 	<h3 style="text-align:center;">Featured Products</h3>
 	<h4 style="text-align:center;"><strong>VANS</strong> <span class="caret"></span> </h3>
 </div>
-<div class="row">
+<div class="">
 	<% @products.each do |p| %>
-		<div class="col-md-3">
-		<%= link_to image_tag(p.image, :size => "200x180"), p %><br>
-		<%= p.name %><br>
-		<%= p.price %>KM <br>
+		<div class="col-md-3 block-centered">
+			<div class="img">
+				<%= link_to image_tag(p.image, :size => "200x180"), p %><br><br>
+				<div class="imgText">
+					<%= p.name%> <br>
+					$<%= p.price %>
+				</div>
+			</div>
 		</div>
 	<% end %>
 </div>

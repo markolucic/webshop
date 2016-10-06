@@ -117,6 +117,32 @@ a:hover{
   text-decoration: none;
 }
 
+.img{
+  width:200px; height:180px;
+  opacity: 1; 
+  filter: alpha(opacity=100);
+  margin-bottom: 30px;
+}
+.imgText{
+  width:200px; height:180px;
+  background:#000000; 
+  opacity:0;
+}
+.img:hover{
+  color:red;
+  .imgText{
+    opacity: 0.6;
+    color:#FFF;
+    text-align:center;
+    font-size:20px; 
+    font-weight:700; 
+    font-family:"Times New Roman", Times, serif;
+    vertical-align: middle;
+    padding-top: 55px;
+    margin-top: -200px;
+  }
+}
+
 footer {
   margin-top: 100px;
 }

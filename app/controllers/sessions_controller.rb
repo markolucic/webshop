@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       end
     else
     # If user's login doesn't work, send them back to the login form.
-      flash.now[:danger] = "Username or password does not match!"
+      flash[:danger] = "Username or password does not match!"
       redirect_to '/login'
     end
   end

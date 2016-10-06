@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@sizes = Size.all #ovdje treba ucitati samo velicine za ovaj artikal, a ne sve
+		@products = Product.where(brand_id: @product.brand_id)
 	end
 
 	def edit
