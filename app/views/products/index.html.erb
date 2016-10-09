@@ -5,12 +5,9 @@
 <div class="">
 	<% @products.each do |p| %>
 		<div class="col-md-3 block-centered">
-			<div class="img">
+			<div class="img"> 
 				<%= link_to image_tag(p.image, :size => "200x180"), p %><br><br>
-				<div class="imgText">
-					<%= p.name%> <br>
-					$<%= p.price %>
-				</div>
+				<%= link_to  simple_format(p.name + "\n\n $" + p.price.to_s), p, class: 'imgText'%> 
 			</div>
 		</div>
 	<% end %>

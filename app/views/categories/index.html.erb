@@ -1,1 +1,6 @@
 <h1>Categories</h1>
+<div class="col-md-4">
+	<% @categories.each do |c| %>
+		<li><%= link_to c.name, c %></li>
+	<% end %>
+</div>

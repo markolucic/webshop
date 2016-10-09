@@ -1,1 +1,33 @@
-<h1><%=  @category.name%></h1>
+<div class="col-md-2">
+	<div class="sidebar">
+		<h4>FILTER</h4><br>
+		<%= label_tag("Brand") %><br>
+		<%= collection_select(:brand, :brand_id, Brand.all, :id, :name, :prompt => "All brands", class: "form-control") %><br>
+		<%= label_tag("Velicina") %><br>
+		<%= collection_select(:size, :size_id, Size.all, :id, :size, :prompt => "All sizes", class: "form-control") %><br>
+		<%= label_tag("Boja") %><br>
+		<%= collection_select(:color, :color_id, Color.all, :id, :name, :prompt => "All colors", class: "form-control") %>
+		<%= label_tag("Stil") %><br>
+		<%= select_tag "whatever", options_for_select([ "Stil1", "Stil2" ], "Stil"), class: "form-control" %><br>
+		<%= label_tag("Cijena") %><br>
+		<%= select_tag "whatever", options_for_select([ "60 - 100KM", "100 - 120KM" ], "60 - 100KM"), class: "form-control" %><br><br>
+
+	</div>
+</div>
+<div class="col-md-10">
+	<h4 style="float:left;"><%=  @category.name%></h4><h4 style="float:right;">Cijena </h4><%= select_tag "Cijena",  options_for_select([ "od vece ka manjoj", "od manje ka vecoj" ], "od vece ka manjoj"), style: "float:right;" %>
+	<% @products.each do |p| %>
+		<div class="col-md-3">
+			<%= link_to image_tag(p.image, :size => "200x180"), p %>
+			<p><%= p.name %></p>
+			<p><%= p.price %></p>
+			<p class="colors">
+				<% p.colors.each do |c| %>
+					<%= c.name %>
+				<% end %>
+			</p>
+		</div>
+	<% end %>
+</div>
+
+
