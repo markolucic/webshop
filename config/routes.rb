@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'carts/add'
+
+  get 'carts/clear'
+
+  get 'carts/index'
+
   get 'account_activations/edit'
 
   root 'products#index'

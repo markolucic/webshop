@@ -11,7 +11,7 @@
 		<h4><%= @product.name %></h4>
 		<p><%= @product.description %></p>
 		<p>
-			Velicina: <%= select_tag "size", options_from_collection_for_select(@sizes, "id", "size") %>
+			Velicina: <%= select_tag "size", options_from_collection_for_select(@product.sizes, "id", "size") %>
 			Kolicina: <%= text_field_tag 'quantity', '', size: 1%> 
 		</p><br>
 		<button class="btn">DODAJ U KORPU</button>

@@ -6,6 +6,12 @@
 		<%= label_tag("Velicina") %><br>
 		<%= collection_select(:size, :size_id, Size.all, :id, :size, :prompt => "All sizes", class: "form-control") %><br>
 		<%= label_tag("Boja") %><br>
+		<select name="color_id" class="form-control filter">
+	      	<option value="" class="color">Select color</option>
+	      	<% Color.all.each {|color| %>
+	        	<option style="background-color: #<%=color.hex%>" value="<%=color.id%>" <% if @color_id == color.id.to_s %>selected<% end %> class="color"><%= color.name %></option>
+	      	<% } %>
+		</select>
 		<%= collection_select(:color, :color_id, Color.all, :id, :name, :prompt => "All colors", class: "form-control") %>
 		<%= label_tag("Stil") %><br>
 		<%= select_tag "whatever", options_for_select([ "Stil1", "Stil2" ], "Stil"), class: "form-control" %><br>
