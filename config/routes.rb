@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'carts/add'
-
-  get 'carts/clear'
-
-  get 'carts/index'
+  get '/cart' => 'carts#index'
+  get '/cart/clear' => 'carts#clear'
+  get '/cart/:id' => 'carts#add'
 
   get 'account_activations/edit'
 

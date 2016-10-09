@@ -26,7 +26,7 @@
 		    <% if logged_in? && current_user.is_admin? %>
 		    	<li> <%= link_to '', '#', class: 'glyphicon glyphicon-cog' %></li>
 		    <% else %>
-		    	<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items">0</span></a></li>
+		    	<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items">0<%=  %></span></a></li>
 		    <% end %>
 		  </ul>
 		</div>

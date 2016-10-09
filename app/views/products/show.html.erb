@@ -12,9 +12,9 @@
 		<p><%= @product.description %></p>
 		<p>
 			Velicina: <%= select_tag "size", options_from_collection_for_select(@product.sizes, "id", "size") %>
-			Kolicina: <%= text_field_tag 'quantity', '', size: 1%> 
+			Kolicina: <%= number_field_tag 'quantity', '', size: 1%> 
 		</p><br>
-		<button class="btn">DODAJ U KORPU</button>
+		<a href="/cart/<%= @product.id %>" class="btn btn-default">DODAJ U KORPU</a>
 		<button class="btn btn-dark-grey">KUPI ODMAH</button>
 	</div>	
 </div>
