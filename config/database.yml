@@ -37,6 +37,7 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
   database: webshop_production
   username: webshop
   password: <%= ENV['WEBSHOP_DATABASE_PASSWORD'] %>
