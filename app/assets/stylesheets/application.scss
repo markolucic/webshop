@@ -216,3 +216,29 @@ footer ul {
   width: auto;
   margin-left: 0;
 }
+
+.productOptions{
+  padding-top: 20px;
+   button{
+      margin-right: 30px;
+    }
+  .leftOption{
+    float:left;
+    margin-right: 10px;
+    #size{
+      width:160px;
+    }
+  }
+  .rightOption {
+    margin-left: 20px;
+    input[type="number"] {
+        width: 100px;
+    }
+  }
+}
+
+.smallImg{
+  img {
+    padding-bottom: 10px;
+  }
+}

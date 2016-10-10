@@ -1,10 +1,15 @@
 <footer>
 	<hr />
-	<p class="left">Copyright&copy;abhShoes. All rights reserved.</p>
-	<ul class="footer">
-		<% Category.all.each do |c| %> <!-- SMISLITI BOLJI NACIN -->
-    		<li><%= link_to c.name, c %></li>
-    	<% end %>
+	<div class="col-md-3">
+		<p class="left">Copyright&copy;abhShoes. All rights reserved.</p>
+	</div>
+	<div class="col-md-9">
+		<ul class="footer">
+			<% Category.all.each do |c| %> <!-- SMISLITI BOLJI NACIN -->
+	    		<li><%= link_to c.name, c %></li>
+	    	<% end %>
 		<li><%= link_to 'Dodaci' %></li>
-	</ul>
+		</ul>
+	</div>
+	
 </footer>

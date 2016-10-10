@@ -11,6 +11,17 @@ class User < ActiveRecord::Base
     validates :name, :presence => true, length: { maximum: 50 }
     validates :surname, :presence => true
 
+    #has_one :cart, dependent: destroy
+
+    # Returns the number of all products in cart
+    def total_products
+    end
+
+    # Returns the total price of all products in cart
+    def total_price
+
+    end
+
     # Returns the hash digest of the given string
     def User.digest(string)
     	cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

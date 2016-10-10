@@ -11,8 +11,8 @@
 		<% product = Product.find_by_id(id) %>
 		<%= link_to image_tag(product.image, :size => "200x180"), product %>
 		<%= product.name %>
-		<%= params[:size] %> 
-		<%= number_to_currency(product.price, :unit => "$") %>
+		<%= params[:size] %>
+ 		<%= number_to_currency(product.price, :unit => "$") %>
 		Quantity: <%= quantity %>
 		<% total += quantity * product.price %>
 	</div>
