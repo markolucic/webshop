@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-=begin
+
 User.create(name: 'Marko', surname: 'Lucic', email: 'marko_lucic_1994@yahoo.com', 
 			is_admin: true, password: 'markolucic', activated: true, activated_at: Time.zone.now)
 
@@ -81,4 +81,3 @@ Product.create(name: "Vans Duboke Patike", description: "Lorem ipsum dolor sit a
 	price: 130, quantity: 10, 
 	image: "http://wannabemagazine.com/wp-content/uploads/2013/09/10086430_d1.jpg", brand_id: 4)
 
-	=end
