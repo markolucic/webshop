@@ -10,18 +10,21 @@
 	<div class="col-md-5">
 		<h4><%= @product.name %></h4>
 		<p><%= @product.description %></p>
-		<div class="productOptions ">
-			<div class="leftOption">
-				Velicina: <br>
-				<%= select_tag "size", options_from_collection_for_select(@product.sizes, "id",  "size", "Sve velicine") %>
-			</div>
-			<div class="rightOption">
-				Kolicina: <br>
-				<%= number_field_tag 'quantity', ''%> 
-			</div>
-		</div><br>
-		<a href="/cart/<%= @product.id %>" class="btn btn-default" >DODAJ U KORPU</a>
-		<button class="btn btn-dark-grey" style="margin-left: 10px;">KUPI ODMAH</button>
+		<%= form_tag({controller: "carts", action: "add"}, method: "post", class: "form") do %>
+			<div class="productOptions ">
+				<div class="leftOption">
+					Velicina: <br>
+					<%= select_tag :size, options_from_collection_for_select(@product.sizes, "size",  "size") %>
+				</div>
+				<div class="rightOption">
+					Kolicina: <br>
+					<%= number_field_tag :quantity, '1'%> 
+				</div>
+			</div><br>
+			<%= submit_tag "DODAJ U KORPU", class: 'btn btn-default' %>
+			<!-- <a href="/cart/<%= @product.id %>" class="btn btn-default" >DODAJ U KORPU</a> -->
+			<button class="btn btn-dark-grey" style="margin-left: 10px;">KUPI ODMAH</button>
+		<% end %>
 	</div>	
 </div>
 <div class="" style="padding-top: 70px;">

@@ -11,15 +11,20 @@ class User < ActiveRecord::Base
     validates :name, :presence => true, length: { maximum: 50 }
     validates :surname, :presence => true
 
-    #has_one :cart, dependent: destroy
+    has_many :carts, dependent: :destroy
 
     # Returns the number of all products in cart
     def total_products
+        self.carts.sum(:quantity)
     end
 
     # Returns the total price of all products in cart
     def total_price
-
+        total = 0
+        self.carts.each do |item|
+            total += item.quantity * item.product.price
+        end
+        return total
     end
 
     # Returns the hash digest of the given string

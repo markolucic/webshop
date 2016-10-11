@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 20161010074328) do
   end
 
   create_table "carts", force: :cascade do |t|
+    t.integer  "product_id"
     t.integer  "user_id"
+    t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"

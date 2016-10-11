@@ -242,3 +242,34 @@ footer ul {
     padding-bottom: 10px;
   }
 }
+
+.thumb{
+  img {
+    float: left;
+    margin-right: 20px;
+  }
+  .caption{
+    position: relative;
+    padding-top: 20px;
+    color: gray;
+
+    .price{
+      position: absolute;
+      top: 20px;
+      right: 0px;
+      text-align: right;
+      strong{
+         color:black;
+      }
+      
+    }
+    .quantity{
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      input[type="number"] {
+          width: 70px;
+      }
+    }
+  }
+}
