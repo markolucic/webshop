@@ -1,35 +1,32 @@
 <div class="col-md-2">
 	<div class="sidebar">
 		<h4>FILTER</h4><br>
-		<%= label_tag("Brand") %><br>
+		<h5>Brand:</h5>
 		<%= collection_select(:brand, :brand_id, Brand.all, :id, :name, :prompt => "All brands", class: "form-control") %><br>
-		<%= label_tag("Velicina") %><br>
+		<h5>Size:</h5>
 		<%= collection_select(:size, :size_id, Size.all, :id, :size, :prompt => "All sizes", class: "form-control") %><br>
-		<%= label_tag("Boja") %><br>
-		<select name="color_id" class="form-control filter">
-	      	<option value="" class="color">Select color</option>
-	      	<% Color.all.each {|color| %>
-	        	<option style="background-color: #<%=color.hex%>" value="<%=color.id%>" <% if @color_id == color.id.to_s %>selected<% end %> class="color"><%= color.name %></option>
-	      	<% } %>
-		</select>
-		<%= collection_select(:color, :color_id, Color.all, :id, :name, :prompt => "All colors", class: "form-control") %>
-		<%= label_tag("Stil") %><br>
-		<%= select_tag "whatever", options_for_select([ "Stil1", "Stil2" ], "Stil"), class: "form-control" %><br>
-		<%= label_tag("Cijena") %><br>
-		<%= select_tag "whatever", options_for_select([ "60 - 100KM", "100 - 120KM" ], "60 - 100KM"), class: "form-control" %><br><br>
+		<h5>Color:</h5>
+		<%= collection_select(:color, :color_id, Color.all, :id, :name, :prompt => "All colors", class: "form-control") %><br>
+		<h5>Price:</h5>
+		<%= select_tag "price", options_for_select([ "$30 - $60", "$60 - $90", "$90 - $120", "$120 - " ], "All prices")%>
 
 	</div>
 </div>
 <div class="col-md-10">
-	<h4 style="float:left;"><%=  @category.name%></h4><h4 style="float:right;">Cijena </h4><%= select_tag "Cijena",  options_for_select([ "od vece ka manjoj", "od manje ka vecoj" ], "od vece ka manjoj"), style: "float:right;" %>
+	<div class="row" style="padding-top: 30px;">
+		<h4 style="float:left;"><%=  @category.name%></h4>
+		<div class="cijenaFilter">
+			<h5>Cijena: 
+			<%= select_tag "Cijena",  options_for_select([ "od vece ka manjoj", "od manje ka vecoj" ], "od vece ka manjoj"), style: "" %></h5>
+		</div>
+	</div>
 	<% @products.each do |p| %>
 		<div class="col-md-3">
 			<%= link_to image_tag(p.image, :size => "200x180"), p %>
-			<p><%= p.name %></p>
-			<p><%= p.price %></p>
-			<p class="colors">
+			<p><%= p.brand.name %> - <%= p.name %></p>
+			<p class="colors"><%= number_to_currency(p.price, :unit => "$") %><span style="padding-right: 10px;"></span>
 				<% p.colors.each do |c| %>
-					<%= c.name %>
+					<div class="circle" style="background-color: #<%= c.hex %>"></div>
 				<% end %>
 			</p>
 		</div>

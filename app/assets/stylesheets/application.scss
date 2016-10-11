@@ -274,3 +274,31 @@ footer ul {
     }
   }
 }
+
+.circle{
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px;
+    border:0px solid #ccc;
+    width: 9px;
+    height:9px;
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.cijenaFilter{
+  float:right;
+}
+
+.sidebar{
+  padding-top: 30px;
+ 
+  select{
+    width: 150px;
+    margin-bottom: 25px;
+  }
+}
+
+.colors{
+  display: inline-block;
+}
