@@ -29,18 +29,14 @@
 			    <% else %>
 			    	<li><%= link_to 'Register', signup_path %></li>
 			    <% end %>
-			    <% if logged_in? && current_user.is_admin? %>
-			    	<li> <%= link_to '', '#', class: 'glyphicon glyphicon-cog' %></li>
-			    <% else %>
-			    	<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items">
-	                <% if current_user %>
-	                  <%= @current_user.total_products  %>
-	                <% else %>
-	                  0
-	                <% end %>
-	                </span></a>
-	              </li>
-			    <% end %>
+		    	<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items">
+                <% if current_user %>
+                  <%= @current_user.total_products  %>
+                <% else %>
+                  0
+                <% end %>
+                </span></a>
+              </li>
 			  </ul>
 		</div>
 	</div>
