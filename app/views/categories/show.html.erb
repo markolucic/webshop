@@ -1,4 +1,4 @@
-<div class="col-md-2">
+<div class="col-md-2 col-sm-3 col-xs-3">
 	<div class="sidebar">
 		<h4>FILTER</h4><br>
 		<h5>Brand:</h5>
@@ -12,13 +12,10 @@
 
 	</div>
 </div>
-<div class="col-md-10">
+<div class="col-md-10 col-sm-9 col-xs-9">
 	<div class="row" style="padding-top: 30px;">
 		<h4 style="float:left;"><%=  @category.name%></h4>
-		<div class="cijenaFilter">
-			<h5>Cijena: 
-			<%= select_tag "Cijena",  options_for_select([ "od vece ka manjoj", "od manje ka vecoj" ], "od vece ka manjoj"), style: "" %></h5>
-		</div>
+		
 	</div>
 	<% @products.each do |p| %>
 		<div class="col-md-3">
