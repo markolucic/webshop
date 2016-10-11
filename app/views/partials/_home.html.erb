@@ -33,7 +33,14 @@
     		    <% if logged_in? && current_user.is_admin? %>
     		    	<li> <%= link_to '', '#', class: 'glyphicon glyphicon-cog' %></li>
     		    <% else %>
-    		    	<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items"><%= @current_user.total_products %></span></a></li>
+    		    	<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span><span class="items">
+                <% if current_user %>
+                  <%= @current_user.total_products  %>
+                <% else %>
+                  0
+                <% end %>
+                </span></a>
+              </li>
     		    <% end %>
     		  </ul>
   		  </div>

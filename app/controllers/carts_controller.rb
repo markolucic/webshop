@@ -22,6 +22,7 @@ class CartsController < ApplicationController
     size = params[:size]
     if @product_item
       @product_item.quantity = @product_item.quantity + quantity.to_i
+      #product size and color
       @product_item.save
     else
       item = Cart.new
