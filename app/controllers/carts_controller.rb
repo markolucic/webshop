@@ -35,6 +35,12 @@ class CartsController < ApplicationController
   	redirect_to cart_path
   end
 
+  def remove
+    id = params[:id]
+    @current_user.carts.delete(id)
+    redirect_to cart_path
+  end
+
   def clear
   	#session[:cart] = nil
   	

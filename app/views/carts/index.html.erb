@@ -16,6 +16,8 @@
 				<h4>Size: 44</h4>
 				<h4>Color: Red</h4>
 				<h4>ID: 2445D</h4>
+				<a href="/cart/remove/<%= item.id %>">Remove</a>
+				<p><%=  %></p>
 		 		<h4 class="price">Price:<br><strong><%= number_to_currency(item.product.price, :unit => "$") %></strong></h4>
 				<h5 class="quantity">Quantity: <%= number_field_tag(:quantity, item.quantity) %></h5>
 			</div>
