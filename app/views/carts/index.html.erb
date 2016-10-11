@@ -1,12 +1,13 @@
-<h3>Your cart</h3>
-<% total = 0 %>
-<% if @current_user.carts.empty? %>
-	<p>Your cart is empty.</p>
-<% else %>
-	<h3><%= link_to "Empty cart", cart_clear_path %></h3>
-<% end %>
-
-<div class="col-md-7">
+<div class="row" >	
+	<h3>Your cart</h3>
+	<% total = 0 %>
+	<% if @current_user.carts.empty? %>
+		<p>Your cart is empty.</p>
+	<% else %>
+		<h3><%= link_to "Empty cart", cart_clear_path %></h3>
+	<% end %>
+</div>
+<div class="col-md-8" style="padding-right: 70px">
 	<% @cart_items.each do |item| %>
 		<div class="row thumb">
 			<% product = Product.find_by_id(item.product.id) %>
@@ -24,9 +25,19 @@
 		</div>
 	<% end %>
 </div>
-<div class="col-md-4">
-	<p>TOTAL: <%= number_to_currency(@current_user.total_price, :unit => "$") %></p>
-	<p>Ukupno proizvoda:<%= @current_user.total_products %></p>
+<div class="col-md-4" style="margin-top: -80px;">
+	<div class="">
+		 <h4>Korpa   Placanje   Dostava</h4><br>
+	</div>
+	<div class="narudzba">
+		<p class="narudzba-left">Narudzba: <%= @current_user.total_products %> proizvoda</p>
+		<p>Cijena: <br><strong><%= number_to_currency(@current_user.total_price, :unit => "$") %></strong> </p>
+		<p>Dostava:<br><strong>$30<strong></p>
+		<hr>
+		<h4>Ukupno: <strong><%= number_to_currency(@current_user.total_price + 30, :unit => "$") %></strong></h4>
+	</div>
+	<button class="btn btn-dark-grey right-align">NASTAVI</button>
+	<button class="btn btn-default right-align">ODUSTANI</button>
 </div>
 
 
