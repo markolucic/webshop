@@ -30,8 +30,8 @@
 <div class="" style="padding-top: 70px;">
 	<h4 style="text-align: center; padding-bottom: 30px;">Slicni proizvodi</h4>
 	<% @products.each do |p| %>
-		<div class="col-md-3">
-			<%= link_to image_tag(p.image, :size => "200x180", :class => 'img-responsive'), p %><br><br>
+		<div class="col-md-3 col-xs-8 col-sm-6">
+			<%= link_to image_tag(p.image, :size => "200x180", :class => ''), p %><br><br>
 		</div>
 	<% end %>
 </div>
