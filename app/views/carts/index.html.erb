@@ -32,7 +32,7 @@
 	<div class="narudzba">
 		<p class="narudzba-left">Narudzba: <%= @current_user.total_products %> proizvoda</p>
 		<p>Cijena: <br><strong><%= number_to_currency(@current_user.total_price, :unit => "$") %></strong> </p>
-		<p>Dostava:<br><strong>$30<strong></p>
+		<p>Dostava:<br><strong>$30.00<strong></p>
 		<hr>
 		<h4>Ukupno: <strong><%= number_to_currency(@current_user.total_price + 30, :unit => "$") %></strong></h4>
 	</div>
