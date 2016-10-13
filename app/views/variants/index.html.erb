@@ -3,13 +3,13 @@
 	<h4 style="text-align:center;"><strong>VANS</strong> <span class="caret"></span> </h4>
 </div>
 <div class="row">
-	<% @variants.each do |v| %>
+	<% @product.variants.each do |v| %>
 		<div class="col-md-3 col-xs-6 col-sm-4">
 			<%= image_tag(v.product.image, size: '200x180') %><br>
 			<%= v.product.name %><br>
 			<%= v.size.size %><br>
 			<%= v.color.name %><br>
-			<%= v.quantity %>KOM
+			<%= v.quantity %>KOM<br>
 			<hr>
 		</div>
 	<% end %>

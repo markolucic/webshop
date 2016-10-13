@@ -21,6 +21,13 @@ class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 		@products = Product.where(brand_id: @product.brand_id)
+		@sizes = []
+		@product.variants.each do |v|
+			@sizes = v.size.size
+		end
+		if @sizes
+			@sizes = Size.all
+		end
 	end
 
 	def edit
@@ -35,6 +42,7 @@ class ProductsController < ApplicationController
 	private
 
 	def product_params
-		params(:product).permit(:name, :description, :price, :quantity)
+		params(:product).permit(:name, :description, :price, :quantity,
+		variants_attributes: [:id, :size_id, :quantity, :color_id, :_destroy])
 	end
 end
