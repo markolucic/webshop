@@ -325,3 +325,25 @@ footer ul {
   text-align: left;
 }
 
+.placanje-naslov{
+  display: inline-block;
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  .placanje{
+    font-size: 15px;
+    text-transform: uppercase;
+    padding-right: 40px;
+  }
+  a{
+    padding-bottom: 5px;
+    color: gray;
+  } 
+  a:hover{
+    color: $main-orange;
+  } 
+  .active{
+    border-bottom: 2px solid black;
+  }
+}

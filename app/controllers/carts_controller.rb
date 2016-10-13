@@ -2,10 +2,10 @@ class CartsController < ApplicationController
   before_action :logged_in_user
 
   def add
-    
     @product_item = @current_user.carts.where("product_id = ?", params[:id]).first
     quantity = params[:quantity]
     size = params[:size]
+    color = params[:color]
     if @product_item
       @product_item.quantity = @product_item.quantity + quantity.to_i
       #product size and color

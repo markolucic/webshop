@@ -1,5 +1,5 @@
 class Variant < ActiveRecord::Base
-	#has_many :carts
+	has_many :carts
 	belongs_to :product
 	belongs_to :size
 	belongs_to :color

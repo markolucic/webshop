@@ -26,8 +26,10 @@
 	<% end %>
 </div>
 <div class="col-md-4" style="margin-top: -80px;">
-	<div class="">
-		 <h4>Korpa   Placanje   Dostava</h4><br>
+	<div class="placanje-naslov">
+		<%= active_link_to 'Korpa', cart_path, class: 'placanje active' %>
+		<%= active_link_to 'Placanje', "#", class: 'placanje'%>
+		<%= active_link_to 'Dostava', cart_path, class: 'placanje' %>
 	</div>
 	<div class="narudzba">
 		<p class="narudzba-left">Narudzba: <%= @current_user.total_products %> proizvoda</p>
