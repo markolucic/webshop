@@ -20,6 +20,10 @@
 					Kolicina: <br>
 					<%= number_field_tag :quantity, '1'%> 
 				</div>
+				<div style="float:none;">
+					Boja: <br>
+					<%= select_tag :color, options_from_collection_for_select(@colors, "id", "name")%> 
+				</div>
 			</div><br>
 			<%= submit_tag "DODAJ U KORPU", class: 'btn btn-default' %>
 			<!-- <a href="/cart/<%= @product.id %>" class="btn btn-default" >DODAJ U KORPU</a> -->

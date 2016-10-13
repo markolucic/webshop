@@ -230,13 +230,15 @@ footer ul {
     float:left;
     margin-right: 10px;
     #size{
-      width:160px;
+      width:60px;
     }
   }
   .rightOption {
     margin-left: 20px;
+    float:left;
+    margin-right:30px;
     input[type="number"] {
-        width: 100px;
+        width: 63px;
     }
   }
 }

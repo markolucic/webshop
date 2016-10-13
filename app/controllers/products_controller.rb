@@ -21,12 +21,15 @@ class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 		@products = Product.where(brand_id: @product.brand_id)
+		@colors = []
 		@sizes = []
 		@product.variants.each do |v|
 			@sizes = v.size.size
+			@colors = v.color.name
 		end
 		if @sizes
 			@sizes = Size.all
+			@colors = Color.all
 		end
 	end
 

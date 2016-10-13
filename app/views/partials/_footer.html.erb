@@ -5,7 +5,7 @@
 	</div>
 	<div class="col-md-8">
 		<ul class="footer">
-			<% Category.all.each do |c| %> <!-- SMISLITI BOLJI NACIN -->
+			<% Category.all.each do |c| %> 
 	    		<li><%= link_to c.name, c %></li>
 	    	<% end %>
 		<li><%= link_to 'Dodaci' %></li>
