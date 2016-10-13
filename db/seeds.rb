@@ -41,6 +41,7 @@ Brand.create(name: "Toms")
 	Size.create(size: n)
 end
 
+
 Product.create(name: "Starke", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
  price: 100, quantity: 10, 
  image: "http://www.24sata.rs/resources/images/0000/017/030/starke%20slika2_1000x0.jpg")
@@ -91,31 +92,73 @@ Product.create(name: "Vans Duboke Patike", description: "Lorem ipsum dolor sit a
 	image: "http://wannabemagazine.com/wp-content/uploads/2013/09/10086430_d1.jpg")
 
 #random dodavanje brenda
-(1..12).each do |n|
+Product.all.each do |n|
   p=Product.find(n)
   p.brand=Brand.find(rand(1..5))
   p.save
 end
 
-#dodavanje po 2 random kategorije
-(1..12).each do |n|
+#dodavanje po 1 random kategorije
+Product.all.each do |n|
   p=Product.find(n)
-  p.categories= [Category.find(rand(1..4)), Category.find(rand(1..4))]
+  p.categories= [Category.find(rand(1..4))]
   p.save
 end
 
-#dodavanje po 3 random boje
-(1..12).each do |n|
-  p=Product.find(n)
-  p.colors= [Color.find(rand(1..5)), Color.find(rand(1..5)), Color.find(rand(1..5))]
-  p.save
-end
 
+=begin
 #dodavanje po 5 velicina
-(1..12).each do |n|
+Product.all.each do |n|
   p=Product.find(n)
   p.sizes= [Size.find(rand(1..14)), Size.find(rand(1..14)), Size.find(rand(1..14)), Size.find(rand(1..14)), Size.find(rand(1..14))]
   p.save
 end
 
+#dodavanje po 3 random boje
+Product.all.each do |n|
+  p=Product.find(n)
+  p.colors= [Color.find(rand(1..5)), Color.find(rand(1..5)), Color.find(rand(1..5))]
+  p.save
+end
 
+#dodavanje varijacija proizvoda
+Product.all.each do |n|
+  v =Variant.create(:quantity => "10")
+  v.product_id = rand(1..12)
+  v.color_id = rand(1..5)
+  v.size_id = rand(1..9)
+  v.save
+end
+=end
+
+Product.all.each do |prod|
+  (1..5).each do |n|
+    p=Variant.create(quantity: "5")
+    p.color_id=rand(1..5)
+    p.size_id=rand(1..14)
+    prod.variants<<p
+    prod.save
+  end
+end
+
+
+=begin
+Product.all.each do |p|
+  p.variants.each do |pv|
+    if p.categories.first.id==1
+      pv.size_id=rand(39..52)
+      pv.save
+    elsif p.categories.first.id==2
+      pv.size=rand(36..42)
+      pv.save
+    elsif p.categories.first.id==3
+      pv.size=rand(21..35)
+      pv.save
+    else
+      pv.size=rand(36..50)
+      pv.save
+    end
+  end
+  p.save
+end
+=end

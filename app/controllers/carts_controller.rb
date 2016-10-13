@@ -17,7 +17,7 @@ class CartsController < ApplicationController
   	#else
   	#	cart[id] = 1
   	#end
-    @product_item = @current_user.carts.where("product_id = ?", params[:id]).first
+    @product_item = @current_user.carts.where("variant_id = ?", params[:id]).first
     quantity = params[:quantity]
     size = params[:size]
     if @product_item
@@ -27,7 +27,7 @@ class CartsController < ApplicationController
     else
       item = Cart.new
       item.user = @current_user
-      item.product = Product.find(params[:id])
+      item.variant = Variant.find(params[:id])
       item.quantity = quantity.to_i
       item.save
     end

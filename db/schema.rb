@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010074328) do
+ActiveRecord::Schema.define(version: 20161012144437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20161010074328) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.integer  "product_id"
+    t.integer  "variant_id"
     t.integer  "user_id"
     t.integer  "quantity"
     t.datetime "created_at", null: false
@@ -98,6 +98,15 @@ ActiveRecord::Schema.define(version: 20161010074328) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+  end
+
+  create_table "variants", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "color_id"
+    t.integer  "size_id"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

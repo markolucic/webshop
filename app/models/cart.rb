@@ -1,6 +1,5 @@
-class Cart < ActiveRecord::Base
+class Cart < ActiveRecord::Base #CartItem
 	belongs_to :user
-	#has_many :products
 	belongs_to :product
 
 	validates :quantity, presence:true

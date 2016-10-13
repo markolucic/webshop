@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.decimal :price
-      t.integer :quantity
+      t.integer :quantity #viska, treba izbaciti
       t.string :image
 
       t.timestamps null: false
