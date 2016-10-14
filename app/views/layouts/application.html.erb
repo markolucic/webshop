@@ -3,9 +3,9 @@
 <head>
   <title>abhShoes</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://js.stripe.com/v2/', 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
+  <%= tag :meta, :name=> "stripe-key", :content =>  :publishable_key %></head>
 <body>
 	<% if current_page?(root_path) %>
 	    <%= render 'partials/home' %>

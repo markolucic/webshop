@@ -30,6 +30,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
  gem "figaro"
 
+ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+ gem 'country_select', '~> 2.5', '>= 2.5.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -3,11 +3,9 @@
 	<% total = 0 %>
 	<% if @current_user.carts.empty? %>
 		<p>Your cart is empty.</p>
-	<% else %>
-		<h3><%= link_to "Empty cart", cart_clear_path %></h3>
 	<% end %>
 </div>
-<div class="col-md-8" style="padding-right: 70px">
+<div class="col-xs-8" style="padding-right: 70px">
 	<% @cart_items.each do |item| %>
 		<div class="row thumb">
 			<% product = Product.find_by_id(item.product.id) %>
@@ -25,21 +23,44 @@
 		</div>
 	<% end %>
 </div>
-<div class="col-md-4" style="margin-top: -80px;">
+<div class="col-xs-4">
 	<div class="placanje-naslov">
 		<%= active_link_to 'Korpa', cart_path, class: 'placanje active' %>
-		<%= active_link_to 'Placanje', "#", class: 'placanje'%>
-		<%= active_link_to 'Dostava', cart_path, class: 'placanje' %>
+		<%= active_link_to 'Placanje', checkout_path, class: 'placanje'%>
+		<%= active_link_to 'Dostava', place_order_path, class: 'placanje' %>
 	</div>
+	<!--
 	<div class="narudzba">
 		<p class="narudzba-left">Narudzba: <%= @current_user.total_products %> proizvoda</p>
 		<p>Cijena: <br><strong><%= number_to_currency(@current_user.total_price, :unit => "$") %></strong> </p>
 		<p>Dostava:<br><strong>$30.00<strong></p>
 		<hr>
 		<h4>Ukupno: <strong><%= number_to_currency(@current_user.total_price + 30, :unit => "$") %></strong></h4>
-	</div>
-	<button class="btn btn-dark-grey right-align">NASTAVI</button>
-	<button class="btn btn-default right-align">ODUSTANI</button>
+	</div> -->
+	<div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Your order</h3>
+      </div>
+      <div class="panel-body">
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <div class="order-details-place-order">
+                <span>Order</span><br>
+                <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
+                <span>Shipping</span><br>
+                <strong>$30.00</strong>
+                <hr>
+                <span>Total</span><br>
+                <strong><%= number_to_currency(@current_user.total_price+30) %></strong>
+        </div>
+      </article>
+    </div>
+	<%= link_to 'NASTAVI', checkout_path, class: 'btn btn-dark-grey right-align' %>
+	<%= link_to 'ODUSTANI', cart_clear_path, class: 'btn btn-default right-align' %>
 </div>
-
+</div>
 

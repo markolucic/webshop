@@ -1,15 +1,17 @@
 <div class="col-md-2 col-sm-3 col-xs-3">
 	<div class="sidebar">
-		<h4>FILTER</h4><br>
-		<h5>Brand:</h5>
-		<%= collection_select(:brand, :brand_id, Brand.all, :id, :name, :prompt => "All brands", class: "form-control") %><br>
-		<h5>Size:</h5>
-		<%= collection_select(:size, :size_id, Size.all, :id, :size, :prompt => "All sizes", class: "form-control") %><br>
-		<h5>Color:</h5>
-		<%= collection_select(:color, :color_id, Color.all, :id, :name, :prompt => "All colors", class: "form-control") %><br>
-		<h5>Price:</h5>
-		<%= select_tag "price", options_for_select([ "$30 - $60", "$60 - $90", "$90 - $120", "$120 - " ], "All prices")%>
-
+		<%= form_tag(controller: "categories", action: "show", method: "get") do %>
+			<h4>FILTER</h4><br>
+			<h5>Brand:</h5>
+			<%= collection_select(:brand, :brand_id, Brand.all, :id, :name, :prompt => "All brands", class: "form-control") %><br>
+			<h5>Size:</h5>
+			<%= collection_select(:size, :size_id, Size.all, :id, :size, :prompt => "All sizes", class: "form-control") %><br>
+			<h5>Color:</h5>
+			<%= collection_select(:color, :color_id, Color.all, :id, :name, :prompt => "All colors", class: "form-control") %><br>
+			<h5>Min price:</h5> <%= number_field_tag :min_price, 'Min price' %>
+			<h5>Max price:</h5> <%= number_field_tag :max_price, 'Max price' %><br><br>
+			<%= submit_tag 'Search', class: 'btn btn-default' %>
+		<% end %>
 	</div>
 </div>
 <div class="col-md-10 col-sm-9 col-xs-9">
@@ -17,6 +19,9 @@
 		<h4 style="float:left;"><%=  @category.name%></h4>
 		
 	</div>
+	<% if @products.empty? %>
+		<p>No products.</p>
+	<% else %>
 	<% @products.each do |p| %>
 		<div class="col-md-3">
 			<%= link_to image_tag(p.image, :size => "200x180"), p %>
@@ -27,6 +32,7 @@
 			<% end %>
 			</p>
 		</div>
+	<% end %>
 	<% end %>
 </div>
 
