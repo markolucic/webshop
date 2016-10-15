@@ -28,7 +28,6 @@ class CartsController < ApplicationController
   end
 
   def clear
-
     @current_user.carts.delete_all 
     redirect_to cart_path
   end

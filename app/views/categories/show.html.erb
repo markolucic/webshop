@@ -1,13 +1,28 @@
 <div class="col-md-2 col-sm-3 col-xs-3">
 	<div class="sidebar">
-		<%= form_tag(controller: "categories", action: "show", method: "get") do %>
+		<%= form_tag(controller: "categories", action: "show", method: "post") do %>
 			<h4>FILTER</h4><br>
 			<h5>Brand:</h5>
-			<%= collection_select(:brand, :brand_id, Brand.all, :id, :name, :prompt => "All brands", class: "form-control") %><br>
+			<select name="brand_id" class="form-control filter">
+				<option value="">All brands</option>
+			    <% Brand.all.each {|brand| %>
+			    <option value="<%=brand.id%>" <% if @brand_id == brand.id.to_s %>selected<% end %>><%= brand.name %></option>
+			    <% } %>
+			</select>
 			<h5>Size:</h5>
-			<%= collection_select(:size, :size_id, Size.all, :id, :size, :prompt => "All sizes", class: "form-control") %><br>
+			<select name="size_id" class="form-control filter">
+				<option value="">All sizes</option>
+			    <% Size.all.each {|size| %>
+			    <option value="<%=size.id%>" <% if @size_id == size.id.to_s %>selected<% end %>><%= size.size %></option>
+			    <% } %>
+			</select>
 			<h5>Color:</h5>
-			<%= collection_select(:color, :color_id, Color.all, :id, :name, :prompt => "All colors", class: "form-control") %><br>
+			<select name="color_id" class="form-control filter">
+				<option value="">All colors</option>
+			    <% Color.all.each {|color| %>
+			    <option value="<%=color.id%>" <% if @color_id == color.id.to_s %>selected<% end %>><%= color.name %></option>
+			    <% } %>
+			</select>
 			<h5>Min price:</h5> <%= number_field_tag :min_price, 'Min price' %>
 			<h5>Max price:</h5> <%= number_field_tag :max_price, 'Max price' %><br><br>
 			<%= submit_tag 'Search', class: 'btn btn-default' %>
@@ -20,7 +35,7 @@
 		
 	</div>
 	<% if @products.empty? %>
-		<p>No products.</p>
+		<h3>No products.</h3>
 	<% else %>
 	<% @products.each do |p| %>
 		<div class="col-md-3">

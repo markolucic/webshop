@@ -1,0 +1,60 @@
+<div class="row">
+  <h3>Payment</h3>
+</div>
+<div class="col-md-8 col-xs-9">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th class="text-right">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @current_user.carts.each  do |item| %>
+        <tr>
+          <td><%= item.product.name %></td>
+          <td><%= item.quantity %></td>
+          <td class="text-right">$<%= item.product.price %></td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
+</div>
+<div class="col-md-4 col-xs-3">
+  <div class="placanje-naslov">
+    <%= active_link_to 'Korpa', cart_path, class: 'placanje active' %>
+    <%= active_link_to 'Dostava', checkout_path, class: 'placanje' %>
+    <%= active_link_to 'Placanje', '#', :onclick => 'place_order()', class: 'placanje'%>  
+  </div>
+  <%= form_tag create_charge_path do %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Your order</h3>
+      </div>
+      <div class="panel-body">
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <div class="order-details-place-order">
+                <span>Order</span><br>
+                <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
+                <span>Shipping</span><br>
+                <strong>$30.00</strong>
+                <hr>
+                <span>Total</span><br>
+                <strong><%= number_to_currency(@current_user.total_price+30) %></strong><br>
+        </div>
+      </article>
+      </div>
+    </div>
+  <% end %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Order of shoes"
+              data-amount=<%= (@current_user.total_price+30) * 100%>
+              data-locale="auto"></script>
+</div>

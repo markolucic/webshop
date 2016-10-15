@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/cart/:id' => 'carts#add' #promijeniti u post i napraviti formu koja ce submitati odabrane velicine
   #button plati odmah raditi kao get i preko JS onClick button apendati url ?product_id?quantity...
   get '/cart/pay' => 'carts#pay'
+  post '/categories/:id' => 'categories#show'
 
   get 'account_activations/edit'
   root 'products#index'

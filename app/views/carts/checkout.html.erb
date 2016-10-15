@@ -1,0 +1,177 @@
+<div class="row"><h3>Select shipping address</h3></div>
+<div class="col-md-8">
+<% if !@addresses.empty? %>
+<div class="">
+	<form class="form form-horizontal" method="get" action="/cart/place_order">
+		<% @addresses.each { |address| %>
+			<div class="col-xs-12 col-md-4 col-lg-4 product">
+				<div class="thumbnail">
+					<div class="address">
+						<address>
+						  <strong><%= address.full_name %></strong><br>
+						  <%= address.address %><br>
+						  <%= address.city %>, <%= address.state %> <%= address.zip %><br>
+						  <%= address.country_name %><br>
+						  <abbr title="Phone">Phone:</abbr> <%= address.phone_number %>
+						</address>
+						<div class="control-group">
+			   				<div class="radio-button">
+			      				<%= radio_button_tag :address_id, address.id, required: true %>
+			      				<label id="address" value=<%=address.id%> for="address_id_<%= address.id %>">Use this address</label><br>
+			    			</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% } %>
+		<div class="col-xs-12"><br>
+			<input type="hidden" class="btn btn-primary" type="submit" value="Continue">
+		</div>
+	</form>
+</div>
+<% end %>
+
+<div class="row">
+	<div class="col-xs-12">
+		<button id="show-address" onclick="show_address()" class="btn btn-default">Use new shipping address</button>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<h4>Billing address: </h4>
+		<%= check_box_tag :billing_address %>
+		<%= label_tag :billing_address, "Use shipping address" %>
+	</div>
+</div>
+
+<div id="new-address" class="row shipping-address">
+	<div class="col-xs-12">
+		<h3>Enter a new shipping address</h3>
+		<p>When finished, click the "Use new address" button.</p>
+	</div>
+	<%= form_for @address, url: create_address_path, :html => { :class => "form-horizontal col-md-6 col-lg-7" } do |f| %>
+		<div class="control-group">
+	    	<%= f.label :full_name, :class => 'control-label required' %>
+	    	<div class="controls">
+	      	<%= f.text_field :full_name, :class => 'form-control', required: true %>
+	    	</div>
+	  	</div>
+
+	  	<div class="control-group">
+	    	<%= f.label :address, :class => 'control-label required' %>
+	    	<div class="controls">
+	      	<%= f.text_field :address, :class => 'form-control', required: true %>
+	    	</div>
+	  	</div>
+
+	  	<div class="control-group">
+	    	<%= f.label :city, :class => 'control-label required' %>
+	    	<div class="controls">
+	      	<%= f.text_field :city, :class => 'form-control', required: true %>
+	    	</div>
+	  	</div>
+
+	  	<div class="control-group">
+	    	<%= f.label :state, :class => 'control-label required' %>
+	    	<div class="controls">
+	      	<%= f.text_field :state, :class => 'form-control', required: true %>
+	    	</div>
+	  	</div>
+
+	  	<div class="control-group">
+	    	<%= f.label :zip, :class => 'control-label required' %>
+	    	<div class="controls">
+	      	<%= f.text_field :zip, :class => 'form-control', required: true %>
+	    	</div>
+	  	</div>
+
+	  	<div class="control-group">
+	    	<%= f.label :country, :class => 'control-label required' %>
+	    	<div class="controls">
+	      	<%= f.country_select :country, {}, :class => 'form-control', required: true %>
+	    	</div>
+	  	</div>
+
+	  	<div class="control-group">
+	    	<%= f.label :phone_number, :class => 'control-label required' %>
+	    	<div class="controls">
+	      	<%= f.text_field :phone_number, :class => 'form-control', required: true %>
+	    	</div>
+	  	</div><br>
+
+	  	<input class=" btn btn-dark-grey" type="submit" value="Use new address">
+	<% end %>  
+</div>
+</div>
+<div class="col-md-4 col-xs-4" style="">
+	<div class="placanje-naslov">
+		<%= active_link_to 'Korpa', cart_path, class: 'placanje active' %>
+		<%= active_link_to 'Dostava', checkout_path, class: 'placanje' %>
+		<%= active_link_to 'Placanje', '#', :onclick => 'place_order()', class: 'placanje'%>	
+	</div>
+	<div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Your order</h3>
+      </div>
+      <div class="panel-body">
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <div class="order-details-place-order">
+                <span>Order</span><br>
+                <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
+                <span>Shipping</span><br>
+                <strong>$30.00</strong>
+                <hr>
+                <span>Total</span><br>
+                <strong><%= number_to_currency(@current_user.total_price+30) %></strong>
+        </div>
+      </article>
+    </div>
+</div>
+	<button onclick="place_order()" class="btn btn-dark-grey right-align">NASTAVI</button>
+	<%= link_to 'ODUSTANI', cart_clear_path, class: 'btn btn-default right-align' %>
+</div>
+
+<script>
+	var visible = false;
+
+	function place_order(){
+		var ids = document.getElementsByName('address_id');
+		var id;
+		for(var i = 0; i < ids.length; i++){
+		    if(ids[i].checked){
+		        id = ids[i].value;
+		    }
+		}
+		var location = window.location.toString();
+		console.log(location.charAt(location.length - 1));
+		var lastChar = location.substr(-1);
+		if(lastChar == '#')
+		{
+			location = location.slice(0, -9);
+		}
+		else
+		{
+			location = location.slice(0, -8);
+		}
+		window.location.href= location + 'place_order?address_id=' + id;
+	}
+
+	function show_address(){
+		var x = document.getElementById('new-address');
+		if(visible == false)
+		{
+			x.style.display = 'block';
+			visible = true;
+		}	
+		else{
+			x.style.display = 'none';
+			visible = false;
+		}
+	}
+	</script>
