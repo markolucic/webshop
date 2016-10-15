@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
     end
 
     # Activates an account 
-    def User.activate 
+    def activate 
         self.update_attribute(:activated, true)
         self.update_attribute(:activated_at, Time.zone.now)
     end
