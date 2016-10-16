@@ -4,7 +4,9 @@ class CreateCarts < ActiveRecord::Migration
       #t.references :user, index: true
       t.integer :product_id
       t.integer :user_id
-	  t.integer :quantity #koliko korisnik narucuje
+  	  t.integer :quantity #koliko korisnik narucuje
+  	  t.string :color
+  	  t.integer :size
 
       t.timestamps null: false
     end

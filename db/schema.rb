@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20161014101822) do
     t.integer  "product_id"
     t.integer  "user_id"
     t.integer  "quantity"
+    t.string   "color"
+    t.integer  "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

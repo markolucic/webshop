@@ -25,17 +25,28 @@ Category.create(name: "Ženska obuća")
 Category.create(name: "Dječija obuća")
 Category.create(name: "Sportska obuća")
 
-Color.create(name: "Crvena", hex: "ff0000")
-Color.create(name: "Zuta", hex: "ffff00")
-Color.create(name: "Zelena", hex: "33cc33")
-Color.create(name: "Plava", hex: "0000ff")
-Color.create(name: "Crna", hex: "000000")
+Color.create(name: "Crvena", hex: "#ff0000")
+Color.create(name: "Plava", hex: "#0066ff")
+Color.create(name: "Svijetloplava", hex: "#99ccff")
+Color.create(name: "Zuta", hex: "#ffff00")
+Color.create(name: "Bijela", hex: "#ffffff")
+Color.create(name: "Narandzasta", hex: "#ff6600")
+Color.create(name: "Zelena", hex: "#33cc33")
+Color.create(name: "Smedja", hex: "#804000")
+Color.create(name: "Ljubicasta", hex: "#cc33ff")
+Color.create(name: "Crna", hex: "#000000")
+Color.create(name: "Siva", hex: "#808080")
+Color.create(name: "Roza", hex: "#ff99c2")
 
 Brand.create(name: "Converse")
 Brand.create(name: "Nike")
 Brand.create(name: "Vans")
+Brand.create(name: "Puma")
 Brand.create(name: "DC")
 Brand.create(name: "Toms")
+Brand.create(name: "Adidas")
+Brand.create(name: "Tommy Hilfiger")
+Brand.create(name: "Timberland")
 
 (34..48).each do |n|
 	Size.create(size: n)
@@ -48,7 +59,7 @@ Product.create(name: "Starke", description: "Lorem ipsum dolor sit amet, consect
 
 Product.create(name: "Starke Converse", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
 	price: 110, quantity: 10, 
-	image: "http://www.vijesti.me/media/cache/42/89/4289781ebf94f4b3d23e6231f62454e5.jpg")
+	image: "http://www.sport-line.rs/image/cache/data/starke/27242_900-800x600.jpg")
 
 Product.create(name: "Vans Patike", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
 	price: 120, quantity: 10, 
@@ -85,16 +96,16 @@ Product.create(name: "Starke Converse", description: "Lorem ipsum dolor sit amet
 
 Product.create(name: "Vans Patike", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
 	price: 120, quantity: 10, 
-	image: "http://thefabweb.com/wp-content/uploads/2012/02/Vans-Valentines-Day-6.jpg")
+	image: "http://i.ebayimg.com/00/s/MTAwMVgxMDAx/z/23EAAOSwZG9Wiojr/$_35.JPG")
 
 Product.create(name: "Vans Duboke Patike", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
 	price: 130, quantity: 10, 
-	image: "http://wannabemagazine.com/wp-content/uploads/2013/09/10086430_d1.jpg")
+	image: "http://images.vans.com/is/image/Vans/18IJMA-HERO?id=wIdq21&fmt=jpg&fit=constrain,1&wid=581&hei=581&qlt=85,1&op_sharpen=0&resMode=sharp2&op_usm=1,1,6,0&$583x583$")
 
 #random dodavanje brenda
 Product.all.each do |n|
   p=Product.find(n)
-  p.brand=Brand.find(rand(1..5))
+  p.brand=Brand.find(rand(1..9))
   p.save
 end
 
@@ -132,9 +143,9 @@ end
 =end
 
 Product.all.each do |prod|
-  (1..5).each do |n|
+  (1..3).each do |n|
     p=Variant.create(quantity: "5")
-    p.color_id=rand(1..5)
+    p.color_id=rand(1..9)
     p.size_id=rand(1..14)
     prod.variants<<p
     prod.save

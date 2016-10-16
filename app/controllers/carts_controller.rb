@@ -2,21 +2,22 @@ class CartsController < ApplicationController
   before_action :logged_in_user
 
   def add
-    @product_item = @current_user.carts.where("product_id = ?", params[:id]).first
     quantity = params[:quantity]
     color = params[:color]
     size = params[:size]
+    @product_item = @current_user.carts.where("product_id = ? AND size = ? AND color = ?", 
+                                              params[:id], size.to_i, color).first
     if @product_item
       @product_item.quantity = @product_item.quantity + quantity.to_i
-      @product_item.product.size = size
-      @product_item.product.color = color
+      @product_item.size = size.to_i
+      @product_item.color = color
       @product_item.save
     else
       item = Cart.new
       item.user = @current_user
       item.product = Product.find(params[:id])
-      item.product.size = size
-      item.product.color = color
+      item.size = size.to_i
+      item.color = color
       item.quantity = quantity.to_i
       item.save
     end
@@ -37,6 +38,7 @@ class CartsController < ApplicationController
 
   def index
     @cart_items = @current_user.carts.order(:id)
+    #byebug
   end
 
   def checkout
