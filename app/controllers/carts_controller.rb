@@ -4,16 +4,19 @@ class CartsController < ApplicationController
   def add
     @product_item = @current_user.carts.where("product_id = ?", params[:id]).first
     quantity = params[:quantity]
-    size = params[:size]
     color = params[:color]
+    size = params[:size]
     if @product_item
       @product_item.quantity = @product_item.quantity + quantity.to_i
-      #product size and color
+      @product_item.product.size = size
+      @product_item.product.color = color
       @product_item.save
     else
       item = Cart.new
       item.user = @current_user
       item.product = Product.find(params[:id])
+      item.product.size = size
+      item.product.color = color
       item.quantity = quantity.to_i
       item.save
     end
@@ -60,7 +63,7 @@ class CartsController < ApplicationController
       :description => 'ABHShoes order',
       :currency    => 'usd'
     )
-    #update_products
+    update_products
     @current_user.carts.delete_all
 
   rescue Stripe::CardError => e
@@ -69,9 +72,9 @@ class CartsController < ApplicationController
   end
 
   def update_products
-    products = @current_user.carts.products
+    products = @current_user.carts
     products.each do |p|
-      tmp = Product.find_by_id(p.id)
+      tmp = Product.find_by_id(p.product_id)
       tmp.quantity -= p.quantity if (tmp.quantity-p.quantity)>=0
       tmp.save
     end

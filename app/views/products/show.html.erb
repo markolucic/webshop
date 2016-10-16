@@ -22,7 +22,7 @@
 				</div>
 				<div style="float:none;">
 					Boja: <br>
-					<%= select_tag :color, options_from_collection_for_select(@colors, "id", "name")%> 
+					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name")%> 
 				</div>
 			</div><br>
 			<%= submit_tag "DODAJ U KORPU", class: 'btn btn-default' %>

@@ -12,8 +12,8 @@
 			<%= link_to image_tag(item.product.image, :size => "200x180"), item.product %>
 			<div class="caption">
 				<h4>Model: <%= item.product.name %></h4>
-				<h4>Size: 44</h4>
-				<h4>Color: Red</h4>
+				<h4>Size: <%= item.product.size %></h4>
+				<h4>Color: <%= item.product.color %></h4>
 				<h4>ID: <%= item.product.id %></h4>
 				<%= link_to 'Remove', '/cart/remove/' + item.id.to_s, class: 'btn btn-default btn-sm' %>
 				<p><%=  %></p>

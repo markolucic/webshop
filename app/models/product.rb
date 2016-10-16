@@ -1,5 +1,4 @@
 class Product < ActiveRecord::Base
-	#attr_accessor :variants_attributes
 
 	belongs_to :brand
 	has_and_belongs_to_many :categories
