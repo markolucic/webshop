@@ -39,7 +39,7 @@
 	</div> -->
 	<div class="panel panel-default">
       <div class="panel-heading">
-          <h3 class="panel-title">Your order</h3>
+          <h3 class="panel-title">Your order: <span class="grey-text"><%= @current_user.total_products %> products</span></h3>
       </div>
       <div class="panel-body">
       <article>
@@ -54,7 +54,7 @@
                 <span>Shipping</span><br>
                 <strong>$30.00</strong>
                 <hr>
-                <span>Total</span><br>
+                <span>Total: </span>
                 <strong><%= number_to_currency(@current_user.total_price+30) %></strong>
         </div>
       </article>

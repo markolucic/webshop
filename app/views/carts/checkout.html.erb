@@ -108,7 +108,7 @@
 	<div class="placanje-naslov">
 		<%= active_link_to 'Korpa', cart_path, class: 'placanje active' %>
 		<%= active_link_to 'Dostava', checkout_path, class: 'placanje' %>
-		<%= active_link_to 'Placanje', '#', :onclick => 'place_order()', class: 'placanje'%>	
+		<%= active_link_to 'Placanje', '#', class: 'placanje'%>	
 	</div>
 	<div class="panel panel-default">
       <div class="panel-heading">
@@ -123,11 +123,11 @@
         <% end %>
         <div class="order-details-place-order">
                 <span>Order</span><br>
-                <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
+                <strong><%= number_to_currency(@current_user.total_price) %></strong><br><br>
                 <span>Shipping</span><br>
                 <strong>$30.00</strong>
                 <hr>
-                <span>Total</span><br>
+                <span>Total: </span>
                 <strong><%= number_to_currency(@current_user.total_price+30) %></strong>
         </div>
       </article>
@@ -149,6 +149,7 @@
 		    }
 		}
 		var location = window.location.toString();
+		var oldlocation = location;
 		console.log(location.charAt(location.length - 1));
 		var lastChar = location.substr(-1);
 		if(lastChar == '#')
@@ -159,7 +160,13 @@
 		{
 			location = location.slice(0, -8);
 		}
-		window.location.href= location + 'place_order?address_id=' + id;
+		if(typeof id === "undefined")
+			{
+				alert("You must enter shipping address!");
+				window.location.href = oldlocation;
+			}
+		else
+			window.location.href= location + 'place_order?address_id=' + id;
 	}
 
 	function show_address(){

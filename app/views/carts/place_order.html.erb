@@ -41,21 +41,22 @@
         <% end %>
         <div class="order-details-place-order">
                 <span>Order</span><br>
-                <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
+                <strong><%= number_to_currency(@current_user.total_price) %></strong><br><br>
                 <span>Shipping</span><br>
                 <strong>$30.00</strong>
                 <hr>
-                <span>Total</span><br>
+                <span>Total: </span>
                 <strong><%= number_to_currency(@current_user.total_price+30) %></strong><br>
         </div>
       </article>
       </div>
     </div>
-  
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="Order of shoes"
-              data-amount=<%= (@current_user.total_price+30) * 100%>
-              data-locale="auto"></script>
+  <div class="right-align">
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="Order of shoes"
+                  data-amount=<%= (@current_user.total_price+30) * 100%>
+                  data-locale="auto"></script>
+  </div>
   <% end %>
 </div>

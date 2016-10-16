@@ -350,6 +350,11 @@ footer ul {
 
 .panel{
   margin-bottom: 20px;
+  text-align: right;
+}
+
+.panel-heading{
+  text-align: left;
 }
 
 .thumbnail{
@@ -366,4 +371,8 @@ footer ul {
 
 #show-address{
   margin-bottom: 25px;
+}
+
+.grey-text{
+  color:gray;
 }
