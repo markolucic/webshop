@@ -143,7 +143,7 @@ end
 =end
 
 Product.all.each do |prod|
-  (1..5).each do |n|
+  (1..3).each do |n|
     p=Variant.create(quantity: "10")
     p.color_id=rand(1..9)
     p.size_id=rand(1..14)
