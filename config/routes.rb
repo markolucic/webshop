@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   post 'cart/create_charge' => 'carts#create_charge', :as => :create_charge
   post '/cart/create_address' => 'carts#create_address', :as => :create_address
   get '/cart/place_order' => 'carts#place_order', :as => :place_order
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   resources :users 
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :products do
       resources :variants
   end
