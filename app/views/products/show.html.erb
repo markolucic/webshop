@@ -25,9 +25,10 @@
 					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name")%> 
 				</div>
 			</div><br>
-			<%= submit_tag "DODAJ U KORPU", class: 'btn btn-default' %>
-			<%= submit_tag "KUPI ODMAH", class: 'btn btn-dark-grey', style: "margin-left:10px" %>
-			<!--<a href="/cart/<%= @product.id %>" class="btn btn-dark-grey", style="" >KUPI ODMAH</a>
+			<%= submit_tag "ADD TO CART", class: 'btn btn-default' %>
+			<%= submit_tag "BUY NOW", class: 'btn btn-dark-grey', style: "margin-left:10px" %>
+			<!--<a id="shop-now" href="/cart/<%= @product.id %>" class="btn btn-dark-grey", style="margin-left:10px" >KUPI ODMAH</a>
+			
 			<button class="btn btn-dark-grey" style="margin-left: 10px;">KUPI ODMAH</button> -->
 		<% end %>
 	</div>	

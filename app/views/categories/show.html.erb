@@ -23,8 +23,8 @@
 			    <option value="<%=color.id%>" <% if @color_id == color.id.to_s %>selected<% end %>><%= color.name %></option>
 			    <% } %>
 			</select>
-			<h5>Min price:</h5> <%= number_field_tag :min_price, 'Min price', class: "price" %>
-			<h5>Max price:</h5> <%= number_field_tag :max_price, 'Max price', class: "price" %><br><br>
+			<h5>Min price:</h5> <%= number_field_tag :min_price, @min_price, class: "price" %>
+			<h5>Max price:</h5> <%= number_field_tag :max_price, @max_price, class: "price" %><br><br>
 			<%= submit_tag 'Search', class: 'btn btn-default' %>
 		<% end %>
 	</div>
