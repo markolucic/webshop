@@ -21,8 +21,11 @@ class CartsController < ApplicationController
       item.quantity = quantity.to_i
       item.save
     end
-
-  	redirect_to cart_path
+    if params[:commit] == "ADD TO CART"
+      redirect_to '/products/' << params[:id]
+    else
+      redirect_to cart_path
+    end
   end
 
   def remove
