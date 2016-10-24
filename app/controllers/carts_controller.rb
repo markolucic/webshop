@@ -41,7 +41,6 @@ class CartsController < ApplicationController
 
   def index
     @cart_items = @current_user.carts.order(:id)
-    #byebug
   end
 
   def checkout
@@ -69,6 +68,7 @@ class CartsController < ApplicationController
       :currency    => 'usd'
     )
     update_products
+    #send email to the user, basic order info
     @current_user.carts.delete_all
 
   rescue Stripe::CardError => e

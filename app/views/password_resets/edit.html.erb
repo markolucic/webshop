@@ -1,0 +1,31 @@
+<div class="col-md-4 center-block clearfix" style="float: none; padding: 20px 0;" >
+<h4 style="float:left;">Reset your password</h4>
+<h5 style="float:right;"><%= link_to 'Cancel', root_path %></h5>
+</div>
+<%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+  <div class="col-md-4 center-block form" style="float:none">
+    <% if @user.errors.any? %>
+      <% flash.now[:danger] = "You have #{@user.errors.count} errors!" %>        
+      <% for message in @user.errors.full_messages %>
+        <li><%= message %></li>
+      <% end %>
+      <br>
+    <% end %> 
+  <div class="login-form">    
+
+  	<%= hidden_field_tag :email, @user.email %>
+
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+  </div>
+</div>
+  <div class="col-md-4 center-block" style="float:none; padding-top: 20px;">
+    <%= f.submit 'CHANGE PASSWORD', :class=>'btn right-align btn-dark-grey'%>
+  </div>
+<% end %>
