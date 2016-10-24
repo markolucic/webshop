@@ -1,10 +1,14 @@
-<h2>Thanks for purchasing ABHShoe products!</h2>
+<h3>Thanks for purchasing ABHShoe products!</h3>
 
-<p>Your orders:</p>
+<h3>Your orders:</h3><br>
 
-<%= @user.carts.each do |i| %>
-	Name: <%= i.product.name %>
-	Price: $<%= i.product.price %>
-	Quantity: <%= i.quantity %>
-	<hr>
+<% @user.carts.each do |i| %>
+	<ol>
+		<li>Name: <strong><%= i.product.name %></strong> - 
+			Price: <strong>$<%= i.product.price %></strong> - 
+			Quantity: <strong><%= i.quantity %></strong>
+		</li>
+	</ol>
 <% end %>
+<hr>
+<h3>Total price: <strong>$<%= @user.total_price + 30 %></strong></h3>
