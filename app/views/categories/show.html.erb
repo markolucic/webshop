@@ -23,8 +23,10 @@
 			    <option value="<%=color.id%>" <% if @color_id == color.id.to_s %>selected<% end %>><%= color.name %></option>
 			    <% } %>
 			</select>
-			<h5>Min price:</h5> <%= number_field_tag :min_price, @min_price, class: "price" %>
-			<h5>Max price:</h5> <%= number_field_tag :max_price, @max_price, class: "price" %><br><br>
+			<h5>Min price:</h5> <%= number_field_tag :min_price, @min_price, min: 0, class: "price", :onchange => "validate()" %>
+			<h5>Max price:</h5> <%= number_field_tag :max_price, @max_price, min: 0, class: "price", oninput: "validate()" %><br>
+			<div id="error"></div>
+			<br>
 			<%= submit_tag 'Search', class: 'btn btn-default' %>
 		<% end %>
 	</div>
@@ -51,4 +53,23 @@
 	<% end %>
 </div>
 
-
+<script>
+	function validate(){
+		var min = document.getElementById('min_price');
+		var max = document.getElementById('max_price');
+		var btn = document.getElementsByName('commit')[0];
+		if(min.value > max.value)
+		{
+			min.style.borderColor = "red";
+			document.getElementById('error').innerHTML = "Min price should be lower than max price!"
+			btn.disabled = true;
+		}
+		else
+		{
+			min.style.borderColor = '';
+			document.getElementById('error').innerHTML = "";
+			btn.disabled = false;
+		}
+	}
+	
+</script>
