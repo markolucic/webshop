@@ -86,6 +86,11 @@ class User < ActiveRecord::Base
         reset_sent_at < 2.hours.ago
     end
 
+    # Sends email about order information
+    def send_orders_email
+        UserMailer.orders(self).deliver_now
+    end
+
 
     private
 
