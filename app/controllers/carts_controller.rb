@@ -69,6 +69,7 @@ class CartsController < ApplicationController
     )
     update_products
     #send email to the user, basic order info
+    @current_user.send_orders_email
     @current_user.carts.delete_all
 
   rescue Stripe::CardError => e
