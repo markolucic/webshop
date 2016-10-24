@@ -10,4 +10,6 @@ class Product < ActiveRecord::Base
 	has_many :carts
 
 	accepts_nested_attributes_for :variants, allow_destroy: true
+
+	validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
 end

@@ -18,7 +18,7 @@
 				<%= link_to 'Remove', '/cart/remove/' + item.id.to_s, class: 'btn btn-default btn-sm' %>
 				<p><%=  %></p>
 		 		<h4 class="price">Price:<br><strong><%= number_to_currency(item.product.price, :unit => "$") %></strong></h4>
-				<h5 class="quantity">Quantity: <%= number_field_tag(:quantity, item.quantity) %></h5>
+				<h5 class="quantity">Quantity: <%=item.quantity%></h5> <!--<%= number_field_tag(:quantity, item.quantity) %> -->
 			</div>
 		</div>
 	<% end %>

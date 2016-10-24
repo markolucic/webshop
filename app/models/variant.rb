@@ -4,5 +4,5 @@ class Variant < ActiveRecord::Base
 	belongs_to :size
 	belongs_to :color
 
-	#validates :quantity, presence:true #koliko ovakvih ima na stanju
+	validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
 end
