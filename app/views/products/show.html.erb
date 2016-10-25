@@ -14,7 +14,7 @@
 			<div class="productOptions ">
 				<div class="leftOption">
 					Velicina: <br>
-					<%= select_tag :size, options_from_collection_for_select(@sizes,"size", "size") %>
+					<%= select_tag :size, options_from_collection_for_select(@sizes,"size", "size"), id: 'size' %>
 				</div>
 				<div class="rightOption">
 					Kolicina: <br>
@@ -22,11 +22,12 @@
 				</div>
 				<div style="float:none;">
 					Boja: <br>
-					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name")%> 
+					 
+					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name"), id: 'color'%> 
 				</div>
 			</div><br>
 			<%= submit_tag "ADD TO CART", class: 'btn btn-default' %>
-			<%= submit_tag "BUY NOW", class: 'btn btn-dark-grey', style: "margin-left:10px" %>
+			<%= submit_tag "BUY NOW", class: 'btn btn-dark-grey', style: "margin-left:10px"%>
 			<!--<a id="shop-now" href="/cart/<%= @product.id %>" class="btn btn-dark-grey", style="margin-left:10px" >KUPI ODMAH</a>
 			
 			<button class="btn btn-dark-grey" style="margin-left: 10px;">KUPI ODMAH</button> -->
@@ -44,3 +45,15 @@
 		</div>
 	<% end %>
 </div>
+
+<script>
+	var size = document.getElementById('size').value;
+	var color = document.getElementById('color').value;
+	
+	if(color == "No colors" || size == "0")
+	{
+		document.getElementsByName('commit')[0].disabled = true;
+		document.getElementsByName('commit')[1].disabled = true;
+	}
+
+</script>

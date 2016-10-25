@@ -24,12 +24,14 @@ class ProductsController < ApplicationController
 		@colors = []
 		@sizes = []
 		@product.variants.each do |v|
-			@sizes = v.size.size
-			@colors = v.color.name
+			@sizes << v.size
+			@colors << v.color
 		end
-		if @sizes
-			@sizes = Size.all
-			@colors = Color.all
+		if @colors.empty?
+			@colors << Color.create(name: "No colors")
+		end
+		if @sizes.empty?
+			@sizes << Size.create(size: 0)
 		end
 	end
 
