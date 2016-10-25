@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
 		if @sizes.empty?
 			@sizes << Size.create(size: 0)
 		end
+		@sizes.sort! { |a,b| a.size <=> b.size }
 	end
 
 	def edit
