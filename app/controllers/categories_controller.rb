@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+	before_action :correct_user, only: [:index, :new, :create, :update, :destroy]
 
 	def index
 		@categories = Category.all
@@ -36,10 +37,21 @@ class CategoriesController < ApplicationController
 		end
 	end
 
+	def update
+	end
+
 	def destroy
 	end
 
 	private 
+
+  	def correct_user
+		@user = User.find_by(id: params[:id]) 
+		unless current_user?(@user) || current_user.is_admin?
+			flash[:warning] = "You do not have permission to access!"
+			redirect_to(root_url) 
+		end
+	end
 
 	def category_params
 		params.require(:category).permit(:name)
