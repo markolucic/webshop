@@ -386,3 +386,53 @@ footer ul {
   color: red;
   font-style: italic;
 }
+
+.well{
+  margin-top: 30px;
+  display: block;
+  a{
+    padding-right: 20px;
+    font-weight: bold;
+    color: gray;
+  }
+  a:hover{
+    color: $main-orange;
+  }
+}
+
+.border-thumb{
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  padding: 20px 0;
+  font-weight: bold;
+  span{
+    font-size: 25px; 
+  }
+  color: black;
+}
+.border-thumb:hover{
+  color: $main-orange;
+}
+
+.btn-add{
+    color:black;
+    border: 1px solid gray;
+    background-color: $main-orange;
+    margin:20px auto;
+     width: 85%;
+     text-align: center !important;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.btn-add:hover{
+    color:white;
+  }
+
+.table{
+  margin-top: 20px;
+}
+
+.search{
+  float:right;
+}

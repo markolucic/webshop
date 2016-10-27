@@ -24,7 +24,20 @@ Rails.application.routes.draw do
   get  '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
+
+  get '/categories/new' => 'categories#new'
+  post '/categories/new' => 'categories#create'
+
+  get 'admin' => 'admins#index'
+  get 'admin/categories' => 'admins#categories'
+  get 'admin/products' => 'admins#products'
+  get 'admin/sizes' => 'admins#sizes'
+  get 'admin/colors' => 'admins#colors'
+  get 'admin/brands' => 'admins#brands'
+  get 'admin/users' => 'admins#users'
+
   resources :users 
+  #resources :admins
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :products do
