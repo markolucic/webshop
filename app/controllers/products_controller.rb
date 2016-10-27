@@ -27,12 +27,6 @@ class ProductsController < ApplicationController
 			@sizes << v.size
 			@colors << v.color
 		end
-		if @colors.empty?
-			@colors << Color.create(name: "No colors")
-		end
-		if @sizes.empty?
-			@sizes << Size.create(size: 0)
-		end
 		@sizes.sort! { |a,b| a.size <=> b.size }
 	end
 

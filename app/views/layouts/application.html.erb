@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'https://js.stripe.com/v2/', 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= tag :meta, :name=> "stripe-key", :content =>  :publishable_key %></head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <body>
 	<% if current_page?(root_path) %>
 	    <%= render 'partials/home' %>

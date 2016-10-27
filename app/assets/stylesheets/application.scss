@@ -229,15 +229,15 @@ footer ul {
     }
   .leftOption{
     float:left;
-    margin-right: 10px;
+    margin-right: 0px;
     #size{
-      width:60px;
+      width:100%;
     }
   }
   .rightOption {
-    margin-left: 20px;
+    margin-left: 10px;
     float:left;
-    margin-right:30px;
+    margin-right:10px;
     input[type="number"] {
         width: 63px;
     }
@@ -435,4 +435,8 @@ footer ul {
 
 .search{
   float:right;
+}
+
+ td .glyphicon{
+    padding-right: 10px;
 }
