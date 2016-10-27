@@ -1,0 +1,30 @@
+<%= render 'navbar' %>
+
+<%= link_to 'Remove', '#', class: 'btn btn-default'%>
+<%= link_to 'Add category', categories_new_path, class: 'btn btn-default'%>
+<%= search_field_tag 'name', :attr, placeholder: "Search", class: 'search' %>
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+      	<th><%= check_box_tag :check %></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Created at</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @categories.each do |c| %>
+			<tr>
+				<td><%= check_box_tag :check %></td>
+		        <td><%= c.id %></td>
+		        <td><%= c.name %></td>
+		        <td><%= c.created_at.strftime("%b %d, %Y") %></td>
+		        <td>
+		        	<%= link_to '', '#', class: 'glyphicon glyphicon-pencil' %>
+		        	<%= link_to '', '#', class: 'glyphicon glyphicon-trash' %>
+		        </td>
+		    </tr>
+		<% end %>    
+    </tbody>
+  </table>

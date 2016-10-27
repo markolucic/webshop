@@ -1,0 +1,36 @@
+<%= render 'navbar' %>
+
+<%= link_to 'Remove', '#', class: 'btn btn-default'%>
+<%= link_to 'Add Color', '#', class: 'btn btn-default'%>
+<%= search_field_tag 'name', :attr, placeholder: "Search", class: 'search' %>
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+      	<th><%= check_box_tag :check %></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @colors.each do |u| %>
+			<tr>
+				<td><%= check_box_tag :check %></td>
+		        <td><%= u.id %></td>
+		        <td><%= u.name %></td>
+		        <td><div class="circle" style="background-color: <%= u.hex %>"></div></td>
+		        <td>
+		        	<%= link_to '', '#',data_toggle: 'tooltip', title: 'Edit user', class: 'glyphicon glyphicon-pencil' %>
+		        	<%= link_to '', '#', data_toggle: 'tooltip', title: 'Remove user', class: 'glyphicon glyphicon-trash' %>
+		        </td>
+		    </tr>
+		<% end %>    
+    </tbody>
+  </table>	
+
+ <script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
+</script>

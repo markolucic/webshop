@@ -1,0 +1,46 @@
+<%= render 'navbar' %>
+
+<%= link_to 'Remove', '#', class: 'btn btn-default'%>
+<%= link_to 'Add User', new_user_path, class: 'btn btn-default'%>
+<%= search_field_tag 'name', :attr, placeholder: "Search", class: 'search' %>
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+      	<th><%= check_box_tag :check %></th>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Registration Date</th>
+        <th>Administrator</th>
+        <th>Activated</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @users.each do |u| %>
+			<tr>
+				<td><%= check_box_tag :check %></td>
+		        <td><%= u.id %></td>
+		        <td><%= u.email %></td>
+		        <td><%= u.created_at.strftime("%b %d, %Y") %></td>
+		        <td><%= u.is_admin? ? 'Yes' : 'No' %></td>
+		        <td><%= u.activated? ? 'Yes' : 'No' %></td>
+		        <td>
+		        	<%= link_to '', '#',data_toggle: 'tooltip', title: 'Edit user', class: 'glyphicon glyphicon-pencil' %>
+		        	<%= link_to '', '#', data_toggle: 'tooltip', title: 'Remove user', class: 'glyphicon glyphicon-trash' %>
+		        	<% if u.is_admin? %>
+		        		<%= link_to '', '#', data_toggle: 'tooltip', title: 'Demote to user', class: 'glyphicon glyphicon-star-empty promote' %>
+		        	<% else %>
+		        		<%= link_to '', '#', data_toggle: 'tooltip', title: 'Promote to admin', class: 'glyphicon glyphicon-star demote' %>
+		        	<% end %> 
+		        	
+		        </td>
+		    </tr>
+		<% end %>    
+    </tbody>
+  </table>	
+
+ <script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
+</script>

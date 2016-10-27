@@ -1,0 +1,41 @@
+<%= render 'navbar' %>
+
+<%= link_to 'Remove', '#', class: 'btn btn-default'%>
+<%= link_to 'Add Product', '#', class: 'btn btn-default'%>
+<%= search_field_tag 'name', :attr, placeholder: "Search", class: 'search' %>
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+      	<th><%= check_box_tag :check %></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @products.each do |u| %>
+			<tr>
+				<td><%= check_box_tag :check %></td>
+		        <td><%= u.id %></td>
+		        <td><%= u.name %></td>
+		        <td><%= u.categories[0].name %></td>
+		        <td><%= u.brand.name %></td>
+		        <td>$<%= u.price %></td>
+		        <td>
+		        	<%= link_to '', '#',data_toggle: 'tooltip', title: 'Edit user', class: 'glyphicon glyphicon-pencil' %>
+		        	<%= link_to '', '#', data_toggle: 'tooltip', title: 'Remove user', class: 'glyphicon glyphicon-trash' %>
+		        	
+		        </td>
+		    </tr>
+		<% end %>    
+    </tbody>
+  </table>	
+
+ <script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
+</script>

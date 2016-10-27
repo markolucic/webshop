@@ -1,0 +1,58 @@
+<%= render 'navbar' %>
+
+<div class="row">
+	<div class="col-md-2">
+		<%= link_to admin_categories_path do %>
+			<div class="border-thumb">
+				<span><%= @categories.count %></span>
+				<p>categories</p>
+			</div>
+		<% end %>
+		<%= link_to 'ADD CATEGORIES', '#', class: 'btn btn-add center-block' %>
+	</div>
+	<div class="col-md-2">
+		<%= link_to admin_products_path do %>
+			<div class="border-thumb">
+				<span><%= @products.count %></span>
+				<p>products</p>
+			</div>
+		<% end %>
+		<%= link_to 'ADD PRODUCTS', '#', class: 'btn btn-add center-block' %>
+	</div>
+	<div class="col-md-2">
+		<%= link_to admin_brands_path do %>
+			<div class="border-thumb">
+				<span><%= @brands.count %></span>
+				<p>brands</p>
+			</div>
+		<% end %>
+		<%= link_to 'ADD BRANDS', '#', class: 'btn btn-add center-block' %>
+	</div>
+	<div class="col-md-2">
+		<%= link_to admin_sizes_path do %>
+			<div class="border-thumb">
+				<span><%= @sizes.count %></span>
+				<p>sizes</p>
+			</div>
+		<% end %>
+		<%= link_to 'ADD SIZES', '#', class: 'btn btn-add center-block' %>
+	</div>
+	<div class="col-md-2">
+		<%= link_to admin_colors_path do %>
+			<div class="border-thumb">
+				<span><%= @colors.count %></span>
+				<p>colors</p>
+			</div>
+		<% end %>
+		<%= link_to 'ADD COLORS', '#', class: 'btn btn-add center-block' %>
+	</div>
+	<div class="col-md-2">
+		<%= link_to admin_users_path do %>
+			<div class="border-thumb">
+				<span><%= @users.count %></span>
+				<p>users</p>
+			</div>
+		<% end %>
+		<%= link_to 'ADD USERS', '#', class: 'btn btn-add center-block' %>
+	</div>
+</div>
