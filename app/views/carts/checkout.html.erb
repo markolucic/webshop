@@ -100,7 +100,7 @@
 	    	</div>
 	  	</div><br>
 
-	  	<input class=" btn btn-dark-grey" type="submit" value="Use new address" onclick="unique()">
+	  	<input class=" btn btn-dark-grey" type="submit" value="Use new address">
 	<% end %>  
 </div>
 </div>
@@ -142,10 +142,11 @@
 
 	function place_order(){
 		var ids = document.getElementsByName('address_id');
-		var id;
+		var id=1;
 		for(var i = 0; i < ids.length; i++){
 		    if(ids[i].checked){
 		        id = ids[i].value;
+		        console.log(id);
 		    }
 		}
 		var location = window.location.toString();
@@ -184,7 +185,7 @@
 
 	//validates unique address
 	function unique(){
-		var allAddresses = getElementById('all-addresses');
+		/*var allAddresses = getElementById('all-addresses');
 		if(allAddresses != null)
 		{
 			var address = getElementById('address');
@@ -194,6 +195,6 @@
 			var state = getElementById('state');
 
 
-		}
+		}*/
 	}
 	</script>

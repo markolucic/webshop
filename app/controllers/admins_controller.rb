@@ -36,9 +36,13 @@ class AdminsController < ApplicationController
 			@categories = Category.all
 			@sizes = Size.all
 			@users = User.all
-			@products = Product.all
-			@users = User.all
+			@products = Product.all.order(:id)
+			@users = User.all.order(:id)
 			@brands = Brand.all
 			@colors = Color.all
+		end
+
+		def user_params
+			params.require(:user).permit(:name, :surname, :email, :is_admin, :activated, :activated_at, :password, :password_confirmation) 
 		end
 end

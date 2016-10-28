@@ -21,8 +21,8 @@
 		        <td><%= c.name %></td>
 		        <td><%= c.created_at.strftime("%b %d, %Y") %></td>
 		        <td>
-		        	<%= link_to '', '#', class: 'glyphicon glyphicon-pencil' %>
-		        	<%= link_to '', '#', class: 'glyphicon glyphicon-trash' %>
+		        	<%= link_to '',  edit_category_path(id: c.id), class: 'glyphicon glyphicon-pencil' %>
+		        	<%= link_to '', category_path(id: c.id), :data => {:confirm => 'Are you sure?'}, :method => :delete, class: 'glyphicon glyphicon-trash' %>
 		        </td>
 		    </tr>
 		<% end %>    

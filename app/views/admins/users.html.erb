@@ -1,7 +1,7 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Remove', '#', class: 'btn btn-default'%>
-<%= link_to 'Add User', new_user_path, class: 'btn btn-default'%>
+<%= link_to 'Add User', admin_users_new_path, class: 'btn btn-default'%>
 <%= search_field_tag 'name', :attr, placeholder: "Search", class: 'search' %>
 <table class="table table-bordered table-hover">
     <thead>

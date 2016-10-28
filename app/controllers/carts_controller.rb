@@ -89,6 +89,7 @@ class CartsController < ApplicationController
   def create_address
     @address = Address.new(address_params)
     @address.user = @current_user
+    @current_user.addresses << @address
     @address.save
     redirect_to "/cart/place_order?address_id=#{@address.id}"
   end
@@ -114,7 +115,7 @@ class CartsController < ApplicationController
   private
 
   def address_params
-     params.require(:address).permit(:full_name, :address, :city, :state, :zip, :country, :phone_number, :user_id)
+     params.require(:address).permit(:id, :full_name, :address, :city, :state, :zip, :country, :phone_number, :user_id)
   end
   
 end

@@ -31,16 +31,32 @@ class CategoriesController < ApplicationController
 		@category = Category.new(category_params)
 		if @category.save
 			flash[:success] = "Category successfully created."
-			redirect_to @category
+			redirect_to admin_categories_path
 		else
 			render 'new'
 		end
 	end
 
+	def edit
+		@category = Category.find(params[:id])
+	end
+
 	def update
+		@category = Category.find(params[:id])
+
+		if @category.update(category_params)
+			flash[:success] = 'Category successfully edited.'
+			redirect_to admin_categories_path
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
+		@category = Category.find(params[:id])
+	    @category.destroy
+	    flash[:success] = "Your category has been deleted!"
+	    redirect_to admin_categories_path
 	end
 
 	private 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-	before_action :logged_in_user, only: [:index, :show, :update, :edit] #"moramo biti ulogovani da bismo vidjeli taj sadrzaj"
-	before_action :correct_user, only: [:index, :show, :update, :edit]
+	before_action :logged_in_user, only: [:index, :show, :update, :edit, :delete] #"moramo biti ulogovani da bismo vidjeli taj sadrzaj"
+	before_action :correct_user, only: [:index, :show, :update, :edit, :delete]
 	
 	def index
 		@users = User.all
@@ -40,9 +40,6 @@ class UsersController < ApplicationController
 		#@user = User.find(params[:id]) zato sto before_action vec jednom pristupa bazi, nema potrebe ponovo to raditi
 	end
 
-	def user_params
-		params.require(:user).permit(:name, :surname, :email, :is_admin, :password, :password_confirmation) 
-	end
 
 	# Confirms a logged in user
 	def logged_in_user
@@ -58,4 +55,9 @@ class UsersController < ApplicationController
 		@user = User.find_by(id: params[:id]) #User.find(params[:id]) ako ne postoji user u bazi sa takvim id
 		redirect_to(root_url) unless current_user?(@user) || current_user.is_admin? # || current_user.is_admin? postoji bolje rjesenje, ovako admin moze gledati profile ostalih i mijenjati
 	end
+		
+	private
+		def user_params
+			params.require(:user).permit(:name, :surname, :email, :is_admin, :password, :password_confirmation) 
+		end
 end
