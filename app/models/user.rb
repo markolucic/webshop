@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     validates :surname, :presence => true
 
     has_many :carts, dependent: :destroy
-    has_many :addresses
+    has_many :addresses, dependent: :destroy
 
     # Returns the number of all products in cart
     def total_products
