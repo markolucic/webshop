@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
     has_many :carts, dependent: :destroy
     has_many :addresses, dependent: :destroy
 
+
     # Returns the number of all products in cart
     def total_products
         self.carts.sum(:quantity)

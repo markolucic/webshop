@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   get 'admin/brands' => 'admins#brands'
   get 'admin/users' => 'admins#users'
 
+  get 'user/promote/:id' => 'users#promote'
+  get 'user/demote/:id' => 'users#demote'
+
   resources :users 
   #resources :admins
   resources :account_activations, only: [:edit]

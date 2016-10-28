@@ -23,6 +23,10 @@ class BrandsController < ApplicationController
 	end
 
 	def destroy
+		@brand = Brand.find(params[:id])
+		@brand.destroy
+		flash[:success] = "Brand successfully deleted."
+		redirect_to admin_brands_path
 	end
 
 	private 

@@ -22,6 +22,10 @@ class SizesController < ApplicationController
 	end
 
 	def destroy
+		@size = Size.find(params[:id])
+		@size.destroy
+		flash[:success] = "Size successfully deleted."
+		redirect_to admin_sizes_path
 	end
 
 	private 

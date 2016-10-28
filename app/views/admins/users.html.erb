@@ -1,7 +1,7 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Remove', '#', class: 'btn btn-default'%>
-<%= link_to 'Add User', '#', class: 'btn btn-default'%>
+<%= link_to 'Add User', new_user_path , class: 'btn btn-default'%>
 <%= search_field_tag 'name', '', placeholder: "Search", class: 'search' %>
 <table class="table table-bordered table-hover">
     <thead>
@@ -28,9 +28,9 @@
 		        	<%= link_to '', edit_user_path(id: u.id),data_toggle: 'tooltip', title: 'Edit user', class: 'glyphicon glyphicon-pencil' %>
 		        	<%= link_to '', user_path(id: u.id), :data => {:confirm => 'Are you sure?'}, :method => :delete, data_toggle: 'tooltip', title: 'Remove user', class: 'glyphicon glyphicon-trash' %>
 		        	<% if u.is_admin? %>
-		        		<%= link_to '', '#', data_toggle: 'tooltip', title: 'Demote to user', class: 'glyphicon glyphicon-star-empty promote' %>
+		        		<%= link_to '', '/user/demote/' + u.id.to_s, data_toggle: 'tooltip', title: 'Demote to user', class: 'glyphicon glyphicon-star-empty promote' %>
 		        	<% else %>
-		        		<%= link_to '', '#', data_toggle: 'tooltip', title: 'Promote to admin', class: 'glyphicon glyphicon-star demote' %>
+		        		<%= link_to '', '/user/promote/' + u.id.to_s, data_toggle: 'tooltip', title: 'Promote to admin', class: 'glyphicon glyphicon-star demote' %>
 		        	<% end %> 
 		        	
 		        </td>

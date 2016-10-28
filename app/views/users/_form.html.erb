@@ -21,6 +21,16 @@
       <%= f.label :email %><br />
       <%= f.text_field :email, class: "form-control" %>
     </div>
+    <% if @admin %>
+       <div class="form-group">
+        <%= f.check_box :is_admin , class: " checkbox-inline" %>
+        <%= f.label :is_admin %>
+      </div>
+      <div class="form-group">
+        <%= f.check_box :activated , class: "checkbox-inline" %>
+        <%= f.label :activated %>
+      </div>
+    <% end if %>
     <div class="form-group">
       <%= f.label :password %><br />
       <%= f.password_field :password, class: "form-control" %>
@@ -28,7 +38,7 @@
     <div class="form-group">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, class: "form-control" %>
-    </div>
+    </div>   
   </div>
 </div>
   <div class="col-md-4 center-block" style="float:none; padding-top: 20px;">

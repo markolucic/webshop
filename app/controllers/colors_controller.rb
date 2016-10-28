@@ -23,6 +23,10 @@ class ColorsController < ApplicationController
 	end
 
 	def destroy
+		@color=Color.find(params[:id])
+		@color.destroy
+		flash[:success] = "Color successfully deleted."
+		redirect_to admin_colors_path
 	end
 
 	private 
