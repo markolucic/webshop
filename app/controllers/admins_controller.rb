@@ -1,11 +1,14 @@
 class AdminsController < ApplicationController
 	before_action :correct_user
 	before_action :set_data
+	helper_method :sort_column, :sort_direction
 
 	def index
 	end
 
 	def categories
+
+		@categories = Category.order(sort_column + " " + sort_direction)
 	end
 
 	def users
@@ -44,5 +47,12 @@ class AdminsController < ApplicationController
 
 		def user_params
 			params.require(:user).permit(:name, :surname, :email, :is_admin, :activated, :activated_at, :password, :password_confirmation) 
+		end
+
+		def sort_column
+			Category.column_names.include?(params[:sort]) ? params[:sort] : "name"
+		end
+		def sort_direction
+			%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 		end
 end

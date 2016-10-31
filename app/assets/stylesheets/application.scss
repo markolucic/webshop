@@ -440,3 +440,17 @@ footer ul {
  td .glyphicon{
     padding-right: 10px;
 }
+
+.current {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.asc{
+  background-image: url('https://cdn4.iconfinder.com/data/icons/geomicons/32/672416-triangle-up-16.png');
+}
+
+.desc{
+  background-image: url('https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-16.png');
+}

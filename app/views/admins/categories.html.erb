@@ -7,9 +7,9 @@
     <thead>
       <tr>
       	<th><%= check_box_tag :check %></th>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Created at</th>
+        <th><%= sortable 'id' %></th>
+        <th><%= sortable 'name'%></th>
+        <th><%= sortable 'created_at', 'Created at' %></th>
         <th>Options</th>
       </tr>
     </thead>
