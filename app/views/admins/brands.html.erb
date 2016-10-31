@@ -1,7 +1,7 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Remove', '#', class: 'btn btn-default'%>
-<%= link_to 'Add Brand', '#', class: 'btn btn-default'%>
+<%= link_to 'Add Brand', new_brand_path, class: 'btn btn-default'%>
 <%= search_field_tag 'name', '', placeholder: "Search", class: 'search' %>
 <table class="table table-bordered table-hover">
     <thead>
@@ -19,8 +19,8 @@
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td>
-		        	<%= link_to '', '#',data_toggle: 'tooltip', title: 'Edit user', class: 'glyphicon glyphicon-pencil' %>
-		        	<%= link_to '', '#', data_toggle: 'tooltip', title: 'Remove user', class: 'glyphicon glyphicon-trash' %>
+		        	<%= link_to '', edit_brand_path(id: u.id),data_toggle: 'tooltip', title: 'Edit brand', class: 'glyphicon glyphicon-pencil' %>
+		        	<%= link_to '', brand_path(id: u.id), :data => {confirm: 'Are you sure?'}, method: :delete, data_toggle: 'tooltip', title: 'Remove brand', class: 'glyphicon glyphicon-trash' %>
 		        </td>
 		    </tr>
 		<% end %>    

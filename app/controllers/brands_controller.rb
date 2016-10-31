@@ -16,9 +16,24 @@ class BrandsController < ApplicationController
 		@brand = Brand.new(brand_params)
 		if @brand.save
 			flash[:success] = "Brand successfully created."
-			redirect_to @brand
+			redirect_to admin_brands_path
 		else
 			render 'new'
+		end
+	end
+
+	def edit
+		@brand = Brand.find(params[:id])
+	end
+
+	def update
+		@brand = Brand.find(params[:id])
+
+		if @brand.update(brand_params)
+			flash[:success] = 'Brand successfully edited.'
+			redirect_to admin_brands_path
+		else
+			render 'edit'
 		end
 	end
 

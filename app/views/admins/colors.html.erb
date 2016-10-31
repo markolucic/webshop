@@ -1,7 +1,7 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Remove', '#', class: 'btn btn-default'%>
-<%= link_to 'Add Color', '#', class: 'btn btn-default'%>
+<%= link_to 'Add Color', new_color_path, class: 'btn btn-default'%>
 <%= search_field_tag 'name', '', placeholder: "Search", class: 'search' %>
 <table class="table table-bordered table-hover">
     <thead>
@@ -10,6 +10,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Color</th>
+        <th>Hex</th>
         <th>Options</th>
       </tr>
     </thead>
@@ -20,9 +21,10 @@
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td><div class="circle" style="background-color: <%= u.hex %>"></div></td>
+		        <td><%= u.hex %></td>
 		        <td>
-		        	<%= link_to '', '#',data_toggle: 'tooltip', title: 'Edit user', class: 'glyphicon glyphicon-pencil' %>
-		        	<%= link_to '', '#', data_toggle: 'tooltip', title: 'Remove user', class: 'glyphicon glyphicon-trash' %>
+		        	<%= link_to '', edit_color_path(id: u.id),data_toggle: 'tooltip', title: 'Edit color', class: 'glyphicon glyphicon-pencil' %>
+		        	<%= link_to '', color_path(id: u.id), :data => {:confirm => 'Are you sure?'}, :method => :delete, data_toggle: 'tooltip', title: 'Remove color', class: 'glyphicon glyphicon-trash' %>
 		        </td>
 		    </tr>
 		<% end %>    

@@ -8,7 +8,7 @@
 				<p>categories</p>
 			</div>
 		<% end %>
-		<%= link_to 'ADD CATEGORIES', '#', class: 'btn btn-add center-block' %>
+		<%= link_to 'ADD CATEGORIES', categories_new_path, class: 'btn btn-add center-block' %>
 	</div>
 	<div class="col-md-2">
 		<%= link_to admin_products_path do %>
@@ -17,7 +17,7 @@
 				<p>products</p>
 			</div>
 		<% end %>
-		<%= link_to 'ADD PRODUCTS', '#', class: 'btn btn-add center-block' %>
+		<%= link_to 'ADD PRODUCTS', new_product_path, class: 'btn btn-add center-block' %>
 	</div>
 	<div class="col-md-2">
 		<%= link_to admin_brands_path do %>
@@ -26,7 +26,7 @@
 				<p>brands</p>
 			</div>
 		<% end %>
-		<%= link_to 'ADD BRANDS', '#', class: 'btn btn-add center-block' %>
+		<%= link_to 'ADD BRANDS', new_brand_path, class: 'btn btn-add center-block' %>
 	</div>
 	<div class="col-md-2">
 		<%= link_to admin_sizes_path do %>
@@ -35,7 +35,7 @@
 				<p>sizes</p>
 			</div>
 		<% end %>
-		<%= link_to 'ADD SIZES', '#', class: 'btn btn-add center-block' %>
+		<%= link_to 'ADD SIZES', new_size_path, class: 'btn btn-add center-block' %>
 	</div>
 	<div class="col-md-2">
 		<%= link_to admin_colors_path do %>
@@ -44,7 +44,7 @@
 				<p>colors</p>
 			</div>
 		<% end %>
-		<%= link_to 'ADD COLORS', '#', class: 'btn btn-add center-block' %>
+		<%= link_to 'ADD COLORS', new_color_path, class: 'btn btn-add center-block' %>
 	</div>
 	<div class="col-md-2">
 		<%= link_to admin_users_path do %>
@@ -53,6 +53,6 @@
 				<p>users</p>
 			</div>
 		<% end %>
-		<%= link_to 'ADD USERS', '#', class: 'btn btn-add center-block' %>
+		<%= link_to 'ADD USERS', new_user_path, class: 'btn btn-add center-block' %>
 	</div>
 </div>

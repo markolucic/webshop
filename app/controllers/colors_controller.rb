@@ -16,9 +16,24 @@ class ColorsController < ApplicationController
 		@color = Color.new(color_params)
 		if @color.save
 			flash[:success] = "Color successfully created."
-			redirect_to @color
+			redirect_to admin_colors_path
 		else
 			render 'new'
+		end
+	end
+
+	def edit
+		@color = Color.find(params[:id])
+	end
+
+	def update
+		@color = Color.find(params[:id])
+
+		if @color.update(color_params)
+			flash[:success] = 'Color successfully edited.'
+			redirect_to admin_colors_path
+		else
+			render 'edit'
 		end
 	end
 

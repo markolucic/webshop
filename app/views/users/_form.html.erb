@@ -43,9 +43,15 @@
 </div>
   <div class="col-md-4 center-block" style="float:none; padding-top: 20px;">
     <% if params[:action] == 'edit' %>
-      <%= f.submit 'EDIT ACCOUNT', :class=>'btn right-align btn-dark-grey'%>
+      <%= f.submit 'EDIT ACCOUNT', :class=>'btn btn-dark-grey'%>
     <% else %>
-      <%= f.submit 'CREATE ACCOUNT', :class=>'btn right-align btn-dark-grey'%>
+      <%= f.submit 'CREATE ACCOUNT', :class=>'btn btn-dark-grey'%>
     <% end %>
+    <% if is_admin?(current_user)%>
+      <%= link_to 'CANCEL', admin_path ,:class=>'btn btn-default right-align'%>
+    <% else %>
+      <%= link_to 'CANCEL', root_path ,:class=>'btn btn-default right-align'%>
+    <% end %>
+    
   </div>
 <% end %>

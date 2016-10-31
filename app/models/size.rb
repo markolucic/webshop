@@ -1,3 +1,4 @@
 class Size < ActiveRecord::Base
 	has_and_belongs_to_many :products
+	validates :size,  uniqueness:  true
 end

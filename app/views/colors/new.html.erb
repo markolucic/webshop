@@ -1,9 +1,9 @@
-<%= form_for @category do |f| %>
+<%= form_for @color do |f| %>
 	<div class="col-md-4 center-block form" style="float:none">
-		<h2>Edit category</h2></br>
+		<h2>New color</h2></br>
 		<div class="login-form">    
-		    <% if @category.errors.any? %>        
-		      <% for message in @category.errors.full_messages %>
+		    <% if @color.errors.any? %>        
+		      <% for message in @color.errors.full_messages %>
 		           <% flash.now[:danger] = message %>
 		      <% end %>
 		    <% end %> 
@@ -11,8 +11,12 @@
 		      <%= f.label :name %><br />
 		      <%= f.text_field :name, class: "form-control" %>
 		    </div>
+		    <div class="form-group">
+		      <%= f.label :hex %><br />
+		      <%= f.text_field :hex, value: '#',class: "form-control" %>
+		    </div>
 		</div></br>
-	      <%= f.submit 'EDIT CATEGORY', :class=>'btn btn-dark-grey'%>
+	      <%= f.submit 'CREATE COLOR', :class=>'btn btn-dark-grey'%>
 	      <%= link_to 'CANCEL', admin_path ,:class=>'btn btn-default right-align'%>
 	</div>
 <% end %>

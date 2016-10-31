@@ -1,18 +1,18 @@
-<%= form_for @category do |f| %>
+<%= form_for @size do |f| %>
 	<div class="col-md-4 center-block form" style="float:none">
-		<h2>Edit category</h2></br>
+		<h2>New size</h2></br>
 		<div class="login-form">    
-		    <% if @category.errors.any? %>        
-		      <% for message in @category.errors.full_messages %>
+		    <% if @size.errors.any? %>        
+		      <% for message in @size.errors.full_messages %>
 		           <% flash.now[:danger] = message %>
 		      <% end %>
 		    <% end %> 
 		    <div class="form-group">
-		      <%= f.label :name %><br />
-		      <%= f.text_field :name, class: "form-control" %>
+		      <%= f.label :size %><br />
+		      <%= f.text_field :size, class: "form-control" %>
 		    </div>
 		</div></br>
-	      <%= f.submit 'EDIT CATEGORY', :class=>'btn btn-dark-grey'%>
+	      <%= f.submit 'CREATE SIZE', :class=>'btn btn-dark-grey'%>
 	      <%= link_to 'CANCEL', admin_path ,:class=>'btn btn-default right-align'%>
 	</div>
 <% end %>
