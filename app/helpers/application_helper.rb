@@ -13,8 +13,8 @@ module ApplicationHelper
 		else
 			asc = "glyphicon glyphicon-triangle-bottom"
 		end
-		css_class = column == sort_column ? "current #{asc}" : nil
+		#css_class = column == sort_column ? "current #{asc}" : nil
 		direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-		link_to title, {:sort => column, :direction => direction}, {:class => css_class}
+		link_to title, {:sort => column, :direction => direction}#, {:class => css_class}
 	end
 end

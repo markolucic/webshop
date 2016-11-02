@@ -196,6 +196,10 @@ footer ul {
   margin-bottom: 15px;
 }
 
+.images{
+  float:right;
+}
+
 .btn-dark-grey{
   background-color: #404040;
   color: #ffffff;
@@ -473,3 +477,16 @@ footer ul {
     }
   }
 }
+
+#product_description{
+    resize: vertical;
+}
+
+#product_brand{
+  width: 100%;
+}
+
+#product_categories{
+  width: 100%;
+}
+

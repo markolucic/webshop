@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
 	end
 
 	def new
+		@brands = Brand.all
+		@categories = Category.all
 		@product = Product.new
 	end
 
@@ -12,7 +14,7 @@ class ProductsController < ApplicationController
 		@product = Product.new(product_params)
 		if @product.save
 			flash[:success] = "You have successfully created product."
-			redirect_to @product
+			redirect_to admin_products_path
 		else
 			render 'new'
 		end

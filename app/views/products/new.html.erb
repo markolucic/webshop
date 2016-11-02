@@ -1,0 +1,43 @@
+<%= form_for @product do |f| %>
+	<div class="col-md-8 row center-block form" style="float:none">
+		<h2>New product</h2></br>
+		<div class="col-md-12 login-form">
+			<div class="col-md-6 ">    
+			    <% if @product.errors.any? %>        
+			      <% for message in @product.errors.full_messages %>
+			           <% flash.now[:danger] = message %>
+			      <% end %>
+			    <% end %> 
+			    <div class="form-group">
+			      <%= f.label :name %><br />
+			      <%= f.text_field :name, class: "form-control" %>
+			    </div>
+			    <div class="form-group">
+			      <%= f.label :description %><br />
+			      <%= f.text_area :description, class: "form-control" %>
+			    </div>
+			    <div class="form-group">
+			      <%= f.label :price %><br />
+			      <%= f.number_field :price, class: "form-control", step: 0.01 %>
+			    </div>
+			    <div class="form-group">
+			      <%= f.label :brand %><br />
+			      <%= f.select :brand, options_from_collection_for_select(@brands, "id", "name"), prompt: 'Select brand',class: "form-control" %>
+			    </div>
+			    <div class="form-group">
+			      <%= f.label :category %><br />
+			      <%= f.select :categories, options_from_collection_for_select(@categories, "id", "name"), prompt: 'Select category', class: "form-control" %>
+			    </div>
+			</div>
+			<div class="col-md-6">
+					<div class="img-thumb">slika</div>
+					<button>dodaj</button>
+					link do slike: <input type="text">input</input>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 col-md-offset-4">
+	      <%= f.submit 'CREATE PRODUCT', :class=>'btn btn-dark-grey'%>
+	      <%= link_to 'CANCEL', admin_path ,:class=>'btn btn-default right-align'%>
+	</div>
+<% end %>
