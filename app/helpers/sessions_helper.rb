@@ -32,6 +32,9 @@ module SessionsHelper
 
 	# Returns true if the given user is admin
 	def is_admin?(user)
+		if user.nil?
+			return false
+		end
 		user.is_admin?
 	end
 
