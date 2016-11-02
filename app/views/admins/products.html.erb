@@ -1,7 +1,7 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Remove', '#', class: 'btn btn-default'%>
-<%= link_to 'Add Product', '#', class: 'btn btn-default'%>
+<%= link_to 'Add Product', new_product_path, class: 'btn btn-default'%>
 <%= search_field_tag 'name', '', placeholder: "Search", class: 'search' %>
 <table class="table table-bordered table-hover">
     <thead>
@@ -21,8 +21,8 @@
 				<td><%= check_box_tag :check %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
-		        <td><%= u.categories[0].name %></td>
-		        <td><%= u.brand.name %></td>
+		        <td><%= u.categories.empty? ? 'None' : u.categories[0].name  %></td>
+		        <td><%= u.brand.nil? ? 'none' : u.brand.name %></td>
 		        <td>$<%= u.price %></td>
 		        <td>
 		        	<%= link_to '', '#',data_toggle: 'tooltip', title: 'Edit user', class: 'glyphicon glyphicon-pencil' %>

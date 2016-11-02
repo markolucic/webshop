@@ -11,7 +11,12 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-		@product = Product.new(product_params)
+		name = params[:product][:name]
+		description = params[:product][:description]
+		price = params[:product][:price]
+		img = params[:product][:img]
+
+		@product = Product.new(name: name, description: description, price: price, img: img)
 		if @product.save
 			flash[:success] = "You have successfully created product."
 			redirect_to admin_products_path
@@ -44,7 +49,7 @@ class ProductsController < ApplicationController
 	private
 
 	def product_params
-		params(:product).permit(:name, :description, :price, :quantity, :img,
+		params(:product).permit(:name, :description, :price, :img,
 		variants_attributes: [:id, :size_id, :quantity, :color_id, :_destroy])
 	end
 end
