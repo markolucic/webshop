@@ -1,4 +1,4 @@
-<%= form_for @product do |f| %>
+<%= form_for @product, html: { multipart: true } do |f| %>
 	<div class="col-md-8 row center-block form" style="float:none">
 		<h2>New product</h2></br>
 		<div class="col-md-12 login-form">
@@ -30,9 +30,7 @@
 			    </div>
 			</div>
 			<div class="col-md-6">
-					<div class="img-thumb">slika</div>
-					<button>dodaj</button>
-					link do slike: <input type="text">input</input>
+					<%= f.file_field :img %>
 			</div>
 		</div>
 	</div>

@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
  gem 'country_select', '~> 2.5', '>= 2.5.2'
 
  gem 'will_paginate', '~> 3.1.1'
+
+ gem "paperclip", "~> 5.0.0"
  
 # Use Unicorn as the app server
 # gem 'unicorn'
