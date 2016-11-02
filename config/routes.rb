@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   get 'user/promote/:id' => 'users#promote'
   get 'user/demote/:id' => 'users#demote'
 
+  get '/admin/users/destroy' => 'users#destroy_selected'
+
   resources :users 
   #resources :admins
   resources :account_activations, only: [:edit]

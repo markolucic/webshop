@@ -71,6 +71,18 @@ class UsersController < ApplicationController
 	    redirect_to admin_users_path
 	end
 
+	def destroy_selected
+		if params[:ids]
+			ids = params[:ids].split(",")
+			ids.each do |p|
+				u = User.where(:id => p.to_i)
+				u.destroy_all
+			end
+		end
+		flash[:success] = "Users have been deleted!"
+		redirect_to admin_users_path
+	end
+
 
 	# Confirms a logged in user
 	def logged_in_user

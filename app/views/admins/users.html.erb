@@ -1,12 +1,12 @@
 <%= render 'navbar' %>
 
-<%= link_to 'Remove', '#', class: 'btn btn-default'%>
+<%= link_to 'Remove', '', :data => {confirm: 'Are you sure?'}, class: 'btn btn-default', onclick: 'checked()'%>
 <%= link_to 'Add User', new_user_path , class: 'btn btn-default'%>
 <%= search_field_tag 'name', '', placeholder: "Search", class: 'search' %>
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
-      	<th><%= check_box_tag :check %></th>
+      	<th><%= check_box_tag :check_all %></th>
         <th>ID</th>
         <th>Email</th>
         <th>Registration Date</th>
@@ -18,7 +18,7 @@
     <tbody>
     	<% @users.each do |u| %>
 			<tr>
-				<td><%= check_box_tag :check %></td>
+				<td><%= check_box_tag 'checkbox', u.id.to_s %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.email %></td>
 		        <td><%= u.created_at.strftime("%b %d, %Y") %></td>
@@ -38,9 +38,48 @@
 		<% end %>    
     </tbody>
   </table>	
-
+  <%= will_paginate @users %>
  <script>
 	$(document).ready(function(){
 	    $('[data-toggle="tooltip"]').tooltip();
 	});
+	var clicked = false;
+	$('#check_all').change(function () {
+
+    	var checkboxes = document.getElementsByName('checkbox');
+		for(var i=0; i< checkboxes.length; i++)
+		{
+			if(clicked == true)
+			{
+				checkboxes[i].checked = true;
+				clicked = false;
+			}
+			else
+			{
+				checkboxes[i].checked = false;
+				clicked = true;
+			}
+		}	
+ 	});
+
+	function checked(){
+		var location = window.location + '/destroy?ids=';
+		var checkboxes = document.getElementsByName('checkbox');
+		var checked = [];
+		for(var i=0; i< checkboxes.length; i++)
+		{
+			if(checkboxes[i].checked)
+			{
+				location += checkboxes[i].value + ',';
+				checked.push(checkboxes[i].value);
+			}
+		}	
+		if(checked.length > 0)
+		{	
+			location = location.slice(0, -1);
+			window.location = location;
+		}
+		
+	}
+
 </script>

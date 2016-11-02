@@ -36,13 +36,12 @@ class AdminsController < ApplicationController
 		end
 
 		def set_data
-			@categories = Category.all
-			@sizes = Size.all
-			@users = User.all
-			@products = Product.all.order(:id)
-			@users = User.all.order(:id)
-			@brands = Brand.all
-			@colors = Color.all
+			@categories = Category.paginate(:page => params[:page], :per_page => 10)
+			@sizes = Size.paginate(:page => params[:page], :per_page => 10)
+			@products = Product.paginate(:page => params[:page], :per_page => 10).order(:id)
+			@users = User.paginate(:page => params[:page], :per_page => 10).order(:id)
+			@brands = Brand.paginate(:page => params[:page], :per_page => 10)
+			@colors = Color.paginate(:page => params[:page], :per_page => 10)
 		end
 
 		def user_params
