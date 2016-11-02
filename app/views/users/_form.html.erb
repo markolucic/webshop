@@ -21,7 +21,7 @@
       <%= f.label :email %><br />
       <%= f.text_field :email, class: "form-control" %>
     </div>
-    <% if @admin %>
+    <% if is_admin?(current_user) %>
        <div class="form-group">
         <%= f.check_box :is_admin , class: " checkbox-inline" %>
         <%= f.label :is_admin %>

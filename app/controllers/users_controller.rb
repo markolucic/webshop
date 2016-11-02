@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-		@admin = current_user.is_admin?
 	end
 
 	def create
