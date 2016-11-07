@@ -7,7 +7,6 @@ class AdminsController < ApplicationController
 	end
 
 	def categories
-
 		@categories = Category.order(sort_column + " " + sort_direction)
 	end
 

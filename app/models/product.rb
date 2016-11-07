@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
 
 	belongs_to :brand
-	has_and_belongs_to_many :categories
+	has_and_belongs_to_many :categories #prepraviti da ima samo jednu kategoriju
 	#has_and_belongs_to_many :sizes
 	#has_and_belongs_to_many :colors
 	#has_many :colors, through: :variants
@@ -15,4 +15,9 @@ class Product < ActiveRecord::Base
 
 	has_attached_file :img, styles: { large: "500x500>", medium: "300x300>", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   	validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
+
+  	validates :name, presence: true
+  	validates :description, presence: true
+  	validates :price, presence: true
+  	validates :brand_id, presence: true
 end

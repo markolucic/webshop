@@ -1,13 +1,13 @@
 class ProductsController < ApplicationController
+	before_filter :set_data
 
 	def index
 		@products = Product.last(12).reverse
 	end
 
 	def new
-		@brands = Brand.all
-		@categories = Category.all
 		@product = Product.new
+		@product.variants.build
 	end
 
 	def create
@@ -15,12 +15,15 @@ class ProductsController < ApplicationController
 		description = params[:product][:description]
 		price = params[:product][:price]
 		img = params[:product][:img]
-
-		@product = Product.new(name: name, description: description, price: price, img: img)
+		brand_id = params[:product][:brand_id].to_i
+		cat_ids = params[:product][:category_ids]
+		@product = Product.new(name: name, description: description, price: price, img: img, category_ids: cat_ids, brand_id: brand_id)
 		if @product.save
 			flash[:success] = "You have successfully created product."
-			redirect_to admin_products_path
+			redirect_to admin_path
 		else
+			@brands = Brand.all
+			@categories = Category.all
 			render 'new'
 		end
 	end
@@ -38,18 +41,39 @@ class ProductsController < ApplicationController
 	end
 
 	def edit
+		@product = Product.find(params[:id])
 	end
 
 	def update
+		@product = Product.find(params[:id])
+
+		if @product.update(product_params)
+			flash[:success] = 'Product successfully edited.'
+			redirect_to admin_products_path
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
+		page = params[:page]
+		@product=Product.find(params[:id])
+		@product.destroy
+		flash[:success] = "Product successfully deleted."
+		redirect_to admin_products_path 
 	end
 
 	private
 
 	def product_params
-		params(:product).permit(:name, :description, :price, :img,
+		params(:product).permit(:name, :description, :price, :img, :brand_id, :category_ids,
 		variants_attributes: [:id, :size_id, :quantity, :color_id, :_destroy])
+	end
+
+	def set_data
+		@brands = Brand.all
+		@categories = Category.all
+		@sizes = Size.all
+		@colors = Color.all
 	end
 end
