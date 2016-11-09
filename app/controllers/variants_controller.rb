@@ -18,7 +18,7 @@ class VariantsController < ApplicationController
 		@variant.product = @product
 		if @variant.save
 			flash[:success] = "You have successfully created product variant."
-			redirect_to @variant
+			redirect_to admin_products_path
 		else
 			@colors = Color.order(:name)
 			@sizes = Size.order(:size)

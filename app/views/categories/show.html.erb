@@ -45,7 +45,9 @@
 			<p><%= p.brand.name %> - <%= p.name %></p>
 			<p class="colors"><%= number_to_currency(p.price, :unit => "$") %><span style="padding-right: 10px;"></span>
 			<% p.variants.each do |c| %>
-				<div class="circle" style="background-color: <%= c.color.hex %>"></div>
+				<% if !c.color.nil? %>
+					<div class="circle" style="background-color: <%= c.color.hex %>"></div>
+				<% end %>
 			<% end %>
 			</p>
 		</div>

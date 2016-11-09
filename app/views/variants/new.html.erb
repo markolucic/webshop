@@ -1,0 +1,25 @@
+<%= form_for [@product, @variant], :html => { :multipart => true } do |product_variant| %>
+	<% if @variant.errors.any? %>        
+	    <% for message in @variant.errors.full_messages %>
+	    	<% flash.now[:danger] = message %>
+	    <% end %>
+	<% end %> 
+	<div class="col-md-4 col-md-offset-4">
+		<h3>Add variant</h3><br>
+		<div class="login-form form-group">
+		  <%= product_variant.label :size %><br>
+		  <%= product_variant.select :size_id, options_from_collection_for_select(@sizes,"id", "size"), required: true,  class: "form-control" %><br><br>
+		  <%= product_variant.label :quantity %>
+		  <%= product_variant.number_field :quantity, :class => 'form-control', required: true %><br>
+		  <%= product_variant.label :color %><br>
+		  <%= product_variant.select :color_id, options_from_collection_for_select(@colors,"id", "name"), required: true,  class: "form-control" %><br><br>  
+		</div>
+		<% if params[:action] == 'edit' %>
+			<%= product_variant.submit 'EDIT VARIANT', :class=>'btn btn-dark-grey'%>
+		<% else %>
+			<%= product_variant.submit 'CREATE VARIANT', :class=>'btn btn-dark-grey'%>
+		<% end %>
+	      <%= link_to 'CANCEL', admin_products_path ,:class=>'btn btn-default right-align'%>
+	</div>
+
+<% end %>

@@ -13,11 +13,12 @@ class Product < ActiveRecord::Base
 
 	#validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
 
-	has_attached_file :img, styles: { large: "500x500>", medium: "300x300>", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
+	has_attached_file :img, styles: { large: "500x500>", medium: "300x300>", thumb: "100x100#" }
   	validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
 
-  	validates :name, presence: true
-  	validates :description, presence: true
-  	validates :price, presence: true
+  	validates :name, presence: true, length: { minimum: 2, maximum: 30}
+  	validates :description, presence: true, length: {minimum: 5, maximum: 60}
+  	validates :price, presence: true, :numericality => {  :greater_than => 0}
   	validates :brand_id, presence: true
+  	validates :category_ids, presence: true;
 end

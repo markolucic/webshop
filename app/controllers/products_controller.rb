@@ -11,16 +11,23 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-		name = params[:product][:name]
-		description = params[:product][:description]
-		price = params[:product][:price]
-		img = params[:product][:img]
-		brand_id = params[:product][:brand_id].to_i
-		cat_ids = params[:product][:category_ids]
-		@product = Product.new(name: name, description: description, price: price, img: img, category_ids: cat_ids, brand_id: brand_id)
+		#name = params[:product][:name]
+		#description = params[:product][:description]
+		#price = params[:product][:price]
+		#img = params[:product][:img]
+		#brand_id = params[:product][:brand_id].to_i
+		#cat_ids = params[:product][:category_ids]
+		color_id = params[:product][:variants_attributes]["0"][:color_id]
+		size_id = params[:product][:variants_attributes]["0"][:size_id]
+		quantity = params[:product][:variants_attributes]["0"][:quantity].to_i
+		@product = Product.new(product_params)
+		#@product = Product.new(name: name, description: description, price: price, img: img, category_ids: cat_ids, brand_id: brand_id)
+		v = Variant.create(color_id: color_id, size_id: size_id, quantity: quantity)
+		v.save
+		@product.variants << v
 		if @product.save
 			flash[:success] = "You have successfully created product."
-			redirect_to admin_path
+			redirect_to admin_products_path
 		else
 			@brands = Brand.all
 			@categories = Category.all
@@ -34,8 +41,8 @@ class ProductsController < ApplicationController
 		@colors = []
 		@sizes = []
 		@product.variants.each do |v|
-			@sizes << v.size
-			@colors << v.color
+			@sizes << v.size if v.size.nil?
+			@colors << v.color 
 		end
 		@sizes.sort! { |a,b| a.size <=> b.size }
 	end
@@ -66,7 +73,7 @@ class ProductsController < ApplicationController
 	private
 
 	def product_params
-		params(:product).permit(:name, :description, :price, :img, :brand_id, :category_ids,
+		params.require(:product).permit(:name, :description, :price, :img, :brand_id, :category_ids,
 		variants_attributes: [:id, :size_id, :quantity, :color_id, :_destroy])
 	end
 
