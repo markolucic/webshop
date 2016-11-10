@@ -4,7 +4,7 @@
 <div class="row">
 	<% @product.variants.each do |v| %>
 		<div class="col-md-3 col-xs-6 col-sm-4">
-			<%= image_tag(v.product.image, size: '200x180') %><br>
+			<%= image_tag(v.product.img.url(:medium)) %><br>
 			<%= v.product.name %><br>
 			<%= v.size.size %><br>
 			<%= v.color.name %><br>

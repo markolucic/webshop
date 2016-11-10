@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
 
 	#validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
 
-	has_attached_file :img, styles: { large: "500x500>", medium: "300x300>", thumb: "100x100#" }
+	has_attached_file :img, styles: { large: "300x300>", medium: "200x180>", thumb: "100x100#" }
   	validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
 
   	validates :name, presence: true, length: { minimum: 2, maximum: 30}

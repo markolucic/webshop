@@ -52,7 +52,6 @@ Brand.create(name: "Timberland")
 	Size.create(size: n)
 end
 
-
 Product.create(name: "Starke", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
  price: 100, quantity: 10, 
  image: "http://www.24sata.rs/resources/images/0000/017/030/starke%20slika2_1000x0.jpg")
