@@ -30,7 +30,8 @@ class Product < ActiveRecord::Base
     	{
     		:bucket => ENV["S3_BUCKET"],
 		    :access_key_id => ENV["ACCESS_KEY_ID"],
-			:secret_access_key => ENV["SECRET_ACCESS_KEY"]
+			:secret_access_key => ENV["SECRET_ACCESS_KEY"],
+			:region => ENV["AWS_REGION"]
     	}
   	end
 
