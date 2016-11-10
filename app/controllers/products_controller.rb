@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
 		@colors = []
 		@sizes = []
 		@product.variants.each do |v|
-			@sizes << v.size if v.size.nil?
+			@sizes << v.size 
 			@colors << v.color 
 		end
 		@sizes.sort! { |a,b| a.size <=> b.size }
