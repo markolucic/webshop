@@ -28,7 +28,7 @@ class Product < ActiveRecord::Base
 
     def s3_credentials
     	{
-    		:bucket => ENV["S3_BUCKET"],
+    		:bucket => ENV["S3_BUCKET_NAME"],
 		    :access_key_id => ENV["ACCESS_KEY_ID"],
 			:secret_access_key => ENV["SECRET_ACCESS_KEY"],
 			:region => ENV["AWS_REGION"]
