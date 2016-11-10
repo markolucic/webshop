@@ -13,7 +13,9 @@ class Product < ActiveRecord::Base
 
 	#validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
 
-	has_attached_file :img, styles: { large: "300x300>", medium: "200x180>", thumb: "100x100#" }
+	has_attached_file :img, styles: { large: "300x300>", medium: "200x180>", thumb: "100x100#" },
+		  	:storage => :s3,
+    		:s3_credentials => Proc.new{|a| a.instance.s3_credentials }
   	validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
 
   	validates :name, presence: true, length: { minimum: 2, maximum: 30}
@@ -22,13 +24,14 @@ class Product < ActiveRecord::Base
   	validates :brand_id, presence: true
   	validates :category_ids, presence: true;
 
-  	:storage => :s3,
-    :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+
 
     def s3_credentials
-      :bucket => ENV["S3_BUCKET"],
-      :access_key_id => ENV["ACCESS_KEY_ID"],
-      :secret_access_key => ENV["SECRET_ACCESS_KEY"]
+      {
+      	:bucket => ENV["S3_BUCKET"],
+	     :access_key_id => ENV["ACCESS_KEY_ID"],
+	     :secret_access_key => ENV["SECRET_ACCESS_KEY"]
+	  }
 	end
 
 end
