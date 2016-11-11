@@ -23,9 +23,9 @@
 </div>
 <div class="col-md-4 col-xs-3">
   <div class="placanje-naslov">
-    <%= active_link_to 'Korpa', cart_path, class: 'placanje active' %>
-    <%= active_link_to 'Dostava', checkout_path, class: 'placanje' %>
-    <%= active_link_to 'Placanje', '#', class: 'placanje'%>  
+    <%= active_link_to 'Cart', cart_path, class: 'placanje active' %>
+    <%= active_link_to 'Shipping', checkout_path, class: 'placanje' %>
+    <%= active_link_to 'Payment', '#', class: 'placanje'%>  
   </div>
   <%= form_tag create_charge_path do %>
     <div class="panel panel-default">

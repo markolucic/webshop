@@ -25,9 +25,9 @@
 </div>
 <div class="col-xs-4">
 	<div class="placanje-naslov">
-		<%= active_link_to 'Korpa', cart_path, class: 'placanje active' %>
-		<%= active_link_to 'Dostava', checkout_path, class: 'placanje' %>
-		<%= active_link_to 'Placanje', "#", class: 'placanje'%>	
+		<%= active_link_to 'Cart', cart_path, class: 'placanje active' %>
+		<%= active_link_to 'Shipping', checkout_path, class: 'placanje' %>
+		<%= active_link_to 'Payment', "#", class: 'placanje'%>	
 	</div>
 	<!--
 	<div class="narudzba">
@@ -60,7 +60,7 @@
       </article>
     </div>
 	</div>
-	<%= link_to 'NASTAVI', checkout_path, class: 'btn btn-dark-grey right-align' %>
-	<%= link_to 'ODUSTANI', root_url, class: 'btn btn-default right-align' %>
+	<%= link_to 'CONTINUE', checkout_path, class: 'btn btn-dark-grey right-align' %>
+	<%= link_to 'CANCEL', root_url, class: 'btn btn-default right-align' %>
 </div>
 

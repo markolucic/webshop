@@ -106,9 +106,9 @@
 </div>
 <div class="col-md-4 col-xs-4" style="">
 	<div class="placanje-naslov">
-		<%= active_link_to 'Korpa', cart_path, class: 'placanje active' %>
-		<%= active_link_to 'Dostava', checkout_path, class: 'placanje' %>
-		<%= active_link_to 'Placanje', '#', class: 'placanje'%>	
+		<%= active_link_to 'Cart', cart_path, class: 'placanje active' %>
+		<%= active_link_to 'Shipping', checkout_path, class: 'placanje' %>
+		<%= active_link_to 'Payment', '#', class: 'placanje'%>	
 	</div>
 	<div class="panel panel-default">
       <div class="panel-heading">
@@ -133,8 +133,8 @@
       </article>
     </div>
 </div>
-	<button onclick="place_order()" class="btn btn-dark-grey right-align">NASTAVI</button>
-	<%= link_to 'ODUSTANI', root_url, class: 'btn btn-default right-align' %>
+	<button onclick="place_order()" class="btn btn-dark-grey right-align">CONTINUE</button>
+	<%= link_to 'CANCEL', root_url, class: 'btn btn-default right-align' %>
 </div>
 
 <script>
