@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
 	#has_many :colors, through: :variants
 	#has_many :sizes, through: :variants
 	has_many :variants, dependent: :destroy
-	has_many :carts#, dependent: :destroy
+	has_many :carts, dependent: :destroy
 
 	accepts_nested_attributes_for :variants, allow_destroy: true
 
