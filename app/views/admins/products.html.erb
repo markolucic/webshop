@@ -21,7 +21,7 @@
 				<td><%= check_box_tag :check %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
-		        <td><%= u.categories.empty? ? 'None' : u.categories[0].name  %></td>
+		        <td><%= u.category.nil? ? 'None' : u.category.name  %></td>
 		        <td><%= u.brand.nil? ? 'none' : u.brand.name %></td>
 		        <td>$<%= u.price %></td>
 		        <td>

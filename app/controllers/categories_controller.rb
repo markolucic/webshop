@@ -15,7 +15,8 @@ class CategoriesController < ApplicationController
 		@size_id = params[:size_id]
 		
 		#all products that have category_id equal to the searched one
-		@products = Product.joins("join categories_products on products.id = categories_products.product_id").where(["categories_products.category_id = ?", @category.id])
+		#@products = Product.joins("join categories_products on products.id = categories_products.product_id").where(["categories_products.category_id = ?", @category.id])
+		@products = Product.where("category_id = ?", @category.id) if params[:id].present?
 		@products = @products.where("price >= ?", @min_price) if params[:min_price].present?
 		@products = @products.where("price <= ?", @max_price) if params[:max_price].present?
 		@products = @products.where("brand_id = ?", @brand_id) if params[:brand_id].present?
