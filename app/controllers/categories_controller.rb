@@ -55,6 +55,12 @@ class CategoriesController < ApplicationController
 
 	def destroy
 		@category = Category.find(params[:id])
+		products = Product.where("category_id = ?", @category.id)
+		if products
+			products.each do |p|
+				p.destroy
+			end
+		end
 	    @category.destroy
 	    flash[:success] = "Category has been deleted!"
 	    redirect_to admin_categories_path

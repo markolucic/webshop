@@ -1,12 +1,14 @@
 class Product < ActiveRecord::Base
 
+	before_destroy :delete_all
+
 	belongs_to :brand
 	belongs_to :category
 	#has_and_belongs_to_many :categories
 	#has_many :colors, through: :variants
 	#has_many :sizes, through: :variants
-	has_many :variants, dependent: :destroy
-	has_many :carts, dependent: :destroy
+	has_many :variants#, dependent: :destroy
+	has_many :carts#, dependent: :destroy
 
 	accepts_nested_attributes_for :variants, allow_destroy: true
 
@@ -31,5 +33,15 @@ class Product < ActiveRecord::Base
 			:region => ENV["AWS_REGION"]
     	}
   	end
+
+  	def delete_all
+  		id = self.id
+		#user = current_user
+		#cart = Cart.where("user_id = ?", user.id)
+		cart = Cart.where("product_id = ?", id)
+		cart.destroy_all if cart
+		variants = Variant.where("product_id = ?", id)
+		variants.destroy_all if variants
+	end
 
 end

@@ -83,4 +83,5 @@ class ProductsController < ApplicationController
 		@sizes = Size.all
 		@colors = Color.all
 	end
+
 end
