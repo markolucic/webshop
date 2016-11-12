@@ -31,6 +31,12 @@ class VariantsController < ApplicationController
 		#@variants = Variant.where(brand_id: @variant.brand_id)
 	end
 
+	def destroy
+		@variant.destroy
+		flash[:success] = "Variant successfully deleted."
+		redirect_to product_variants_path(product_id: @product.id)
+	end
+
 
 	private
 

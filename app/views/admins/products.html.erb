@@ -28,6 +28,7 @@
 		        	<%= link_to '', edit_product_path(id: u.id),data_toggle: 'tooltip', title: 'Edit user', class: 'glyphicon glyphicon-pencil' %>
 		        	<%= link_to '', product_path(id: u.id), method: 'delete',:data => {:confirm => 'Are you sure?'}, data_toggle: 'tooltip', title: 'Remove user', class: 'glyphicon glyphicon-trash' %>
 		        	<%= link_to '', new_product_variant_path(product_id: u.id), data_toggle: 'tooltip', title: 'Add variant', class: 'glyphicon glyphicon-plus' %>
+		        	<%= link_to '', product_variants_path(product_id: u.id), data_toggle: 'tooltip', title: 'All variants', class: 'glyphicon glyphicon-list' %>
 		        </td>
 		    </tr>
 		<% end %>    

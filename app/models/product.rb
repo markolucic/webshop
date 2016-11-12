@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   	validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
 
   	validates :name, presence: true, length: { minimum: 2, maximum: 30}
-  	validates :description, presence: true, length: {minimum: 5, maximum: 60}
+  	validates :description, presence: true, length: {minimum: 5, maximum: 100}
   	validates :price, presence: true, :numericality => {  :greater_than => 0}
   	validates :brand_id, presence: true
   	validates :category_id, presence: true;
@@ -34,6 +34,7 @@ class Product < ActiveRecord::Base
     	}
   	end
 
+  	# Delete all variants of the product and clear cart
   	def delete_all
   		id = self.id
 		#user = current_user

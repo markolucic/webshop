@@ -14,17 +14,18 @@
 		<%= form_tag({controller: "carts", action: "add"}, method: "post", class: "form") do %>
 			<div class="productOptions ">
 				<div class="leftOption">
-					Velicina: <br>
-					<%= select_tag :size, options_from_collection_for_select(@sizes,"size", "size"), id: 'size', prompt: 'Select size', onchange: 'onChange()'%>
+					Boja: <br>
+					 
+					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name"), id: 'color', prompt: 'Select color',  onchange: 'onChange()' %> 
 				</div>
 				<div class="rightOption">
 					Kolicina: <br>
 					<%= number_field_tag :quantity, '1', min: 1%> 
 				</div>
 				<div style="float:none;">
-					Boja: <br>
-					 
-					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name"), id: 'color', prompt: 'Select color',  onchange: 'onChange()' %> 
+					
+					Velicina: <br>
+					<%= select_tag :size, options_from_collection_for_select(@sizes,"size", "size"), id: 'size', prompt: 'Select size', onchange: 'onChange()'%>
 				</div>
 			</div><br>
 			<%= submit_tag "ADD TO CART", class: 'btn btn-default' %>
@@ -36,7 +37,7 @@
 	</div>	
 </div>
 <div class="" style="padding-top: 70px;">
-	<h4 style="text-align: center; padding-bottom: 30px;">Slični proizvodi</h4>
+	<h4 style="text-align: center; padding-bottom: 30px;">You may also like</h4>
 	<% @products.each do |p| %>
 		<div class="col-md-3 col-xs-8 col-sm-6">
 			<div class="img">

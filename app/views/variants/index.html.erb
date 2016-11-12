@@ -1,5 +1,5 @@
 <div class="row">
-	<h3 style="text-align:center;">Products variants</h3>
+	<h3 style="text-align:center;">Product variants</h3>
 </div><br>
 <div class="row">
 	<% @product.variants.each do |v| %>
@@ -9,6 +9,7 @@
 			<%= v.size.size %><br>
 			<%= v.color.name %><br>
 			<%= v.quantity %>KOM<br>
+			<%= link_to 'Delete', product_variant_path(product_id: @product.id, id: v.id), method: 'delete', :data => {:confirm => 'Are you sure?'}, class: 'btn btn-default' %>
 			<hr>
 		</div>
 	<% end %>
