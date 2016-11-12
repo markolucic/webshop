@@ -15,7 +15,6 @@
 			<div class="productOptions ">
 				<div class="leftOption">
 					Boja: <br>
-					 
 					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name"), id: 'color', prompt: 'Select color',  onchange: 'onChange()' %> 
 				</div>
 				<div class="rightOption">
