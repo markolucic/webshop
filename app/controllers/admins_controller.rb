@@ -19,15 +19,15 @@ class AdminsController < ApplicationController
 	end
 
 	def brands
-		@brands = Brand.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+		@brands = Brand.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(:name)
 	end
 
 	def sizes
-		@sizes = Size.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+		@sizes = Size.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(:size)
 	end
 
 	def colors
-		@colors = Color.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+		@colors = Color.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(:name)
 	end
 
 	private 
@@ -41,11 +41,11 @@ class AdminsController < ApplicationController
 
 		def set_data
 			@categories = Category.paginate(:page => params[:page], :per_page => 10)
-			@sizes = Size.paginate(:page => params[:page], :per_page => 10)
+			@sizes = Size.paginate(:page => params[:page], :per_page => 10).order(:size)
 			@products = Product.paginate(:page => params[:page], :per_page => 10).order(:id)
 			@users = User.paginate(:page => params[:page], :per_page => 10).order(:id)
-			@brands = Brand.paginate(:page => params[:page], :per_page => 10)
-			@colors = Color.paginate(:page => params[:page], :per_page => 10)
+			@brands = Brand.paginate(:page => params[:page], :per_page => 10).order(:name)
+			@colors = Color.paginate(:page => params[:page], :per_page => 10).order(:name)
 		end
 
 		def user_params

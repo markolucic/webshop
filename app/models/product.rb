@@ -15,7 +15,8 @@ class Product < ActiveRecord::Base
 	has_attached_file :img, styles: { large: "300x300>", medium: "200x180#", thumb: "100x100#" },
 		  	:storage => :s3,
     		:s3_credentials => Proc.new{|a| a.instance.s3_credentials }
-  	validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
+  	#validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
+    validates_attachment :img, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   	validates :name, presence: true, length: { minimum: 2, maximum: 30}
   	validates :description, presence: true, length: {minimum: 5, maximum: 100}

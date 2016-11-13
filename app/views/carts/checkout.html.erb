@@ -37,13 +37,13 @@
 	</div>
 </div>
 
-<div class="row">
+<!--<div class="row">
 	<div class="col-xs-12">
 		<h4>Billing address: </h4>
 		<%= check_box_tag :billing_address %>
 		<%= label_tag :billing_address, "Use shipping address" %>
 	</div>
-</div>
+</div> -->
 
 <div id="new-address" class="row shipping-address">
 	<div class="col-xs-12">
@@ -51,6 +51,14 @@
 		<p>When finished, click the "Use new address" button.</p>
 	</div>
 	<%= form_for @address, url: create_address_path, :html => { :class => "form-horizontal col-md-6 col-lg-7" } do |f| %>
+		<% if @address.errors.any? %>        
+		      <% for message in @address.errors.full_messages %>
+		           <% flash.now[:danger] = message %>
+		      <% end %>
+		      <%= f.hidden_field(:error, :yes) %>
+		<% end %>
+		
+	    <input type="hidden" id="user_token" name="user[token]" value="#{@user.token}" />
 		<div class="control-group">
 	    	<%= f.label :full_name, :class => 'control-label required' %>
 	    	<div class="controls">
@@ -112,7 +120,7 @@
 	</div>
 	<div class="panel panel-default">
       <div class="panel-heading">
-          <h3 class="panel-title">Your order</h3>
+          <h3 class="panel-title">Your order: <span class="grey-text"><%= @current_user.total_products %> products</span></h3>
       </div>
       <div class="panel-body">
       <article>
@@ -142,32 +150,40 @@
 
 	function place_order(){
 		var ids = document.getElementsByName('address_id');
-		var id=1;
+		var id=null;
 		for(var i = 0; i < ids.length; i++){
 		    if(ids[i].checked){
 		        id = ids[i].value;
 		        console.log(id);
 		    }
 		}
+
 		var location = window.location.toString();
 		var oldlocation = location;
 		console.log(location.charAt(location.length - 1));
-		var lastChar = location.substr(-1);
-		if(lastChar == '#')
+		if( id == null)
 		{
-			location = location.slice(0, -9);
+			window.location.href= location;
 		}
-		else
+		else 
 		{
-			location = location.slice(0, -8);
-		}
-		if(typeof id === "undefined")
+			var lastChar = location.substr(-1);
+			if(lastChar == '#')
 			{
-				alert("You must enter shipping address!");
-				window.location.href = oldlocation;
+				location = location.slice(0, -9);
 			}
-		else
-			window.location.href= location + 'place_order?address_id=' + id;
+			else
+			{
+				location = location.slice(0, -8);
+			}
+			if(typeof id === "undefined")
+				{
+					alert("You must enter shipping address!");
+					window.location.href = oldlocation;
+				}
+			else
+				window.location.href= location + 'place_order?address_id=' + id;
+		}
 	}
 
 	function show_address(){

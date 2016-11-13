@@ -90,8 +90,13 @@ class CartsController < ApplicationController
     @address = Address.new(address_params)
     @address.user = @current_user
     @current_user.addresses << @address
-    @address.save
-    redirect_to "/cart/place_order?address_id=#{@address.id}"
+
+    if @address.save
+      redirect_to "/cart/place_order?address_id=#{@address.id}"
+    else
+      flash[:danger] = @address.errors.full_messages.first
+      redirect_to "/cart/checkout"
+    end
   end
 
   def set_quantity

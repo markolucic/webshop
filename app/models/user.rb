@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
 	EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 	
     validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX, length: { maximum: 255 }
-    validates :password, confirmation: true, :length => { :minimum => 5, :maximum => 30}
-    validates :name, :presence => true, length: { maximum: 50 }
-    validates :surname, :presence => true
+    validates :password, confirmation: true, :length => { :minimum => 5, :maximum => 30}, format: {with: /\A^[a-zA-Z0-9]+$\z/}
+    validates :name, :presence => true, length: { maximum: 50 }, format: {with: /\A^[a-zA-Z0-9]+$\z/}
+    validates :surname, :presence => true, length: { maximum: 50 }, format: {with: /\A^[a-zA-Z0-9]+$\z/}
 
     has_many :carts, dependent: :destroy
     has_many :addresses, dependent: :destroy
