@@ -2,11 +2,15 @@
 
 <%= link_to 'Remove', '#', class: 'btn btn-default'%>
 <%= link_to 'Add Color', new_color_path, class: 'btn btn-default'%>
-<%= search_field_tag 'name', '', placeholder: "Search", class: 'search' %>
+<%= form_tag admin_colors_path, :method => 'get' do %>
+  <p class="search">
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
-      	<th><%= check_box_tag :check %></th>
         <th>ID</th>
         <th>Name</th>
         <th>Color</th>
@@ -17,7 +21,6 @@
     <tbody>
     	<% @colors.each do |u| %>
 			<tr>
-				<td><%= check_box_tag :check %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td><div class="circle" style="background-color: <%= u.hex %>"></div></td>

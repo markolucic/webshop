@@ -2,11 +2,16 @@
 
 <%= link_to 'Remove', '#', class: 'btn btn-default'%>
 <%= link_to 'Add category', categories_new_path, class: 'btn btn-default'%>
-<%= search_field_tag 'name', '', placeholder: "Search", class: 'search' %>
+<%= form_tag admin_categories_path, :method => 'get' do %>
+  <p class="search">
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
-      	<th><%= check_box_tag :check %></th>
+      	<!--<th><%= check_box_tag :check %></th> -->
         <th><%= sortable 'id' %></th>
         <th><%= sortable 'name'%></th>
         <th><%= sortable 'created_at', 'Created at' %></th>
@@ -16,14 +21,13 @@
     <tbody>
     	<% @categories.each do |c| %>
 			<tr>
-				<td><%= check_box_tag :check %></td>
-		        <td><%= c.id %></td>
-		        <td><%= c.name %></td>
-		        <td><%= c.created_at.strftime("%b %d, %Y") %></td>
-		        <td>
-		        	<%= link_to '',  edit_category_path(id: c.id), class: 'glyphicon glyphicon-pencil' %>
-		        	<%= link_to '', category_path(id: c.id), :data => {:confirm => 'Are you sure?'}, :method => :delete, class: 'glyphicon glyphicon-trash' %>
-		        </td>
+        <td><%= c.id %></td>
+        <td><%= c.name %></td>
+        <td><%= c.created_at.strftime("%b %d, %Y") %></td>
+        <td>
+        	<%= link_to '',  edit_category_path(id: c.id), class: 'glyphicon glyphicon-pencil' %>
+        	<%= link_to '', category_path(id: c.id), :data => {:confirm => 'Are you sure?'}, :method => :delete, class: 'glyphicon glyphicon-trash' %>
+        </td>
 		    </tr>
 		<% end %>    
     </tbody>

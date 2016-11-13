@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
     has_many :addresses, dependent: :destroy
 
 
+
+    def self.search(search)
+      if search
+        where('email LIKE ?', "%#{search}%")
+      else
+        all
+      end
+    end
+
     # Returns the number of all products in cart
     def total_products
         self.carts.sum(:quantity)

@@ -7,22 +7,27 @@ class AdminsController < ApplicationController
 	end
 
 	def categories
-		@categories = Category.order(sort_column + " " + sort_direction)
+		@categories = Category.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(sort_column + " " + sort_direction)
 	end
 
 	def users
+		@users = User.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(:id)
 	end
 
 	def products
+		@products = Product.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(:id)
 	end
 
 	def brands
+		@brands = Brand.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def sizes
+		@sizes = Size.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def colors
+		@colors = Color.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	private 

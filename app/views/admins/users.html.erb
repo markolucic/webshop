@@ -2,11 +2,20 @@
 
 <%= link_to 'Remove', '', :data => {confirm: 'Are you sure?'}, class: 'btn btn-default', onclick: 'checked()'%>
 <%= link_to 'Add User', new_user_path , class: 'btn btn-default'%>
-<%= search_field_tag 'name', '', placeholder: "Search", class: 'search' %>
+
+
+<%= form_tag admin_users_path, :method => 'get' do %>
+  <p class="search">
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
-      	<th><%= check_box_tag :check_all %></th>
+      	<!--<th><%= check_box_tag :check_all %></th>-->
         <th>ID</th>
         <th>Email</th>
         <th>Registration Date</th>
@@ -18,7 +27,7 @@
     <tbody>
     	<% @users.each do |u| %>
 			<tr>
-				<td><%= check_box_tag 'checkbox', u.id.to_s %></td>
+				<!--<td><%= check_box_tag 'checkbox', u.id.to_s %></td>-->
 		        <td><%= u.id %></td>
 		        <td><%= u.email %></td>
 		        <td><%= u.created_at.strftime("%b %d, %Y") %></td>
