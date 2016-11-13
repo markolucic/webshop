@@ -6,6 +6,10 @@ class AdminsController < ApplicationController
 	def index
 	end
 
+	def orders
+		@orders = Order.all.paginate(:page => params[:page], :per_page => 10).order(:created_at)
+	end
+
 	def categories
 		@categories = Category.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(sort_column + " " + sort_direction)
 	end

@@ -1,6 +1,5 @@
 <%= render 'navbar' %>
 
-<%= link_to 'Remove', '#', class: 'btn btn-default'%>
 <%= link_to 'Add Color', new_color_path, class: 'btn btn-default'%>
 <%= form_tag admin_colors_path, :method => 'get' do %>
   <p class="search">

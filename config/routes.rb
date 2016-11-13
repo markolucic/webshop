@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post '/categories/new' => 'categories#create'
   delete '/categories/delete' => 'categories#delete'
 
+  get 'admin/orders' => 'admins#orders'
   get 'admin' => 'admins#index'
   get 'admin/categories' => 'admins#categories'
   get 'admin/products' => 'admins#products'
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
 
   get '/admin/users/destroy' => 'users#destroy_selected'
 
+  get '/orders' => 'orders#show'
   resources :users 
   #resources :admins
   resources :account_activations, only: [:edit]

@@ -70,11 +70,23 @@ class CartsController < ApplicationController
     update_products
     #send email to the user, basic order info
     @current_user.send_orders_email
+    #save the order information
+    save_order
+    #empty cart
     @current_user.carts.delete_all
 
   rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
+  end
+
+  def save_order
+    products = @current_user.carts
+    products.each do |p|
+      pr = Product.find_by_id(p.product_id)
+      o = Order.new(product_id: p.product_id, user_id: @current_user.id, quantity: p.quantity, price: p.quantity*pr.price)
+      o.save
+    end
   end
 
   def update_products

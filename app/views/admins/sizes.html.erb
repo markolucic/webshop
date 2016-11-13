@@ -1,6 +1,5 @@
 <%= render 'navbar' %>
 
-<%= link_to 'Remove', '#', class: 'btn btn-default'%>
 <%= link_to 'Add Size', new_size_path, class: 'btn btn-default'%>
 <%= form_tag admin_sizes_path, :method => 'get' do %>
   <p class="search">

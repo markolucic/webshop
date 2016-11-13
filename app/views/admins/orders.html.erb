@@ -1,0 +1,39 @@
+<%= render 'navbar' %>
+
+<%= form_tag admin_orders_path, :method => 'get' do %>
+  <p class="search">
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product ID</th>
+        <th>User ID</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @orders.each do |u| %>
+			<tr>
+		        <td><%= u.id %></td>
+		        <td><%= u.product_id %></td>
+		        <td><%= u.user_id %></td>
+		        <td><%= u.quantity %></td>
+		        <td><%= u.price %></td>
+		        <td><%= u.created_at.strftime("%b %d, %Y") %></td>
+		    </tr>
+		<% end %>    
+    </tbody>
+  </table>	
+  <%= will_paginate @orders %>
+ <script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
+</script>

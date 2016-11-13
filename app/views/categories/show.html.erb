@@ -23,7 +23,7 @@
 			    <option value="<%=color.id%>" <% if @color_id == color.id.to_s %>selected<% end %>><%= color.name %></option>
 			    <% } %>
 			</select>
-			<h5>Min price:</h5> <%= number_field_tag :min_price, @min_price, min: 0, class: "price", :onchange => "validate()" %>
+			<h5>Min price:</h5> <%= number_field_tag :min_price, @min_price, min: 0, class: "price", :oninput => "validate()" %>
 			<h5>Max price:</h5> <%= number_field_tag :max_price, @max_price, min: 0, class: "price", oninput: "validate()" %><br>
 			<div id="error"></div>
 			<br>
@@ -60,6 +60,7 @@
 		var min = document.getElementById('min_price');
 		var max = document.getElementById('max_price');
 		var btn = document.getElementsByName('commit')[0];
+		console.log('min: ' + min.value + '\n max: '+ max.value);
 		if(min.value > max.value)
 		{
 			min.style.borderColor = "red";
