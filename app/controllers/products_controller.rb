@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 
 	def index
 		#@products = Product.last(12).reverse
-		@products = Product.sample(12)
+		@products = Product.all
+		@product = @product.sample(12)
 	end
 
 	def new
