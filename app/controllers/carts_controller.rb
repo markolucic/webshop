@@ -18,8 +18,18 @@ class CartsController < ApplicationController
       item.product = Product.find(params[:id])
       item.size = size.to_i
       item.color = color
-      item.quantity = quantity.to_i
-      item.save
+      if item.product.quantity < quantity.to_i
+        if item.product.quantity == 0
+          flash[:danger] = "Item out of stock!"
+        else
+          flash[:danger] = "There are only #{item.product.quantity} items left."
+        end
+        redirect_to '/products/' << params[:id]
+        return
+      else
+        item.quantity = quantity.to_i
+        item.save
+      end
     end
     if params[:commit] == "ADD TO CART"
       redirect_to '/products/' << params[:id]

@@ -3,6 +3,7 @@ class Variant < ActiveRecord::Base
 	belongs_to :product
 	belongs_to :size
 	belongs_to :color
+	has_many :orders
 
 	validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
 	validates :color_id, presence: true

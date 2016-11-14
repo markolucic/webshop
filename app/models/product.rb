@@ -9,7 +9,8 @@ class Product < ActiveRecord::Base
 	#has_many :sizes, through: :variants
 	has_many :variants#, dependent: :destroy
 	has_many :carts#, dependent: :destroy
-
+  has_many :orders
+  
 	accepts_nested_attributes_for :variants, allow_destroy: true
 
 	has_attached_file :img, styles: { large: "300x300>", medium: "200x180#", thumb: "100x100#" },

@@ -22,7 +22,9 @@ class ProductsController < ApplicationController
 		color_id = params[:product][:variants_attributes]["0"][:color_id] if !params[:product][:variants_attributes]["0"][:color_id].nil?
 		size_id = params[:product][:variants_attributes]["0"][:size_id] if !params[:product][:variants_attributes]["0"][:size_id].nil?
 		quantity = params[:product][:variants_attributes]["0"][:quantity].to_i if !params[:product][:variants_attributes]["0"][:quantity].nil?
+		
 		@product = Product.new(product_params)
+		@product.quantity = quantity
 		#@product = Product.new(name: name, description: description, price: price, img: img, category_ids: cat_ids, brand_id: brand_id)
 		v = Variant.create(product_id: @product.id, color_id: color_id, size_id: size_id, quantity: quantity)
 		v.save
