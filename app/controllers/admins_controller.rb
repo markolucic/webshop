@@ -7,7 +7,7 @@ class AdminsController < ApplicationController
 	end
 
 	def orders
-		@orders = Order.all.paginate(:page => params[:page], :per_page => 10).order(:created_at)
+		@orders = Order.all.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 	end
 
 	def categories
@@ -15,11 +15,11 @@ class AdminsController < ApplicationController
 	end
 
 	def users
-		@users = User.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(:id)
+		@users = User.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(id: :desc)
 	end
 
 	def products
-		@products = Product.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(:id)
+		@products = Product.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 	end
 
 	def brands
