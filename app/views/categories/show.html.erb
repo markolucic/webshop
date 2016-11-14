@@ -44,9 +44,9 @@
 			<%= link_to image_tag(p.img.url(:medium)), p %>
 			<p><%= p.brand.name %> - <%= p.name %></p>
 			<p class="colors"><%= number_to_currency(p.price, :unit => "$") %><span style="padding-right: 10px;"></span>
-			<% p.variants.each do |c| %>
-				<% if !c.color.nil? %>
-					<div class="circle" style="background-color: <%= c.color.hex %>"></div>
+			<% p.variants.map(&:color).uniq.each do |c| %>
+				<% if !c.nil? %>
+					<div class="circle" style="background-color: <%= c.hex %>"></div>
 				<% end %>
 			<% end %>
 			</p>

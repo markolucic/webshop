@@ -5,6 +5,6 @@ class Cart < ActiveRecord::Base #CartItem
 	belongs_to :variant
 
 	validates :quantity, presence:true
-	validates :color, presence:true
-	validates :size, presence:true
+	#validates :color, presence:true
+	#validates :size, presence:true
 end

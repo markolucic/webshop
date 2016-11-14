@@ -12,6 +12,24 @@ class ProductsController < ApplicationController
 		@product.variants.build
 	end
 
+	def show_data
+		color = params[:color]
+		colors = Color.where(name: color)
+		color_id = colors.first.id
+		product_id = params[:product_id]
+		#@products = Product.joins(:variants).where("variants.color_id = ?", color_id) if params[:color].present?
+		@variants = Variant.where(product_id: product_id)
+		@variants = @variants.where(color_id: color_id)
+		@sizes = []
+		@variants.each do |v|
+			@sizes << v.size.size
+		end
+		respond_to do |format| 
+			format.html
+			format.json {render json: @sizes}
+		end
+	end
+
 	def create
 		#name = params[:product][:name]
 		#description = params[:product][:description]
@@ -46,7 +64,9 @@ class ProductsController < ApplicationController
 		@sizes = []
 		@product.variants.each do |v|
 			@sizes << v.size 
-			@colors << v.color 
+			if !@colors.include? v.color
+				@colors << v.color 
+			end
 		end
 		@sizes.sort! { |a,b| a.size <=> b.size }
 	end

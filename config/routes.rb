@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get '/categories/new' => 'categories#new'
   post '/categories/new' => 'categories#create'
   delete '/categories/delete' => 'categories#delete'
+  
+  get '/products/show_data' => 'products#show_data'
 
   get 'admin/orders' => 'admins#orders'
   get 'admin' => 'admins#index'

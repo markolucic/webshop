@@ -5,31 +5,54 @@ class CartsController < ApplicationController
     quantity = params[:quantity]
     color = params[:color]
     size = params[:size]
-    @product_item = @current_user.carts.where("product_id = ? AND size = ? AND color = ?", 
-                                              params[:id], size.to_i, color).first
+    color_id = Color.where(name: color).first.id
+    size_id = Size.where(size: size).first.id
+
+    #@product_item = @current_user.carts.where("product_id = ? AND size = ? AND color = ?", 
+                                              #params[:id], size.to_i, color).first
+    #ovdje ide variant_id
+    @variant = Variant.where("product_id = ? AND size_id = ? AND color_id = ?", 
+                                              params[:id], size_id.to_i, color_id).first
+    @product_item = @current_user.carts.where("variant_id = ? ", @variant.id).first
+    #byebug
     if @product_item
-      @product_item.quantity = @product_item.quantity + quantity.to_i
-      @product_item.size = size.to_i
-      @product_item.color = color
-      @product_item.save
+      @product_item.quantity += quantity.to_i
+      size=Size.find(size_id)
+      color=Color.find(color_id)
+      @product_item.variant.size = size
+      @product_item.variant.color = color
+      if @product_item.variant.quantity < quantity.to_i
+         if @product_item.variant.quantity == 0
+           flash[:danger] = "Item out of stock!"
+         else
+           flash[:danger] = "There are only #{@product_item.variant.quantity} items left."
+         end
+         redirect_to '/products/' << params[:id]
+         return
+       else
+         @product_item.quantity = quantity.to_i
+         @product_item.save
+       end
+      
     else
       item = Cart.new
       item.user = @current_user
       item.product = Product.find(params[:id])
-      item.size = size.to_i
-      item.color = color
-      if item.product.quantity < quantity.to_i
-        if item.product.quantity == 0
-          flash[:danger] = "Item out of stock!"
-        else
-          flash[:danger] = "There are only #{item.product.quantity} items left."
-        end
-        redirect_to '/products/' << params[:id]
-        return
-      else
-        item.quantity = quantity.to_i
-        item.save
-      end
+      variant = Variant.where("product_id = ? AND size_id = ? AND color_id = ?", params[:id], size_id.to_i, color_id).first
+      item.variant = variant
+      
+      if item.variant.quantity < quantity.to_i
+         if item.variant.quantity == 0
+           flash[:danger] = "Item out of stock!"
+         else
+           flash[:danger] = "There are only #{item.variant.quantity} items left."
+         end
+         redirect_to '/products/' << params[:id]
+         return
+       else
+         item.quantity = quantity.to_i
+         item.save
+       end
     end
     if params[:commit] == "ADD TO CART"
       redirect_to '/products/' << params[:id]
@@ -77,7 +100,7 @@ class CartsController < ApplicationController
       :description => 'ABHShoes order',
       :currency    => 'usd'
     )
-    #update_products
+    update_products
     #send email to the user, basic order info
     @current_user.send_orders_email
     #save the order information
@@ -102,9 +125,9 @@ class CartsController < ApplicationController
   def update_products
     products = @current_user.carts
     products.each do |p|
-      tmp = Product.find_by_id(p.product_id)
-      tmp.quantity -= p.quantity if (tmp.quantity-p.quantity)>=0
-      tmp.save
+      variant = Variant.find(p.variant_id)
+      variant.quantity -= p.quantity
+      variant.save
     end
   end
 

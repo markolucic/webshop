@@ -22,7 +22,8 @@ class CategoriesController < ApplicationController
 		@products = @products.where("brand_id = ?", @brand_id) if params[:brand_id].present?
 		@products = @products.joins(:variants).where("variants.color_id = ?", @color_id) if params[:color_id].present?
 		@products = @products.joins(:variants).where("variants.size_id = ?", @size_id) if params[:size_id].present?
-		@products = @products.paginate(:page => params[:page], :per_page => 6).order(created_at: :desc)
+		@products = @products.paginate(:page => params[:page], :per_page => 6).order(created_at: :desc)	
+		
 	end
 
 	def new

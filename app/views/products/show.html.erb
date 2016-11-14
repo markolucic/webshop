@@ -13,18 +13,19 @@
 		<p style="text-align: justify"><%= @product.description %></p>
 		<%= form_tag({controller: "carts", action: "add"}, method: "post", class: "form") do %>
 			<div class="productOptions ">
+				<input type="hidden" id="product_id" value="<%= @product.id %>">
 				<div class="leftOption">
-					Color: <br>
-					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name"), id: 'color', prompt: 'Select color',  onchange: 'onChange()' %> 
+					<%= label_tag :color %>: <br>
+					<%= select_tag :color, options_from_collection_for_select(@colors, "name", "name"), id: 'color',prompt: 'Select color',  onchange: 'onChange()' %> 
 				</div>
 				<div class="rightOption">
-					Quantity: <br>
+					<%= label_tag :quantity %>: <br>
 					<%= number_field_tag :quantity, '1', min: 1%> 
 				</div>
-				<div style="float:none;">
+				<div class="product-size" style="float:none;">
 					
-					Size: <br>
-					<%= select_tag :size, options_from_collection_for_select(@sizes,"size", "size"), id: 'size', prompt: 'Select size', onchange: 'onChange()'%>
+					<%= label_tag :size %>: <br>
+					<%= select_tag :size, options_from_collection_for_select(@sizes,"size", "size"), id: 'size', onchange: 'onChange()'%>
 				</div>
 			</div><br>
 			<%= submit_tag "ADD TO CART", class: 'btn btn-default' %>
@@ -48,19 +49,21 @@
 </div>
 
 <script>
-	var size = document.getElementById('size').value;
+	//var size = document.getElementById('size').value;
 	var color = document.getElementById('color').value;
 
-	if(color == "" || size == "")
+	if(color == "")
 	{
 		document.getElementsByName('commit')[0].disabled = true;
 		document.getElementsByName('commit')[1].disabled = true;
 	}
 
 	function onChange(){
-		var size = document.getElementById('size').value;
+		//var size = document.getElementById('size').value;
 		var color = document.getElementById('color').value;
-		if(color == "" || size == "")
+		var product_id = document.getElementById('product_id').value;
+
+		if(color == "")
 		{
 			document.getElementsByName('commit')[0].disabled = true;
 			document.getElementsByName('commit')[1].disabled = true;
@@ -69,6 +72,34 @@
 			document.getElementsByName('commit')[0].disabled = false;
 			document.getElementsByName('commit')[1].disabled = false;
 		}
+
+		 $.ajax({
+				type:"GET",
+				url:"/products/show_data",
+				dataType:"json",
+				data: {color: color, product_id: product_id},
+				success:function(result)
+				{ 
+					var sizes = document.getElementById('size');
+					empty(sizes);
+					for( var i=0; i<result.length; i++ ){
+						var opt = document.createElement('option');
+					    opt.value = result[i];
+					    opt.innerHTML = result[i];
+					    sizes.appendChild(opt);
+					}
+					sizes.style.visibility = "visible";
+				},
+				error: function (){
+					window.alert("something wrong!");
+				}
+            });
 	}
+
+	function empty(comboBox) {
+    while (comboBox.options.length > 0) {                
+        comboBox.remove(0);
+    }        
+}
 
 </script>
