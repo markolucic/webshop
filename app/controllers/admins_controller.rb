@@ -46,7 +46,7 @@ class AdminsController < ApplicationController
 		def set_data
 			@categories = Category.paginate(:page => params[:page], :per_page => 10)
 			@sizes = Size.paginate(:page => params[:page], :per_page => 10).order(:size)
-			@products = Product.paginate(:page => params[:page], :per_page => 10).order(:id)
+			@products = Product.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 			@users = User.paginate(:page => params[:page], :per_page => 10).order(:id)
 			@brands = Brand.paginate(:page => params[:page], :per_page => 10).order(:name)
 			@colors = Color.paginate(:page => params[:page], :per_page => 10).order(:name)
