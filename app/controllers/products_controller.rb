@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 	def index
 		#@products = Product.last(12).reverse
 		@products = Product.all
-		@product = @product.sample(12)
+		@products = @products.sample(12)
 	end
 
 	def new
