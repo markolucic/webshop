@@ -62,13 +62,13 @@
 		var min = document.getElementById('min_price');
 		var max = document.getElementById('max_price');
 		var btn = document.getElementsByName('commit')[0];
-		console.log('min: ' + min.value + '\n max: '+ max.value);
-		if(min.value > max.value)
+		if(parseInt(min.value) > parseInt(max.value))
 		{
 			min.style.borderColor = "red";
 			document.getElementById('error').innerHTML = "Min price should be lower than max price!"
 			btn.disabled = true;
 		}
+
 		else
 		{
 			min.style.borderColor = '';
