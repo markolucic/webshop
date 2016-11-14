@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
 	before_filter :set_data
 
 	def index
-		@products = Product.last(12).reverse
+		#@products = Product.last(12).reverse
+		@products = Product.sample(12)
 	end
 
 	def new

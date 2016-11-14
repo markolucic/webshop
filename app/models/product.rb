@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
     validates_attachment :img, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   	validates :name, presence: true, length: { minimum: 2, maximum: 30}
-  	validates :description, presence: true, length: {minimum: 5, maximum: 100}
+  	validates :description, presence: true, length: {minimum: 5, maximum: 200}
   	validates :price, presence: true, :numericality => {  :greater_than => 0}
   	validates :brand_id, presence: true
   	validates :category_id, presence: true;
