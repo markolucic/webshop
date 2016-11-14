@@ -67,7 +67,7 @@ class CartsController < ApplicationController
       :description => 'ABHShoes order',
       :currency    => 'usd'
     )
-    update_products
+    #update_products
     #send email to the user, basic order info
     @current_user.send_orders_email
     #save the order information
