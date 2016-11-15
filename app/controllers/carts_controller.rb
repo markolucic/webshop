@@ -83,6 +83,10 @@ class CartsController < ApplicationController
 
   def place_order
     @address = Address.find(params[:address_id])
+    if @current_user.total_price == 0
+      flash[:warning] = "Your cart is empty!"
+      redirect_to '/cart/checkout'
+    end
   end
 
   def create_charge

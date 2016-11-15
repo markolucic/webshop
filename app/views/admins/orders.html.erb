@@ -1,12 +1,5 @@
 <%= render 'navbar' %>
 
-<%= form_tag admin_orders_path, :method => 'get' do %>
-  <p class="search">
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
