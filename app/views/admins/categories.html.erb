@@ -11,6 +11,7 @@
     <thead>
       <tr>
       	<!--<th><%= check_box_tag :check %></th> -->
+        <th><%= check_box_tag 'categories' %></th>
         <th><%= sortable 'id' %></th>
         <th><%= sortable 'name'%></th>
         <th><%= sortable 'created_at', 'Created at' %></th>
@@ -20,6 +21,7 @@
     <tbody>
     	<% @categories.each do |c| %>
 			<tr>
+        <td><%= check_box_tag 'category' %></td>
         <td><%= c.id %></td>
         <td><%= c.name %></td>
         <td><%= c.created_at.strftime("%b %d, %Y") %></td>

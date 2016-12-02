@@ -10,6 +10,7 @@
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
+        <th><%= check_box_tag 'brands' %></th>
         <th><%= sortable 'id' %></th>
         <th><%= sortable 'name' %></th>
         <th>Options</th>
@@ -18,6 +19,7 @@
     <tbody>
     	<% @brands.each do |u| %>
 			<tr>
+            <td><%= check_box_tag 'brand' %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td>

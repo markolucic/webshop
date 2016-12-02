@@ -15,7 +15,7 @@
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
-      	<!--<th><%= check_box_tag :check_all %></th>-->
+      	<th><%= check_box_tag :check_all %></th>
         <th>ID</th>
         <th>Email</th>
         <th>Registration Date</th>
@@ -27,7 +27,7 @@
     <tbody>
     	<% @users.each do |u| %>
 			<tr>
-				<!--<td><%= check_box_tag 'checkbox', u.id.to_s %></td>-->
+				<td><input type="checkbox" name="user_ids[]" value="<%= u.id %>" /></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.email %></td>
 		        <td><%= u.created_at.strftime("%b %d, %Y") %></td>
@@ -55,20 +55,24 @@
 	var clicked = false;
 	$('#check_all').change(function () {
 
-    	var checkboxes = document.getElementsByName('checkbox');
-		for(var i=0; i< checkboxes.length; i++)
-		{
-			if(clicked == true)
+    	var checkboxes = document.getElementsByName('user_ids[]');
+		
+		if(clicked == true)
+		{	for(var i=0; i< checkboxes.length; i++)
 			{
 				checkboxes[i].checked = true;
 				clicked = false;
 			}
-			else
+		}
+		else
+		{
+			for(var i=0; i< checkboxes.length; i++)
 			{
 				checkboxes[i].checked = false;
 				clicked = true;
 			}
-		}	
+		}
+			
  	});
 
 	function checked(){

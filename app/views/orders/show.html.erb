@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Product ID</th>
+        <th>Product Name</th>
         <th>Quantity</th>
         <th>Price</th>
         <th>Date</th>
@@ -13,7 +13,7 @@
     	<% @orders.each do |u| %>
 			<tr>
 		        <td><%= u.id %></td>
-		        <td><%= u.product_id %></td>
+		        <td><%= Product.where(id: u.product_id).first.name %></td>
 		        <td><%= u.quantity %></td>
 		        <td>$<%= u.price %></td>
 		        <td><%= u.created_at.strftime("%b %d, %Y") %></td>

@@ -6,7 +6,8 @@ class Color < ActiveRecord::Base
 
 	def self.search(search)
       if search
-        where('name LIKE ?', "%#{search}%")
+        search = search.downcase
+        where('lower(name) LIKE ?', "%#{search}%")
       else
         all
       end

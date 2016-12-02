@@ -4,8 +4,8 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Product ID</th>
-        <th>User ID</th>
+        <th>Product Name</th>
+        <th>User Email</th>
         <th>Quantity</th>
         <th>Price</th>
         <th>Date</th>
@@ -15,8 +15,8 @@
     	<% @orders.each do |u| %>
 			<tr>
 		        <td><%= u.id %></td>
-		        <td><%= u.product_id %></td>
-		        <td><%= u.user_id %></td>
+		        <td><%= Product.where(id: u.product_id).first.name %></td>
+		        <td><%= User.where(id: u.user_id).first.email %></td>
 		        <td><%= u.quantity %></td>
 		        <td>$<%= u.price %></td>
 		        <td><%= u.created_at.strftime("%b %d, %Y") %></td>

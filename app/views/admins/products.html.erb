@@ -10,6 +10,7 @@
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
+        <th><%= check_box_tag 'products' %></th>
         <th>ID</th>
         <th>Name</th>
         <th>Category</th>
@@ -21,6 +22,7 @@
     <tbody>
     	<% @products.each do |u| %>
 			<tr>
+            <td><%= check_box_tag 'product' %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td><%= u.category.nil? ? 'None' : u.category.name  %></td>

@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
 
     def self.search(search)
       if search
-        where('email LIKE ?', "%#{search}%")
+        search = search.downcase
+        where('lower(email) LIKE ?', "%#{search}%")
       else
         all
       end

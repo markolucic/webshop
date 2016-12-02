@@ -10,6 +10,7 @@
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
+        <th><%= check_box_tag 'sizes' %></th>
         <th>ID</th>
         <th>Size</th>
         <th>Options</th>
@@ -18,6 +19,7 @@
     <tbody>
     	<% @sizes.each do |u| %>
 			<tr>
+            <td><%= check_box_tag 'size' %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.size %></td>
 		        <td>

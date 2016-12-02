@@ -10,6 +10,7 @@
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
+        <th><%= check_box_tag 'colors' %></th>
         <th>ID</th>
         <th>Name</th>
         <th>Color</th>
@@ -20,6 +21,7 @@
     <tbody>
     	<% @colors.each do |u| %>
 			<tr>
+            <td><%= check_box_tag 'color' %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td><div class="circle" style="background-color: <%= u.hex %>"></div></td>
