@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
 	def destroy_selected
 		if params[:ids]
-			ids = params[:ids].split(",")
+			ids = params[:ids]
 			ids.each do |p|
 				u = User.where(:id => p.to_i)
 				u.destroy_all

@@ -42,8 +42,7 @@ Rails.application.routes.draw do
 
   get 'user/promote/:id' => 'users#promote'
   get 'user/demote/:id' => 'users#demote'
-
-  get '/admin/users/destroy' => 'users#destroy_selected'
+  delete '/user/destroy_selected' => 'users#destroy_selected'
 
   get '/orders' => 'orders#show'
   resources :users 
