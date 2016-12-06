@@ -1,6 +1,7 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Add category', categories_new_path, class: 'btn btn-default'%>
+<%= link_to 'Remove selected', '', :data => {confirm: 'Are you sure?'}, class: 'btn btn-default', onclick: 'deleteAll("categories")'%>
 <%= form_tag admin_categories_path, :method => 'get' do %>
   <p class="search">
     <%= text_field_tag :search, params[:search] %>
@@ -21,7 +22,7 @@
     <tbody>
     	<% @categories.each do |c| %>
 			<tr>
-        <td><%= check_box_tag 'category' %></td>
+        <td><%= check_box_tag 'checkbox_ids[]' %></td>
         <td><%= c.id %></td>
         <td><%= c.name %></td>
         <td><%= c.created_at.strftime("%b %d, %Y") %></td>

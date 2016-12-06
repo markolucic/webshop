@@ -68,6 +68,18 @@ class CategoriesController < ApplicationController
 	    redirect_to admin_categories_path
 	end
 
+	def destroy_selected
+		if params[:ids]
+			ids = params[:ids]
+			ids.each do |p|
+				u = Category.where(:id => p.to_i)
+				u.destroy_all
+			end
+		end
+		flash[:success] = "Categories have been deleted!"
+		redirect_to admin_categories_path
+	end
+
 	private 
 
   	def correct_user

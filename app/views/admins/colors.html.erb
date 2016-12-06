@@ -1,6 +1,7 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Add Color', new_color_path, class: 'btn btn-default'%>
+<%= link_to 'Remove selected', '', :data => {confirm: 'Are you sure?'}, class: 'btn btn-default', onclick: 'deleteAll("color")'%>
 <%= form_tag admin_colors_path, :method => 'get' do %>
   <p class="search">
     <%= text_field_tag :search, params[:search] %>
@@ -21,7 +22,7 @@
     <tbody>
     	<% @colors.each do |u| %>
 			<tr>
-            <td><%= check_box_tag 'color' %></td>
+            <td><%= check_box_tag 'checkbox_ids[]' %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td><div class="circle" style="background-color: <%= u.hex %>"></div></td>

@@ -43,6 +43,18 @@ class SizesController < ApplicationController
 		redirect_to admin_sizes_path
 	end
 
+	def destroy_selected
+		if params[:ids]
+			ids = params[:ids]
+			ids.each do |p|
+				u = Size.where(:id => p.to_i)
+				u.destroy_all
+			end
+		end
+		flash[:success] = "Sizes have been deleted!"
+		redirect_to admin_sizes_path
+	end
+
 	private 
 
 	def size_params

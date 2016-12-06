@@ -94,6 +94,18 @@ class ProductsController < ApplicationController
 		redirect_to admin_products_path 
 	end
 
+	def destroy_selected
+		if params[:ids]
+			ids = params[:ids]
+			ids.each do |p|
+				u = Product.where(:id => p.to_i)
+				u.destroy_all
+			end
+		end
+		flash[:success] = "Products have been deleted!"
+		redirect_to admin_products_path
+	end
+
 	private
 
 	def product_params

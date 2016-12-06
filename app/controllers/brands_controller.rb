@@ -44,6 +44,18 @@ class BrandsController < ApplicationController
 		redirect_to admin_brands_path
 	end
 
+	def destroy_selected
+		if params[:ids]
+			ids = params[:ids]
+			ids.each do |p|
+				u = Brand.where(:id => p.to_i)
+				u.destroy_all
+			end
+		end
+		flash[:success] = "Brands have been deleted!"
+		redirect_to admin_brands_path
+	end
+
 	private 
 
 	def brand_params

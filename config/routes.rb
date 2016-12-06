@@ -43,6 +43,12 @@ Rails.application.routes.draw do
   get 'user/promote/:id' => 'users#promote'
   get 'user/demote/:id' => 'users#demote'
   delete '/user/destroy_selected' => 'users#destroy_selected'
+  delete '/size/destroy_selected' => 'sizes#destroy_selected'
+  delete '/color/destroy_selected' => 'colors#destroy_selected'
+  delete '/brand/destroy_selected' => 'brands#destroy_selected'
+  delete '/categories/destroy_selected' => 'categories#destroy_selected'
+  #delete '/category/destroy_selected' => 'categories#destroy_selected'
+  delete '/product/destroy_selected' => 'products#destroy_selected'
 
   get '/orders' => 'orders#show'
   resources :users 

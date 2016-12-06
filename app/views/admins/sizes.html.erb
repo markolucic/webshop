@@ -1,6 +1,8 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Add Size', new_size_path, class: 'btn btn-default'%>
+<%= link_to 'Remove selected', '', :data => {confirm: 'Are you sure?'}, class: 'btn btn-default', onclick: 'deleteAll("size")'%>
+
 <%= form_tag admin_sizes_path, :method => 'get' do %>
   <p class="search">
     <%= text_field_tag :search, params[:search] %>
@@ -19,7 +21,7 @@
     <tbody>
     	<% @sizes.each do |u| %>
 			<tr>
-            <td><%= check_box_tag 'size' %></td>
+            <td><%= check_box_tag 'checkbox_ids[]' %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.size %></td>
 		        <td>
@@ -38,7 +40,7 @@
 	    $('[data-toggle="tooltip"]').tooltip();
 	});
 
-  function deleteAll(){
+  function deleteAlls(){
     var checkboxes = document.getElementsByName('user_ids[]');
     var ids = [];
     for(var i=0; i<checkboxes.length; i++)
@@ -69,3 +71,9 @@
       }
   }
 </script>
+
+<!--
+ista funkcija, napisati je u helperu ili application.js, samo joj proslijedimo s kojim kontrolerom radimo i to dodamo u url: '/' + kontroler + '/destroy_selected'
+podesiti sve putanje u config/routes.rb
+postaviti isti id za sve checkboxove
+ --> 

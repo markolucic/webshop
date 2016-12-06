@@ -1,6 +1,7 @@
 <%= render 'navbar' %>
 
 <%= link_to 'Add Product', new_product_path, class: 'btn btn-default'%>
+<%= link_to 'Remove selected', '', :data => {confirm: 'Are you sure?'}, class: 'btn btn-default', onclick: 'deleteAll("product")'%>
 <%= form_tag admin_products_path, :method => 'get' do %>
   <p class="search">
     <%= text_field_tag :search, params[:search] %>
@@ -22,7 +23,7 @@
     <tbody>
     	<% @products.each do |u| %>
 			<tr>
-            <td><%= check_box_tag 'product' %></td>
+            <td><%= check_box_tag 'checkbox_ids[]' %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td><%= u.category.nil? ? 'None' : u.category.name  %></td>

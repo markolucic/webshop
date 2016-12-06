@@ -44,6 +44,18 @@ class ColorsController < ApplicationController
 		redirect_to admin_colors_path
 	end
 
+	def destroy_selected
+		if params[:ids]
+			ids = params[:ids]
+			ids.each do |p|
+				u = Color.where(:id => p.to_i)
+				u.destroy_all
+			end
+		end
+		flash[:success] = "Colors have been deleted!"
+		redirect_to admin_colors_path
+	end
+
 	private 
 
 	def color_params
