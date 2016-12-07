@@ -11,8 +11,7 @@
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
-      	<!--<th><%= check_box_tag :check %></th> -->
-        <th><%= check_box_tag 'categories' %></th>
+      	<th><%= check_box_tag :check_all %></th>
         <th><%= sortable 'id' %></th>
         <th><%= sortable 'name'%></th>
         <th><%= sortable 'created_at', 'Created at' %></th>
@@ -22,7 +21,7 @@
     <tbody>
     	<% @categories.each do |c| %>
 			<tr>
-        <td><%= check_box_tag 'checkbox_ids[]' %></td>
+        <td><%= check_box_tag 'checkbox_ids[]', c.id %></td>
         <td><%= c.id %></td>
         <td><%= c.name %></td>
         <td><%= c.created_at.strftime("%b %d, %Y") %></td>
@@ -36,3 +35,7 @@
   </table>
 
   <%= will_paginate @categories %>
+
+<script>
+  $('#check_all').change(checkAll);
+</script>

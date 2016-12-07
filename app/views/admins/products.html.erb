@@ -11,7 +11,7 @@
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
-        <th><%= check_box_tag 'products' %></th>
+        <th><%= check_box_tag :check_all %></th>
         <th>ID</th>
         <th>Name</th>
         <th>Category</th>
@@ -23,7 +23,7 @@
     <tbody>
     	<% @products.each do |u| %>
 			<tr>
-            <td><%= check_box_tag 'checkbox_ids[]' %></td>
+            <td><%= check_box_tag 'checkbox_ids[]', u.id %></td>
 		        <td><%= u.id %></td>
 		        <td><%= u.name %></td>
 		        <td><%= u.category.nil? ? 'None' : u.category.name  %></td>
@@ -45,4 +45,7 @@
 	$(document).ready(function(){
 	    $('[data-toggle="tooltip"]').tooltip();
 	});
+
+   $('#check_all').change(checkAll);
+
 </script>

@@ -29,11 +29,25 @@ function deleteAll(controller){
       }
 }
 
+var clicked = true;
+function checkAll() {
 
-<!--
-ista funkcija, napisati je u helperu ili application.js, 
-samo joj proslijedimo s kojim kontrolerom radimo i to 
-dodamo u url: '/' + kontroler + '/destroy_selected'
-podesiti sve putanje u config/routes.rb
-postaviti isti id za sve checkboxove
- --> 
+    	var checkboxes = document.getElementsByName('checkbox_ids[]');
+		if(clicked != true)
+		{	for(var i=0; i< checkboxes.length; i++)
+			{
+				checkboxes[i].checked = false;
+			}
+			clicked = true;
+		}
+		else
+		{
+			for(var i=0; i< checkboxes.length; i++)
+			{
+				checkboxes[i].checked = true;
+			}
+			clicked = false;
+		}
+			
+}
+	
