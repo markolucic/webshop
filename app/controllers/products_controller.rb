@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 		#@products = Product.last(12).reverse
 		@products = Product.all
 		@products = @products.sample(12)
+		@sales = Product.last(4)
 	end
 
 	def new
