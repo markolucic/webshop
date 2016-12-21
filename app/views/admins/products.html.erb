@@ -31,11 +31,11 @@
 		        <td><%= u.brand.nil? ? 'none' : u.brand.name %></td>
 		        <td>$<%= u.price %></td>
             <!--<td>
-                <% if u.on_sale? %>
+                <% #if u.on_sale? %>
                   <%= link_to '', '/product/remove_from_sale/' + u.id.to_s, data_toggle: 'tooltip', title: 'Remove from sale', class: 'glyphicon glyphicon-eye-close' %>
-                <% else %>
+                <% #else %>
                   <%= link_to '', '/product/add_to_sale/' + u.id.to_s, data_toggle: 'tooltip', title: 'Add to sale', class: 'glyphicon glyphicon-eye-open' %>
-                <% end %> 
+                <% #end %> 
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Sale</button>
             </td> !-->
 		        <td>
