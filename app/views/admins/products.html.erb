@@ -17,6 +17,7 @@
         <th>Category</th>
         <th>Brand</th>
         <th>Price</th>
+        <th>Sale</th>
         <th>Options</th>
       </tr>
     </thead>
@@ -29,13 +30,36 @@
 		        <td><%= u.category.nil? ? 'None' : u.category.name  %></td>
 		        <td><%= u.brand.nil? ? 'none' : u.brand.name %></td>
 		        <td>$<%= u.price %></td>
+            <td>
+                <% if u.on_sale? %>
+                  <%= link_to '', '/product/remove_from_sale/' + u.id.to_s, data_toggle: 'tooltip', title: 'Remove from sale', class: 'glyphicon glyphicon-eye-close' %>
+                <% else %>
+                  <%= link_to '', '/product/add_to_sale/' + u.id.to_s, data_toggle: 'tooltip', title: 'Add to sale', class: 'glyphicon glyphicon-eye-open' %>
+                <% end %> 
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Sale</button>
+            </td>
 		        <td>
 		        	<%= link_to '', edit_product_path(id: u.id),data_toggle: 'tooltip', title: 'Edit product', class: 'glyphicon glyphicon-pencil' %>
 		        	<%= link_to '', product_path(id: u.id), method: 'delete',:data => {:confirm => 'Are you sure?'}, data_toggle: 'tooltip', title: 'Remove product', class: 'glyphicon glyphicon-trash' %>
 		        	<%= link_to '', new_product_variant_path(product_id: u.id), data_toggle: 'tooltip', title: 'Add variant', class: 'glyphicon glyphicon-plus' %>
 		        	<%= link_to '', product_variants_path(product_id: u.id), data_toggle: 'tooltip', title: 'All variants', class: 'glyphicon glyphicon-list' %>
+              
 		        </td>
 		    </tr>
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">Add product to sale</div>
+              <div class="modal-body">
+                forma za cijenu i end date
+                <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+              </div>
+              <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 		<% end %>    
     </tbody>
   </table>	

@@ -12,6 +12,33 @@ class ProductsController < ApplicationController
 		@product.variants.build
 	end
 
+	def add_to_sale
+		@id = params[:id]
+		#@p = Product.find_by(id: id)
+		#valoidacija datuma za end date, redirect i flash ako ne valja
+		#product.update_attributes(:on_sale => true, :start_date => Date.today, :end_date => end_date)
+		#product.update_attribute(:on_sale, true)
+		#redirect_to admin_products_path
+	end
+
+	def sales
+		id = params[:id]
+		start_date = params[:start_date]
+		end_date = params[:end_date]
+		sale_price = params[:sale_price]
+		@p = Product.find_by(id: id)
+		@p.update_attributes(:on_sale => true, :start_date => start_date, :end_date => end_date, :sale_price => sale_price)
+		flash[:success] = 'Product successfully added to sale.'
+		redirect_to admin_products_path
+	end
+
+	def remove_from_sale
+		id = params[:id]
+		product = Product.find_by(id: id)
+		product.update_attributes(:on_sale => false, :start_date => nil, :end_date => nil)
+		redirect_to admin_products_path
+	end
+
 	def show_data
 		color = params[:color]
 		colors = Color.where(name: color)
@@ -109,7 +136,7 @@ class ProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:name, :description, :price, :img, :brand_id, :category_id,
+		params.require(:product).permit(:id, :name, :description, :price, :img, :brand_id, :category_id,
 		variants_attributes: [:id, :size_id, :quantity, :color_id, :_destroy])
 	end
 

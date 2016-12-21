@@ -49,6 +49,9 @@ Rails.application.routes.draw do
   delete '/categories/destroy_selected' => 'categories#destroy_selected'
   #delete '/category/destroy_selected' => 'categories#destroy_selected'
   delete '/product/destroy_selected' => 'products#destroy_selected'
+  get 'product/add_to_sale/:id' => 'products#add_to_sale'
+  get 'product/remove_from_sale/:id' => 'products#remove_from_sale'
+  get 'product/sales' => 'products#sales'
 
   get '/orders' => 'orders#show'
   resources :users 

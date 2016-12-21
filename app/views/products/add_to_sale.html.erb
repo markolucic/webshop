@@ -1,0 +1,25 @@
+<div class="col-md-4 center-block" style="float:none">
+	<h3>Add to sale</h3>
+	<div class="login-form " >
+		<%= form_tag product_sales_path, :method => 'get' do %>
+		    <div class="form-group">
+		      <%= label_tag :id %><br />
+		      <%= text_field_tag :id, params[:id], class: 'form-control' %>
+		    </div>
+		    <div class="form-group">
+		      <%= label_tag :sale_price %><br />
+		      <%= text_field_tag :sale_price, params[:sale_price], class: 'form-control' %>
+		    </div>
+		    <div class="form-group">
+		    	<%= label_tag :start_date %><br />
+		    	<%= date_select :start_date, params[:start_date], class: 'form-control' %>
+		    </div>
+		    <div class="form-group">
+		    	<%= label_tag :end_date %><br />
+		    	<%= date_select :end_date, params[:end_date], class: 'form-control' %>
+		    </div>
+	</div>
+		<%= link_to 'Cancel', admin_products_path, class: 'btn btn-default right-align' %>
+		<%= submit_tag "Submit", class: 'btn btn-dark-grey right-align' %>
+		<% end %>
+</div>
